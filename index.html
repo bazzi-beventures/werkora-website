@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #FFFFFF; color: #1B2028; font-family: 'DM Sans', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  * { box-sizing: border-box; }
+  a { color: #A9711A; text-decoration: none; }
+  a:hover { color: #E9A227; }
+  @keyframes wkUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+  @keyframes wkSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+</style>
+</helmet>
+
+<div style="min-height:100vh;background:#FFFFFF;overflow-x:hidden">
+
+  <header style="position:sticky;top:0;z-index:60;background:rgba(255,255,255,0.94);backdrop-filter:blur(12px);border-bottom:1px solid #E4E7EB">
+    <div style="max-width:1280px;margin:0 auto;padding:0 40px;height:78px;display:flex;align-items:center;justify-content:space-between;gap:32px">
+      <a href="./index.html" style="display:flex;align-items:center;gap:11px;color:#1B2028">
+        <img src="assets/werkora-mark.png" alt="Werkora" style="width:28px;height:28px;display:block" />
+        <span style="font-family:'Bitter',serif;font-size:22px;font-weight:600;letter-spacing:-0.01em;color:#1B2028">Werkora</span>
+      </a>
+      <nav style="display:flex;align-items:center;gap:30px">
+        <a href="./funktionen.html" style="font-size:14px;color:#5A6270" style-hover="color:#1B2028">Funktionen</a>
+        <a href="./ki-und-datenschutz.html" style="font-size:14px;color:#5A6270" style-hover="color:#1B2028">KI &amp; Datenschutz</a>
+        <a href="./kontakt.html" style="font-size:14px;color:#5A6270" style-hover="color:#1B2028">Kontakt</a>
+        <a href="./kontakt.html" style="font-size:14px;font-weight:600;color:#1B2028;background:#E9A227;padding:11px 20px;border-radius:999px" style-hover="background:#F4BC55">Kontakt aufnehmen</a>
+      </nav>
+    </div>
+  </header>
+
+  <section data-screen-label="Hero" style="position:relative;border-bottom:1px solid #E4E7EB;overflow:hidden">
+    <div aria-hidden="true" style="position:absolute;right:48px;top:72px;width:520px;height:520px;opacity:0.05;pointer-events:none">
+      <svg viewBox="0 0 100 100" aria-hidden="true" style="width:520px;height:520px;display:block">
+      <path d="M 38.5 12.6 A 40 40 0 1 0 61.5 12.6" fill="none" stroke="#1B2028" stroke-width="7.5" stroke-linecap="butt" />
+      <rect x="48.4" y="2" width="3.2" height="8.5" fill="#1B2028" />
+      <g style="transform-box:view-box;transform-origin:50px 50px;animation:wkSpin 96s linear infinite">
+        <polygon points="46.4,52.5 53.6,52.5 50.4,30 49.6,30" fill="#E9A227" />
+      </g>
+      <g style="transform-box:view-box;transform-origin:50px 50px;animation:wkSpin 8s linear infinite">
+        <polygon points="47,53 53,53 50.4,17.5 49.6,17.5" fill="#1B2028" />
+        <polygon points="47.6,49 52.4,49 51.6,64 48.4,64" fill="#1B2028" />
+      </g>
+      <circle cx="50" cy="50" r="4.6" fill="#1B2028" />
+      <circle cx="50" cy="50" r="2" fill="#FFFFFF" />
+    </svg>
+    </div>
+
+    <div style="position:relative;max-width:1280px;margin:0 auto;padding:104px 40px 96px;display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:72px;align-items:center">
+      <div style="animation:wkUp 700ms cubic-bezier(0.16,1,0.3,1) both">
+        <div style="display:flex;align-items:center;gap:14px">
+          <div style="width:30px;height:1px;background:#E9A227"></div>
+          <div style="font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:#A9711A">Schlankes ERP mit KI-Fokus</div>
+        </div>
+        <h1 style="margin:26px 0 0;font-family:'Bitter',serif;font-size:clamp(42px,5.6vw,76px);line-height:1.02;font-weight:600;letter-spacing:-0.025em;color:#12161D;max-width:13ch;text-wrap:pretty">Schlank im Alltag.<br /><span style="color:#B47614">Stark</span> im Automatisieren.</h1>
+        <p style="margin:30px 0 0;font-size:19px;line-height:1.6;color:#5A6270;max-width:52ch;text-wrap:pretty">Werkora deckt den operativen Kern ab — Zeit, Projekte, Offerten, Rechnungen — und automatisiert per KI, was heute von Hand läuft. Für Schweizer Handwerksbetriebe.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:38px">
+          <a href="./kontakt.html" style="font-size:15px;font-weight:600;color:#1B2028;background:#E9A227;padding:15px 28px;border-radius:999px" style-hover="background:#F4BC55" style-active="transform:scale(0.97)">Kontakt aufnehmen</a>
+          <a href="./funktionen.html" style="font-size:15px;font-weight:500;color:#1B2028;border:1px solid #D5D9DF;padding:15px 28px;border-radius:999px" style-hover="border-color:#1B2028">Funktionen ansehen</a>
+        </div>
+      </div>
+
+      <div style="position:relative;animation:wkUp 900ms cubic-bezier(0.16,1,0.3,1) both">
+        <div style="max-width:400px;margin-left:auto;background:#151A23;border:1px solid #232A36;border-radius:24px;padding:22px;box-shadow:0 24px 60px rgba(16,20,28,0.18)">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <div style="display:flex;align-items:center;gap:10px">
+              <div style="width:8px;height:8px;border-radius:50%;background:#22c55e"></div>
+              <span style="font-size:14px;font-weight:600;color:#F1F5F9">Rapport erfassen</span>
+            </div>
+            <span style="font-family:'DM Mono',monospace;font-size:12px;color:#7A8494">17:04</span>
+          </div>
+          <div style="margin-top:18px;background:#273140;border-radius:16px;border-top-left-radius:6px;padding:16px;font-size:15px;line-height:1.6;color:#DDE3EA">„Heute Sanierung Altbau Adlikon. Ich 4 h, Tobias 3 h. 2 Eimer Weissfarbe verbraucht.“</div>
+          <div style="margin-top:10px;display:flex;align-items:center;gap:8px;justify-content:flex-end">
+            <span style="font-family:'DM Mono',monospace;font-size:11px;color:#7A8494">Sprachnachricht · 0:12</span>
+            <div style="display:flex;align-items:flex-end;gap:2px;height:14px">
+              <div style="width:3px;height:6px;background:#E9A227;border-radius:2px"></div>
+              <div style="width:3px;height:12px;background:#E9A227;border-radius:2px"></div>
+              <div style="width:3px;height:9px;background:#E9A227;border-radius:2px"></div>
+              <div style="width:3px;height:14px;background:#E9A227;border-radius:2px"></div>
+              <div style="width:3px;height:7px;background:#E9A227;border-radius:2px"></div>
+            </div>
+          </div>
+
+          <div style="margin-top:22px;display:flex;align-items:center;gap:10px">
+            <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#7A8494">Erkannt</div>
+            <div style="flex:1;height:1px;background:#2C3340"></div>
+          </div>
+          <div style="margin-top:14px;display:flex;flex-direction:column;gap:11px">
+            <div style="display:flex;justify-content:space-between;gap:16px">
+              <span style="font-size:14px;color:#98A0AE">Projekt</span>
+              <span style="font-size:14px;color:#F1F5F9;text-align:right">Sanierung Altbau Adlikon</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;gap:16px">
+              <span style="font-size:14px;color:#98A0AE">Stunden</span>
+              <span style="font-family:'DM Mono',monospace;font-size:14px;color:#F1F5F9">4:00 · 3:00</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;gap:16px">
+              <span style="font-size:14px;color:#98A0AE">Material</span>
+              <span style="font-size:14px;color:#F1F5F9;text-align:right">2 × Weissfarbe</span>
+            </div>
+          </div>
+          <div style="display:flex;gap:10px;margin-top:20px">
+            <div style="flex:1;text-align:center;background:#22c55e;color:#0B1220;font-size:14px;font-weight:600;padding:13px;border-radius:12px">Ja, speichern</div>
+            <div style="flex:1;text-align:center;border:1px solid #2C3340;color:#C6CDD7;font-size:14px;font-weight:500;padding:13px;border-radius:12px">Korrigieren</div>
+          </div>
+        </div>
+        <div style="max-width:400px;margin:12px 0 0 auto;font-size:13px;line-height:1.6;color:#8A929E">Nachbildung des Rapport-Dialogs. Ohne Bestätigung entsteht kein Eintrag.</div>
+      </div>
+    </div>
+
+    <div style="border-top:1px solid #E4E7EB">
+      <div style="max-width:1280px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
+        <div style="padding:26px 28px 26px 0;border-right:1px solid #E4E7EB">
+          <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#8A929E">Produktiv im Einsatz</div>
+          <div style="margin-top:8px;font-size:17px;color:#1B2028">Pilotkunde seit 2026</div>
+        </div>
+        <div style="padding:26px 28px;border-right:1px solid #E4E7EB">
+          <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#8A929E">KI-Verarbeitung</div>
+          <div style="margin-top:8px;font-size:17px;color:#1B2028">Ausschliesslich in der EU</div>
+        </div>
+        <div style="padding:26px 0 26px 28px">
+          <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#8A929E">Freigabe</div>
+          <div style="margin-top:8px;font-size:17px;color:#1B2028">Kein automatisches Buchen</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Vier Punkte" style="background:#F6F7F9;border-bottom:1px solid #E4E7EB">
+    <div style="max-width:1280px;margin:0 auto;padding:104px 40px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:56px;align-items:end">
+        <div>
+          <div style="font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:#A9711A">Der Unterschied</div>
+          <h2 style="margin:20px 0 0;font-family:'Bitter',serif;font-size:clamp(30px,3.6vw,46px);line-height:1.12;font-weight:600;letter-spacing:-0.02em;color:#12161D;text-wrap:pretty">Grosse ERP-Systeme können alles — und werden dafür schwerfällig.</h2>
+        </div>
+        <p style="margin:0;font-size:18px;line-height:1.65;color:#5A6270;max-width:46ch">Werkora kann weniger und automatisiert genau das, was täglich Zeit frisst. Vier Entscheide, die den Unterschied machen.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;margin-top:60px">
+        <div style="background:#FFFFFF;border:1px solid #E4E7EB;border-radius:20px;padding:28px" style-hover="border-color:#C9CED6">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <div style="width:42px;height:42px;border-radius:50%;background:#FDF3DF;color:#A9711A;display:flex;align-items:center;justify-content:center"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5Z" /><path d="m2 17 10 5 10-5" /><path d="m2 12 10 5 10-5" /></svg></div>
+            <span style="font-family:'DM Mono',monospace;font-size:12px;color:#C9CED6">01</span>
+          </div>
+          <div style="margin-top:20px;font-size:18px;font-weight:600;color:#12161D">Schlank statt überladen</div>
+          <p style="margin:10px 0 0;font-size:15px;line-height:1.6;color:#5A6270">Nur die Module, die täglich bedient werden — kein Customizing-Projekt.</p>
+        </div>
+        <div style="background:#FFFFFF;border:1px solid #E4E7EB;border-radius:20px;padding:28px" style-hover="border-color:#C9CED6">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <div style="width:42px;height:42px;border-radius:50%;background:#E7F0F6;color:#2C6E9B;display:flex;align-items:center;justify-content:center"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z" /><path d="M14 2v6h6" /></svg></div>
+            <span style="font-family:'DM Mono',monospace;font-size:12px;color:#C9CED6">02</span>
+          </div>
+          <div style="margin-top:20px;font-size:18px;font-weight:600;color:#12161D">Die KI liest die Lieferantendokumente</div>
+          <p style="margin:10px 0 0;font-size:15px;line-height:1.6;color:#5A6270">Preislisten und Konfigurator-PDFs werden automatisch ausgewertet.</p>
+        </div>
+        <div style="background:#FFFFFF;border:1px solid #E4E7EB;border-radius:20px;padding:28px" style-hover="border-color:#C9CED6">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <div style="width:42px;height:42px;border-radius:50%;background:#E4F6EA;color:#15803D;display:flex;align-items:center;justify-content:center"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" /><path d="M19 10v2a7 7 0 0 1-14 0v-2" /><path d="M12 19v3" /></svg></div>
+            <span style="font-family:'DM Mono',monospace;font-size:12px;color:#C9CED6">03</span>
+          </div>
+          <div style="margin-top:20px;font-size:18px;font-weight:600;color:#12161D">Erfassen im Dialog, direkt auf der Baustelle</div>
+          <p style="margin:10px 0 0;font-size:15px;line-height:1.6;color:#5A6270">Zeit, Rapport und Material per Chat oder Sprache — offlinefähig.</p>
+        </div>
+        <div style="background:#FFFFFF;border:1px solid #E4E7EB;border-radius:20px;padding:28px" style-hover="border-color:#C9CED6">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <div style="width:42px;height:42px;border-radius:50%;background:#F0EAFB;color:#6D3FD1;display:flex;align-items:center;justify-content:center"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2v20l3-2 3 2 3-2 3 2 3-2V2l-3 2-3-2-3 2-3-2Z" /><path d="M8 8h8" /><path d="M8 13h6" /></svg></div>
+            <span style="font-family:'DM Mono',monospace;font-size:12px;color:#C9CED6">04</span>
+          </div>
+          <div style="margin-top:20px;font-size:18px;font-weight:600;color:#12161D">Vom Rapport zur QR-Rechnung</div>
+          <p style="margin:10px 0 0;font-size:15px;line-height:1.6;color:#5A6270">Ein Datenbestand, keine Doppelerfassung, kein Excel dazwischen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Ablauf" style="border-bottom:1px solid #E4E7EB">
+    <div style="max-width:1280px;margin:0 auto;padding:104px 40px">
+      <div style="font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:#A9711A">KI im Einsatz</div>
+      <h2 style="margin:20px 0 0;font-family:'Bitter',serif;font-size:clamp(30px,4vw,52px);line-height:1.08;font-weight:600;letter-spacing:-0.025em;color:#12161D;max-width:18ch">Der Rapport, den niemand tippt</h2>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;background:#E4E7EB;border:1px solid #E4E7EB;border-radius:20px;overflow:hidden;margin-top:56px">
+        <div style="background:#FFFFFF;padding:32px 28px">
+          <div style="font-family:'Bitter',serif;font-size:38px;line-height:1;font-weight:600;color:#DCE0E6">01</div>
+          <div style="margin-top:18px;font-size:17px;font-weight:600;color:#12161D">Sprechen statt tippen</div>
+          <p style="margin:10px 0 0;font-size:15px;line-height:1.6;color:#5A6270">Sprachnachricht direkt von der Baustelle, auch ohne Verbindung.</p>
+        </div>
+        <div style="background:#FFFFFF;padding:32px 28px">
+          <div style="font-family:'Bitter',serif;font-size:38px;line-height:1;font-weight:600;color:#DCE0E6">02</div>
+          <div style="margin-top:18px;font-size:17px;font-weight:600;color:#12161D">Transkribieren und verstehen</div>
+          <p style="margin:10px 0 0;font-size:15px;line-height:1.6;color:#5A6270">Aus Ton wird Text, aus Text werden Projekt, Stunden und Material.</p>
+        </div>
+        <div style="background:#FFFFFF;padding:32px 28px">
+          <div style="font-family:'Bitter',serif;font-size:38px;line-height:1;font-weight:600;color:#DCE0E6">03</div>
+          <div style="margin-top:18px;font-size:17px;font-weight:600;color:#12161D">Gegen die Stammdaten prüfen</div>
+          <p style="margin:10px 0 0;font-size:15px;line-height:1.6;color:#5A6270">Unklare Angaben führen zu Rückfragen, nicht zu einem falschen Eintrag.</p>
+        </div>
+        <div style="background:#FFFFFF;padding:32px 28px">
+          <div style="font-family:'Bitter',serif;font-size:38px;line-height:1;font-weight:600;color:#E9A227">04</div>
+          <div style="margin-top:18px;font-size:17px;font-weight:600;color:#12161D">Bestätigen, dann buchen</div>
+          <p style="margin:10px 0 0;font-size:15px;line-height:1.6;color:#5A6270">Erst der Klick des Mitarbeiters erzeugt Rapport, Material- und Lagerbuchung.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Module" style="background:#F6F7F9;border-bottom:1px solid #E4E7EB">
+    <div style="max-width:1280px;margin:0 auto;padding:104px 40px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:56px;align-items:end">
+        <div>
+          <div style="font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:#A9711A">Überblick</div>
+          <h2 style="margin:20px 0 0;font-family:'Bitter',serif;font-size:clamp(30px,4vw,52px);line-height:1.08;font-weight:600;letter-spacing:-0.025em;color:#12161D">Der Betrieb auf einen Blick</h2>
+        </div>
+        <p style="margin:0;font-size:18px;line-height:1.65;color:#5A6270;max-width:46ch">Ein Einstieg statt fünf Programme. Das Dashboard zeigt nur, was heute eine Entscheidung braucht — gruppiert nach Verantwortung.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:56px">
+        <div style="background:#FFFFFF;border:1px solid #E4E7EB;border-radius:18px;padding:24px">
+          <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#8A929E">Personal &amp; Zeit</div>
+          <div style="margin-top:14px;display:flex;align-items:baseline;gap:8px"><span style="font-family:'DM Mono',monospace;font-size:34px;font-weight:500;color:#12161D">7</span><span style="font-size:14px;color:#5A6270">offene Zeitkorrekturen</span></div>
+          <div style="margin-top:12px;font-size:14px;line-height:1.6;color:#8A929E">Eingestempelte Mitarbeiter und pendente Absenzen auf einen Blick.</div>
+        </div>
+        <div style="background:#FFFFFF;border:1px solid #E4E7EB;border-radius:18px;padding:24px">
+          <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#8A929E">Finanzen &amp; Einkauf</div>
+          <div style="margin-top:14px;display:flex;align-items:baseline;gap:8px"><span style="font-family:'DM Mono',monospace;font-size:34px;font-weight:500;color:#B45309">3</span><span style="font-size:14px;color:#5A6270">überfällige Rechnungen</span></div>
+          <div style="margin-top:12px;font-size:14px;line-height:1.6;color:#8A929E">Bestellfreigaben, die auf meine Entscheidung warten.</div>
+        </div>
+        <div style="background:#FFFFFF;border:1px solid #E4E7EB;border-radius:18px;padding:24px">
+          <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#8A929E">Vertrieb &amp; Projekte</div>
+          <div style="margin-top:14px;display:flex;align-items:baseline;gap:8px"><span style="font-family:'DM Mono',monospace;font-size:34px;font-weight:500;color:#12161D">12</span><span style="font-size:14px;color:#5A6270">Offerten in Bearbeitung</span></div>
+          <div style="margin-top:12px;font-size:14px;line-height:1.6;color:#8A929E">Erinnerungen und überfällige Projekte mit Zähler.</div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin-top:18px">
+        <div style="background:#FFFFFF;border:1px solid #E4E7EB;border-radius:18px;padding:26px">
+          <div style="display:flex;align-items:center;gap:12px">
+            <div style="width:38px;height:38px;border-radius:50%;background:#E7F0F6;color:#2C6E9B;display:flex;align-items:center;justify-content:center"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" /><path d="M16 2v4M8 2v4M3 10h18" /></svg></div>
+            <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#8A929E">Planung</div>
+          </div>
+          <div style="margin-top:16px;font-size:17px;font-weight:600;color:#12161D">Wer ist wann wo — ohne Excel-Plan</div>
+          <p style="margin:10px 0 0;font-size:15px;line-height:1.6;color:#5A6270">Monats-, Wochen- und Mitarbeitersicht auf denselben Datenbestand. Wochenplan als PDF, Projekte ohne Termin bleiben sichtbar.</p>
+        </div>
+        <div style="background:#FFFFFF;border:1px solid #E4E7EB;border-radius:18px;padding:26px">
+          <div style="display:flex;align-items:center;gap:12px">
+            <div style="width:38px;height:38px;border-radius:50%;background:#FDF3DF;color:#A9711A;display:flex;align-items:center;justify-content:center"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2H2v10l9.3 9.3a1 1 0 0 0 1.4 0l8.6-8.6a1 1 0 0 0 0-1.4Z" /><circle cx="7" cy="7" r="1.5" /></svg></div>
+            <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#8A929E">Einkauf &amp; Marge</div>
+          </div>
+          <div style="margin-top:16px;font-size:17px;font-weight:600;color:#12161D">Marge gekoppelt an effektive Einkaufspreise</div>
+          <p style="margin:10px 0 0;font-size:15px;line-height:1.6;color:#5A6270">VK = EK × (1 + Aufschlag), pro Lieferant und Kategorie. Neue Einkaufspreise wirken sofort.</p>
+        </div>
+        <div style="background:#FFFFFF;border:1px solid #E4E7EB;border-radius:18px;padding:26px">
+          <div style="display:flex;align-items:center;gap:12px">
+            <div style="width:38px;height:38px;border-radius:50%;background:#E4F6EA;color:#15803D;display:flex;align-items:center;justify-content:center"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18" /><rect x="7" y="11" width="3" height="6" /><rect x="13" y="7" width="3" height="10" /></svg></div>
+            <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#8A929E">Steuerung</div>
+          </div>
+          <div style="margin-top:16px;font-size:17px;font-weight:600;color:#12161D">Kennzahlen ohne Auswertungsaufwand</div>
+          <p style="margin:10px 0 0;font-size:15px;line-height:1.6;color:#5A6270">Pipeline in Franken nach Status und Projektleiter. Montags um 08:00 geht die KI-Analyse an die Geschäftsführung.</p>
+        </div>
+        <div style="background:#FFFFFF;border:1px solid #E4E7EB;border-radius:18px;padding:26px">
+          <div style="display:flex;align-items:center;gap:12px">
+            <div style="width:38px;height:38px;border-radius:50%;background:#F0EAFB;color:#6D3FD1;display:flex;align-items:center;justify-content:center"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z" /></svg></div>
+            <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#8A929E">Nachbetreuung</div>
+          </div>
+          <div style="margin-top:16px;font-size:17px;font-weight:600;color:#12161D">Aus dem Projekt wird Folgegeschäft</div>
+          <p style="margin:10px 0 0;font-size:15px;line-height:1.6;color:#5A6270">Nachfass- und Wartungsmails entstehen täglich und werden bis zur Antwort verfolgt — Freigabe vor Versand.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:36px"><a href="./funktionen.html" style="font-size:15px;font-weight:600;color:#A9711A">Alle Funktionen im Detail →</a></div>
+    </div>
+  </section>
+
+  <section data-screen-label="KI mit Kontrolle" style="border-bottom:1px solid #E4E7EB">
+    <div style="max-width:1280px;margin:0 auto;padding:104px 40px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:56px;align-items:end">
+        <div>
+          <div style="font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:#A9711A">Kontrolle</div>
+          <h2 style="margin:20px 0 0;font-family:'Bitter',serif;font-size:clamp(30px,4vw,52px);line-height:1.08;font-weight:600;letter-spacing:-0.025em;color:#12161D">KI mit Kontrolle</h2>
+        </div>
+        <p style="margin:0;font-size:18px;line-height:1.65;color:#5A6270;max-width:46ch">Automatisierung ist nur brauchbar, wenn der Betrieb die Hoheit behält.</p>
+      </div>
+
+      <div style="display:flex;flex-direction:column;margin-top:56px">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px;border-top:1px solid #E4E7EB;padding:28px 0">
+          <div style="font-family:'Bitter',serif;font-size:22px;font-weight:600;color:#12161D">Verarbeitung ausschliesslich in der EU</div>
+          <p style="margin:0;font-size:16px;line-height:1.65;color:#5A6270">Sämtliche KI-Funktionen laufen über Mistral in Frankreich. Keine Verarbeitung bei US-Anbietern, kein Umweg über Drittdienste.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px;border-top:1px solid #E4E7EB;padding:28px 0">
+          <div style="font-family:'Bitter',serif;font-size:22px;font-weight:600;color:#12161D">Kein Schreibzugriff ohne Bestätigung</div>
+          <p style="margin:0;font-size:16px;line-height:1.65;color:#5A6270">Die KI erkennt und schlägt vor — buchen tut sie nie. Rapporte, Material und Nachfassmails entstehen erst nach Freigabe durch einen Menschen.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px;border-top:1px solid #E4E7EB;padding:28px 0">
+          <div style="font-family:'Bitter',serif;font-size:22px;font-weight:600;color:#12161D">Passendes Modell je Aufgabe</div>
+          <p style="margin:0;font-size:16px;line-height:1.65;color:#5A6270">Grosse Modelle nur dort, wo sie nötig sind; Abgleich und Validierung laufen über kleine. Das begrenzt Kosten und die verarbeitete Datenmenge.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px;border-top:1px solid #E4E7EB;border-bottom:1px solid #E4E7EB;padding:28px 0">
+          <div style="font-family:'Bitter',serif;font-size:22px;font-weight:600;color:#12161D">Begrenzt und protokolliert</div>
+          <p style="margin:0;font-size:16px;line-height:1.65;color:#5A6270">Tageslimits pro Mandant und Funktion, Kosten- und Token-Protokoll, gefilterte Eingaben gegen Manipulation der Assistenten.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:32px"><a href="./ki-und-datenschutz.html" style="font-size:15px;font-weight:600;color:#A9711A">Wie die KI eingesetzt wird →</a></div>
+    </div>
+  </section>
+
+  <section data-screen-label="CTA" style="background:#12161D">
+    <div style="max-width:1280px;margin:0 auto;padding:104px 40px;display:flex;flex-wrap:wrap;gap:40px;align-items:end;justify-content:space-between">
+      <div>
+        <div aria-hidden="true" style="display:flex;align-items:center;gap:18px;margin:0 0 40px">
+        <svg viewBox="0 0 100 100" aria-hidden="true" style="width:64px;height:64px;display:block">
+      <path d="M 38.5 12.6 A 40 40 0 1 0 61.5 12.6" fill="none" stroke="#FFFFFF" stroke-width="7.5" stroke-linecap="butt" />
+      <rect x="48.4" y="2" width="3.2" height="8.5" fill="#FFFFFF" />
+      <g style="transform-box:view-box;transform-origin:50px 50px;animation:wkSpin 96s linear infinite">
+        <polygon points="46.4,52.5 53.6,52.5 50.4,30 49.6,30" fill="#E9A227" />
+      </g>
+      <g style="transform-box:view-box;transform-origin:50px 50px;animation:wkSpin 8s linear infinite">
+        <polygon points="47,53 53,53 50.4,17.5 49.6,17.5" fill="#FFFFFF" />
+        <polygon points="47.6,49 52.4,49 51.6,64 48.4,64" fill="#FFFFFF" />
+      </g>
+      <circle cx="50" cy="50" r="4.6" fill="#FFFFFF" />
+      <circle cx="50" cy="50" r="2" fill="#12161D" />
+    </svg>
+        <div style="font-family:'Bitter',serif;font-size:40px;line-height:1;font-weight:600;letter-spacing:-0.01em;color:#FFFFFF">Werkora</div>
+        </div>
+        <h2 style="margin:0;font-family:'Bitter',serif;font-size:clamp(30px,3.6vw,46px);line-height:1.1;font-weight:600;letter-spacing:-0.02em;color:#FFFFFF;max-width:18ch;text-wrap:pretty">Passt Werkora zu Ihrem Betrieb?</h2>
+        <p style="margin:18px 0 0;font-size:18px;line-height:1.65;color:#A8B0BC;max-width:50ch">Wir zeigen Ihnen das System an Ihren eigenen Abläufen und sagen ehrlich, wo es heute noch nicht passt. Preis auf Anfrage.</p>
+      </div>
+      <a href="./kontakt.html" style="font-size:15px;font-weight:600;color:#12161D;background:#E9A227;padding:17px 32px;border-radius:999px" style-hover="background:#F4BC55" style-active="transform:scale(0.97)">Kontakt aufnehmen</a>
+    </div>
+  </section>
+
+  <footer style="border-top:1px solid #E4E7EB;background:#FFFFFF">
+    <div style="max-width:1280px;margin:0 auto;padding:56px 40px;display:flex;flex-wrap:wrap;gap:40px;justify-content:space-between;align-items:start">
+      <div style="display:flex;align-items:center;gap:11px">
+        <img src="assets/werkora-mark.png" alt="" style="width:26px;height:26px;display:block" />
+        <div>
+          <div style="font-family:'Bitter',serif;font-size:19px;font-weight:600;color:#1B2028">Werkora</div>
+          <div style="margin-top:4px;font-size:14px;line-height:1.6;color:#8A929E">Weidstrasse 31, 8472 Seuzach · app.werkora.ch</div>
+        </div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:28px">
+        <a href="./funktionen.html" style="font-size:14px;color:#5A6270">Funktionen</a>
+        <a href="./ki-und-datenschutz.html" style="font-size:14px;color:#5A6270">KI &amp; Datenschutz</a>
+        <a href="./kontakt.html" style="font-size:14px;color:#5A6270">Kontakt</a>
+        <a href="./impressum.html" style="font-size:14px;color:#5A6270">Impressum</a>
+        <a href="./datenschutz.html" style="font-size:14px;color:#5A6270">Datenschutz</a>
+      </div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+</body>
+</html>

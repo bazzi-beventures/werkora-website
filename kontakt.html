@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  body { margin: 0; background: #FFFFFF; color: #1B2028; font-family: 'DM Sans', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  * { box-sizing: border-box; }
+  a { color: #E9A227; text-decoration: none; }
+  a:hover { color: #F4BC55; }
+  input, textarea, select { font-family: inherit; }
+  input::placeholder, textarea::placeholder { color: #5A6270; }
+  input:focus, textarea:focus, select:focus { outline: none; border-color: #E9A227; }
+</style>
+</helmet>
+
+<div style="min-height:100vh;background:#FFFFFF">
+  <header style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.94);backdrop-filter:blur(12px);border-bottom:1px solid #E4E7EB">
+    <div style="max-width:1280px;margin:0 auto;padding:0 40px;height:78px;display:flex;align-items:center;justify-content:space-between;gap:32px">
+      <a href="./index.html" style="display:flex;align-items:center;gap:11px;color:#1B2028"><img src="assets/werkora-mark.png" alt="Werkora" style="width:28px;height:28px;display:block" /><span style="font-family:'Bitter',serif;font-size:22px;font-weight:600;letter-spacing:-0.01em;color:#1B2028">Werkora</span></a>
+      <nav style="display:flex;align-items:center;gap:28px">
+        <a href="./funktionen.html" style="font-size:14px;color:#5A6270">Funktionen</a>
+        <a href="./ki-und-datenschutz.html" style="font-size:14px;color:#5A6270">KI &amp; Datenschutz</a>
+        <a href="./kontakt.html" style="font-size:14px;color:#12161D;border-bottom:2px solid #E9A227;padding-bottom:2px">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <section data-screen-label="Kontakt" style="max-width:1280px;margin:0 auto;padding:96px 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:64px;align-items:start">
+    <div>
+      <div style="font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#A9711A">Kontakt</div>
+      <h1 style="font-family:'Bitter',serif;margin:24px 0 0;font-size:clamp(32px,4.4vw,52px);line-height:1.1;font-weight:600;letter-spacing:-0.02em;color:#12161D;max-width:16ch;text-wrap:pretty">Sprechen wir über Ihren Betrieb</h1>
+      <p style="margin:22px 0 0;font-size:18px;line-height:1.65;color:#5A6270;max-width:46ch">Wir zeigen Werkora an Ihren eigenen Abläufen und sagen ehrlich, wo es heute noch nicht passt. Preis auf Anfrage.</p>
+
+      <div style="margin-top:44px;display:flex;flex-direction:column;gap:20px">
+        <div style="border-top:1px solid #E4E7EB;padding-top:18px">
+          <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#5A6270">Betreiberin</div>
+          <div style="margin-top:8px;font-size:16px;line-height:1.6;color:#12161D">Bazzi Ventures GmbH<br />Weidstrasse 31, 8472 Seuzach, Schweiz</div>
+        </div>
+        <div style="border-top:1px solid #E4E7EB;padding-top:18px">
+          <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#5A6270">E-Mail</div>
+          <div style="margin-top:8px;font-size:16px;color:#12161D"><a href="mailto:info@werkora.ch">info@werkora.ch</a> <span style="color:#A9711A;font-size:13px">[Adresse bestätigen]</span></div>
+        </div>
+        <div style="border-top:1px solid #E4E7EB;padding-top:18px">
+          <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#5A6270">Anwendung</div>
+          <div style="margin-top:8px;font-size:16px;color:#12161D"><a href="https://app.werkora.ch">app.werkora.ch</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:#FFFFFF;border:1px solid #E4E7EB;border-radius:20px;box-shadow:none;padding:32px">
+      <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:24px 0">
+          <div style="font-size:20px;font-weight:600;color:#12161D">Danke — Ihre Anfrage ist notiert.</div>
+          <p style="margin:12px 0 0;font-size:15px;line-height:1.6;color:#5A6270">Wir melden uns innerhalb von zwei Arbeitstagen. Dies ist eine Demo-Oberfläche; für den Live-Betrieb muss das Formular an einen Mailversand angebunden werden.</p>
+        </div>
+      </sc-if>
+      <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;flex-direction:column;gap:18px">
+          <div style="font-size:18px;font-weight:600;color:#12161D">Anfrage senden</div>
+          <label style="display:flex;flex-direction:column;gap:8px">
+            <span style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#5A6270">Name</span>
+            <input type="text" placeholder="Vor- und Nachname" style="background:#FFFFFF;border:1px solid #E4E7EB;border-radius:10px;padding:13px 14px;font-size:15px;color:#12161D" />
+          </label>
+          <label style="display:flex;flex-direction:column;gap:8px">
+            <span style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#5A6270">Betrieb</span>
+            <input type="text" placeholder="Firmenname, Ort" style="background:#FFFFFF;border:1px solid #E4E7EB;border-radius:10px;padding:13px 14px;font-size:15px;color:#12161D" />
+          </label>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px">
+            <label style="display:flex;flex-direction:column;gap:8px">
+              <span style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#5A6270">E-Mail</span>
+              <input type="email" placeholder="name@betrieb.ch" style="background:#FFFFFF;border:1px solid #E4E7EB;border-radius:10px;padding:13px 14px;font-size:15px;color:#12161D" />
+            </label>
+            <label style="display:flex;flex-direction:column;gap:8px">
+              <span style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#5A6270">Telefon</span>
+              <input type="tel" placeholder="+41 ..." style="background:#FFFFFF;border:1px solid #E4E7EB;border-radius:10px;padding:13px 14px;font-size:15px;color:#12161D" />
+            </label>
+          </div>
+          <label style="display:flex;flex-direction:column;gap:8px">
+            <span style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#5A6270">Mitarbeitende</span>
+            <select style="background:#FFFFFF;border:1px solid #E4E7EB;border-radius:10px;padding:13px 14px;font-size:15px;color:#12161D">
+              <option>1–4</option>
+              <option>5–15</option>
+              <option>16–50</option>
+              <option>über 50</option>
+            </select>
+          </label>
+          <label style="display:flex;flex-direction:column;gap:8px">
+            <span style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#5A6270">Worum geht es?</span>
+            <textarea rows="4" placeholder="Was läuft heute von Hand?" style="background:#FFFFFF;border:1px solid #E4E7EB;border-radius:10px;padding:13px 14px;font-size:15px;color:#12161D;resize:vertical"></textarea>
+          </label>
+          <button type="button" onClick="{{ send }}" style="margin-top:6px;background:#E9A227;color:#1B2028;border:none;border-radius:999px;padding:15px 22px;font-size:15px;font-weight:500;font-family:inherit;cursor:pointer" style-hover="background:#F4BC55" style-active="transform:scale(0.97)">Anfrage senden</button>
+          <div style="font-size:13px;line-height:1.6;color:#5A6270">Mit dem Absenden stimmen Sie der Bearbeitung Ihrer Angaben gemäss <a href="./datenschutz.html">Datenschutzerklärung</a> zu.</div>
+        </div>
+      </sc-if>
+    </div>
+  </section>
+
+  <footer style="border-top:1px solid #E4E7EB">
+    <div style="max-width:1280px;margin:0 auto;padding:56px 40px;display:flex;flex-wrap:wrap;gap:32px;justify-content:space-between;align-items:start">
+      <div>
+        <div style="display:flex;align-items:center;gap:11px"><img src="assets/werkora-mark.png" alt="" style="width:26px;height:26px;display:block" /><div><div style="font-family:'Bitter',serif;font-size:19px;font-weight:600;color:#12161D">Werkora</div><div style="margin-top:4px;font-size:14px;line-height:1.6;color:#8A929E">Weidstrasse 31, 8472 Seuzach · app.werkora.ch</div></div></div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:28px">
+        <a href="./index.html" style="font-size:14px;color:#5A6270">Start</a>
+        <a href="./funktionen.html" style="font-size:14px;color:#5A6270">Funktionen</a>
+        <a href="./ki-und-datenschutz.html" style="font-size:14px;color:#5A6270">KI &amp; Datenschutz</a>
+        <a href="./impressum.html" style="font-size:14px;color:#5A6270">Impressum</a>
+        <a href="./datenschutz.html" style="font-size:14px;color:#5A6270">Datenschutz</a>
+      </div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { sent: false };
+  renderVals() {
+    return {
+      sent: this.state.sent,
+      notSent: !this.state.sent,
+      send: () => this.setState({ sent: true }),
+    };
+  }
+}
+</script>
+</body>
+</html>

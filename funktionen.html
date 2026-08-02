@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  body { margin: 0; background: #FFFFFF; color: #1B2028; font-family: 'DM Sans', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  * { box-sizing: border-box; }
+  a { color: #E9A227; text-decoration: none; }
+  a:hover { color: #F4BC55; }
+</style>
+</helmet>
+
+<div style="min-height:100vh;background:#FFFFFF">
+  <header style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.94);backdrop-filter:blur(12px);border-bottom:1px solid #E4E7EB">
+    <div style="max-width:1280px;margin:0 auto;padding:0 40px;height:78px;display:flex;align-items:center;justify-content:space-between;gap:32px">
+      <a href="./index.html" style="display:flex;align-items:center;gap:11px;color:#1B2028"><img src="assets/werkora-mark.png" alt="Werkora" style="width:28px;height:28px;display:block" /><span style="font-family:'Bitter',serif;font-size:22px;font-weight:600;letter-spacing:-0.01em;color:#1B2028">Werkora</span></a>
+      <nav style="display:flex;align-items:center;gap:28px">
+        <a href="./funktionen.html" style="font-size:14px;color:#12161D;border-bottom:2px solid #E9A227;padding-bottom:2px">Funktionen</a>
+        <a href="./ki-und-datenschutz.html" style="font-size:14px;color:#5A6270">KI &amp; Datenschutz</a>
+        <a href="./kontakt.html" style="font-size:14px;color:#5A6270">Kontakt</a>
+        <a href="./kontakt.html" style="font-size:14px;font-weight:500;color:#1B2028;font-weight:600;background:#E9A227;padding:10px 18px;border-radius:999px" style-hover="background:#F4BC55">Kontakt aufnehmen</a>
+      </nav>
+    </div>
+  </header>
+
+  <section data-screen-label="Funktionen Intro" style="max-width:1280px;margin:0 auto;padding:96px 40px 64px">
+    <div style="font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#A9711A">Funktionen</div>
+    <h1 style="font-family:'Bitter',serif;margin:24px 0 0;font-size:clamp(34px,5vw,60px);line-height:1.08;font-weight:600;letter-spacing:-0.02em;color:#12161D;max-width:18ch;text-wrap:pretty">Der operative Kern — mehr nicht</h1>
+    <p style="margin:24px 0 0;font-size:19px;line-height:1.6;color:#5A6270;max-width:58ch">Sechs Bereiche, ein Datenbestand. Was in einem Bereich erfasst wird, steht in allen anderen zur Verfügung — ohne Export, ohne Zweitpflege.</p>
+  </section>
+
+  <section data-screen-label="Dashboard" style="border-top:1px solid #E4E7EB">
+    <div style="max-width:1280px;margin:0 auto;padding:72px 40px;display:grid;grid-template-columns:minmax(240px,0.8fr) 1.2fr;gap:56px;align-items:start">
+      <div>
+        <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#5A6270">01 · Überblick</div>
+        <h2 style="font-family:'Bitter',serif;margin:14px 0 0;font-size:28px;line-height:1.2;font-weight:600;color:#12161D">Dashboard</h2>
+      </div>
+      <div>
+        <p style="margin:0;font-size:18px;line-height:1.6;color:#5A6270">Ein Einstieg statt fünf Programme. Das Dashboard zeigt nur, was heute eine Entscheidung braucht — gruppiert nach Verantwortung.</p>
+        <div style="display:flex;flex-direction:column;gap:16px;margin-top:28px">
+          <div style="border-top:1px solid #E4E7EB;padding-top:16px"><span style="font-size:16px;font-weight:500;color:#12161D">Personal &amp; Zeit</span><span style="font-size:16px;color:#5A6270"> — offene Zeitkorrekturen, eingestempelte Mitarbeiter und pendente Absenzen.</span></div>
+          <div style="border-top:1px solid #E4E7EB;padding-top:16px"><span style="font-size:16px;font-weight:500;color:#12161D">Finanzen &amp; Einkauf</span><span style="font-size:16px;color:#5A6270"> — offene und überfällige Rechnungen sowie Bestellfreigaben, die auf mich warten.</span></div>
+          <div style="border-top:1px solid #E4E7EB;padding-top:16px"><span style="font-size:16px;font-weight:500;color:#12161D">Vertrieb &amp; Projekte</span><span style="font-size:16px;color:#5A6270"> — Offerten in Bearbeitung, Erinnerungen und überfällige Projekte mit Zähler.</span></div>
+        </div>
+        <div style="margin-top:20px;font-size:14px;color:#5A6270">Statistik und Handlungsbedarf (rote Zähler) auf einen Blick.</div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Rapport" style="border-top:1px solid #E4E7EB;background:#FFFFFF">
+    <div style="max-width:1280px;margin:0 auto;padding:72px 40px;display:grid;grid-template-columns:minmax(240px,0.8fr) 1.2fr;gap:56px;align-items:start">
+      <div>
+        <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#5A6270">02 · Erfassung</div>
+        <h2 style="font-family:'Bitter',serif;margin:14px 0 0;font-size:28px;line-height:1.2;font-weight:600;color:#12161D">Rapport &amp; Zeit</h2>
+      </div>
+      <div>
+        <p style="margin:0;font-size:18px;line-height:1.6;color:#5A6270">Der Monteur beschreibt seinen Tag in normalen Worten — per Sprache oder Chat, auch ohne Verbindung. Aus dem Text werden Projekt, Stunden und Material.</p>
+        <div style="display:flex;flex-direction:column;gap:16px;margin-top:28px">
+          <div style="border-top:1px solid #E4E7EB;padding-top:16px"><span style="font-size:16px;font-weight:500;color:#12161D">Offlinefähig</span><span style="font-size:16px;color:#5A6270"> — Erfassung auf der Baustelle, Übertragung sobald wieder Netz da ist.</span></div>
+          <div style="border-top:1px solid #E4E7EB;padding-top:16px"><span style="font-size:16px;font-weight:500;color:#12161D">Abgleich mit den Stammdaten</span><span style="font-size:16px;color:#5A6270"> — unklare Angaben führen zu Rückfragen, nicht zu einem falschen Eintrag.</span></div>
+          <div style="border-top:1px solid #E4E7EB;padding-top:16px"><span style="font-size:16px;font-weight:500;color:#12161D">Bestätigen, dann buchen</span><span style="font-size:16px;color:#5A6270"> — erst der Klick des Mitarbeiters erzeugt Rapport, Material- und Lagerbuchung.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Planung" style="border-top:1px solid #E4E7EB">
+    <div style="max-width:1280px;margin:0 auto;padding:72px 40px;display:grid;grid-template-columns:minmax(240px,0.8fr) 1.2fr;gap:56px;align-items:start">
+      <div>
+        <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#5A6270">03 · Planung</div>
+        <h2 style="font-family:'Bitter',serif;margin:14px 0 0;font-size:28px;line-height:1.2;font-weight:600;color:#12161D">Einsatzplanung</h2>
+      </div>
+      <div>
+        <p style="margin:0;font-size:18px;line-height:1.6;color:#5A6270">Monats-, Wochen- und Mitarbeitersicht auf denselben Datenbestand. Geplante Einsätze und Projekte ohne Termin stehen nebeneinander.</p>
+        <div style="display:flex;flex-direction:column;gap:16px;margin-top:28px">
+          <div style="border-top:1px solid #E4E7EB;padding-top:16px"><span style="font-size:16px;font-weight:500;color:#12161D">Drei Sichten, eine Wahrheit</span><span style="font-size:16px;color:#5A6270"> — Monat, Woche oder Mitarbeiter, ohne doppelte Pflege.</span></div>
+          <div style="border-top:1px solid #E4E7EB;padding-top:16px"><span style="font-size:16px;font-weight:500;color:#12161D">Filter nach Projektleiter</span><span style="font-size:16px;color:#5A6270"> — jeder sieht seinen Ausschnitt, die Leitung den ganzen Betrieb.</span></div>
+          <div style="border-top:1px solid #E4E7EB;padding-top:16px"><span style="font-size:16px;font-weight:500;color:#12161D">Wochenplan als PDF</span><span style="font-size:16px;color:#5A6270"> — ein Klick, und der Plan geht als Aushang oder Mail an die Monteure.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Einkauf" style="border-top:1px solid #E4E7EB;background:#FFFFFF">
+    <div style="max-width:1280px;margin:0 auto;padding:72px 40px;display:grid;grid-template-columns:minmax(240px,0.8fr) 1.2fr;gap:56px;align-items:start">
+      <div>
+        <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#5A6270">04 · Einkauf &amp; Marge</div>
+        <h2 style="font-family:'Bitter',serif;margin:14px 0 0;font-size:28px;line-height:1.2;font-weight:600;color:#12161D">Preisregeln</h2>
+      </div>
+      <div>
+        <p style="margin:0;font-size:18px;line-height:1.6;color:#5A6270">Verkaufspreise entstehen aus dem Einkaufspreis und einem hinterlegten Aufschlag — pro Lieferant und Kategorie, statt in gepflegten Preislisten.</p>
+        <div style="margin-top:24px;display:inline-block;background:#FFFFFF;border:1px solid #E4E7EB;border-radius:10px;padding:14px 20px;font-family:'DM Mono',monospace;font-size:16px;color:#A9711A">VK = EK × (1 + Aufschlag)</div>
+        <div style="display:flex;flex-direction:column;gap:16px;margin-top:28px">
+          <div style="border-top:1px solid #E4E7EB;padding-top:16px"><span style="font-size:16px;font-weight:500;color:#12161D">Aufschlag statt Handarbeit</span><span style="font-size:16px;color:#5A6270"> — neue Einkaufspreise wirken sofort auf den Verkaufspreis.</span></div>
+          <div style="border-top:1px solid #E4E7EB;padding-top:16px"><span style="font-size:16px;font-weight:500;color:#12161D">Pro Lieferant und Kategorie</span><span style="font-size:16px;color:#5A6270"> — unterschiedliche Margen je Sortiment, nachvollziehbar hinterlegt.</span></div>
+          <div style="border-top:1px solid #E4E7EB;padding-top:16px"><span style="font-size:16px;font-weight:500;color:#12161D">Die KI liefert den Einkaufspreis</span><span style="font-size:16px;color:#5A6270"> — Lieferanten-PDFs werden per OCR ausgelesen, die Regel macht daraus den VK.</span></div>
+        </div>
+        <div style="margin-top:20px;font-size:14px;color:#5A6270">Preispflege wird zur Ausnahme statt zur Daueraufgabe.</div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Kennzahlen" style="border-top:1px solid #E4E7EB">
+    <div style="max-width:1280px;margin:0 auto;padding:72px 40px;display:grid;grid-template-columns:minmax(240px,0.8fr) 1.2fr;gap:56px;align-items:start">
+      <div>
+        <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#5A6270">05 · Steuerung</div>
+        <h2 style="font-family:'Bitter',serif;margin:14px 0 0;font-size:28px;line-height:1.2;font-weight:600;color:#12161D">Kennzahlen</h2>
+      </div>
+      <div>
+        <p style="margin:0;font-size:18px;line-height:1.6;color:#5A6270">Live-Daten aus allen Bereichen — Pipeline, Finanzen, Arbeitszeit, Material, Wartungen — ohne Export nach Excel.</p>
+        <div style="display:flex;flex-direction:column;gap:16px;margin-top:28px">
+          <div style="border-top:1px solid #E4E7EB;padding-top:16px"><span style="font-size:16px;font-weight:500;color:#12161D">Projektpipeline in Franken</span><span style="font-size:16px;color:#5A6270"> — Gesamtwert nach Status: offene und akzeptierte Offerten, versendete und bezahlte Rechnungen.</span></div>
+          <div style="border-top:1px solid #E4E7EB;padding-top:16px"><span style="font-size:16px;font-weight:500;color:#12161D">Nach Projektleiter aufgeschlüsselt</span><span style="font-size:16px;color:#5A6270"> — wer trägt welches offene Volumen, was ist fakturiert, was bezahlt.</span></div>
+          <div style="border-top:1px solid #E4E7EB;padding-top:16px"><span style="font-size:16px;font-weight:500;color:#12161D">Wöchentliche KI-Analyse</span><span style="font-size:16px;color:#5A6270"> — montags um 08:00 geht eine ausgewertete Zusammenfassung an die Geschäftsführung.</span></div>
+        </div>
+        <div style="margin-top:20px;font-size:14px;color:#5A6270">Zahlen aus dem operativen System, statt aus separater Kalkulation.</div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="After Sales" style="border-top:1px solid #E4E7EB;background:#FFFFFF">
+    <div style="max-width:1280px;margin:0 auto;padding:72px 40px;display:grid;grid-template-columns:minmax(240px,0.8fr) 1.2fr;gap:56px;align-items:start">
+      <div>
+        <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#5A6270">06 · Nachbetreuung</div>
+        <h2 style="font-family:'Bitter',serif;margin:14px 0 0;font-size:28px;line-height:1.2;font-weight:600;color:#12161D">After Sales</h2>
+      </div>
+      <div>
+        <p style="margin:0;font-size:18px;line-height:1.6;color:#5A6270">Nach dem Abschluss plant Werkora die Nachbetreuung ein und verfolgt sie bis zur Antwort des Kunden.</p>
+        <div style="display:flex;flex-direction:column;gap:16px;margin-top:28px">
+          <div style="border-top:1px solid #E4E7EB;padding-top:16px"><span style="font-size:16px;font-weight:500;color:#12161D">Automatisch geplant und formuliert</span><span style="font-size:16px;color:#5A6270"> — fällige Nachfass- und Wartungsmails entstehen täglich, Text vom Assistenten.</span></div>
+          <div style="border-top:1px solid #E4E7EB;padding-top:16px"><span style="font-size:16px;font-weight:500;color:#12161D">Status statt Gedächtnis</span><span style="font-size:16px;color:#5A6270"> — zu prüfen, geplant, gesendet, beantwortet: pro Kunde nachvollziehbar.</span></div>
+          <div style="border-top:1px solid #E4E7EB;padding-top:16px"><span style="font-size:16px;font-weight:500;color:#12161D">Freigabe vor Versand</span><span style="font-size:16px;color:#5A6270"> — nichts geht ohne Kontrolle raus. Der Projektleiter gibt frei.</span></div>
+        </div>
+        <div style="margin-top:20px;font-size:14px;color:#5A6270">Kundenfeedback und Wartungsangebot werden zum systematischen statt zufälligen Umsatzkanal.</div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="CTA" style="border-top:1px solid #E4E7EB">
+    <div style="max-width:1280px;margin:0 auto;padding:80px 40px;display:flex;flex-wrap:wrap;gap:32px;align-items:end;justify-content:space-between">
+      <h2 style="font-family:'Bitter',serif;margin:0;font-size:clamp(26px,3vw,36px);line-height:1.15;font-weight:600;color:#12161D;max-width:22ch;text-wrap:pretty">Demo an Ihren eigenen Abläufen — Preis auf Anfrage.</h2>
+      <a href="./kontakt.html" style="font-size:15px;font-weight:500;color:#1B2028;font-weight:600;background:#E9A227;padding:16px 30px;border-radius:999px" style-hover="background:#F4BC55">Kontakt aufnehmen</a>
+    </div>
+  </section>
+
+  <footer style="border-top:1px solid #E4E7EB">
+    <div style="max-width:1280px;margin:0 auto;padding:56px 40px;display:flex;flex-wrap:wrap;gap:32px;justify-content:space-between;align-items:start">
+      <div>
+        <div style="display:flex;align-items:center;gap:11px"><img src="assets/werkora-mark.png" alt="" style="width:26px;height:26px;display:block" /><div><div style="font-family:'Bitter',serif;font-size:19px;font-weight:600;color:#12161D">Werkora</div><div style="margin-top:4px;font-size:14px;line-height:1.6;color:#8A929E">Weidstrasse 31, 8472 Seuzach · app.werkora.ch</div></div></div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:28px">
+        <a href="./index.html" style="font-size:14px;color:#5A6270">Start</a>
+        <a href="./ki-und-datenschutz.html" style="font-size:14px;color:#5A6270">KI &amp; Datenschutz</a>
+        <a href="./kontakt.html" style="font-size:14px;color:#5A6270">Kontakt</a>
+        <a href="./impressum.html" style="font-size:14px;color:#5A6270">Impressum</a>
+        <a href="./datenschutz.html" style="font-size:14px;color:#5A6270">Datenschutz</a>
+      </div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+</body>
+</html>
