@@ -41,7 +41,7 @@
   #wkk-3m:checked ~ .wkk-card .wkk-p-3m,
   #wkk-m:checked ~ .wkk-card .wkk-p-m,
   .wkk:not(:has(input:checked)) .wkk-card .wkk-p-y { display: block; }
-  .wkk-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-top: 22px; }
+  .wkk-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(160px,100%),1fr)); gap: 12px; margin-top: 22px; }
   .wkk-kpi { background: #FFFFFF; border: 1px solid #E4E7EB; border-radius: 14px; padding: 16px 18px; animation: wkkFade 500ms ease both; }
   .wkk-kpi:nth-child(2) { animation-delay: 60ms; } .wkk-kpi:nth-child(3) { animation-delay: 120ms; } .wkk-kpi:nth-child(4) { animation-delay: 180ms; }
   .wkk-kpi .l { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: #7C8594; }
@@ -62,7 +62,8 @@
   .wkk-bar::after { content: attr(data-t); position: absolute; bottom: calc(100% + 9px); left: 50%; transform: translateX(-50%) translateY(2px); background: #12161D; color: #FFFFFF; font-size: 11px; line-height: 1; padding: 6px 9px; border-radius: 7px; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 130ms, transform 130ms; z-index: 5; }
   .wkk-bar:hover::after { opacity: 1; transform: translateX(-50%) translateY(0); }
   .wkk-names { display: flex; gap: 28px; padding: 9px 10px 0; }
-  .wkk-names div { flex: 1; text-align: center; font-size: 12px; color: #6B7482; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .wkk-grp { min-width: 0; }
+  .wkk-names div { flex: 1; min-width: 0; text-align: center; font-size: 12px; color: #6B7482; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .wkk-legend { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 18px; justify-content: center; }
   .wkk-legend span { display: flex; align-items: center; gap: 7px; font-size: 12px; color: #5A6270; }
   .wkk-dot { width: 10px; height: 10px; border-radius: 3px; }
@@ -77,30 +78,92 @@
   .wkk-table .chf { color: #8A929E; font-size: 12px; }
   @keyframes wkkBar { from { transform: scaleY(0); } to { transform: scaleY(1); } }
   @keyframes wkkFade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+  /* ---------- Mobile-Navigation ---------- */
+  .wk-header-inner { position: relative; }
+  .wk-menu { display: none; }
+  .wk-menu svg { display: block; }
+  .wk-menu > summary { list-style: none; display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; margin-right: -8px; border-radius: 12px; color: #1B2028; cursor: pointer; }
+  .wk-menu > summary::-webkit-details-marker { display: none; }
+  .wk-menu[open] > summary { background: #F1F3F6; }
+  .wk-menu .wk-ico-close { display: none; }
+  .wk-menu[open] .wk-ico-close { display: block; }
+  .wk-menu[open] .wk-ico-open { display: none; }
+  .wk-menu:not([open]) .wk-menu-panel { display: none; }
+  .wk-menu-panel { position: absolute; top: 100%; left: 0; right: 0; background: #FFFFFF; border-bottom: 1px solid #E4E7EB; box-shadow: 0 22px 44px rgba(16,20,28,0.10); padding: 4px 20px 20px; }
+  .wk-menu-panel a { display: block; padding: 15px 2px; font-size: 17px; font-weight: 500; color: #1B2028; border-bottom: 1px solid #EEF1F5; }
+  .wk-menu-panel a.wk-active { color: #A9711A; }
+  .wk-menu-panel a.wk-menu-cta { margin-top: 18px; padding: 15px 20px; text-align: center; background: #E9A227; color: #1B2028; border-bottom: none; border-radius: 999px; font-weight: 600; }
+
+  /* ---------- Mobile-Layout ---------- */
+  body { overflow-x: clip; }
+  @media (max-width: 900px) {
+    .wk-nav { display: none !important; }
+    .wk-menu { display: block; }
+    .wk-header-inner { height: 66px !important; }
+    .wk-sticky { position: static !important; }
+    .wk-2col { grid-template-columns: 1fr !important; gap: 26px !important; }
+  }
+  @media (max-width: 760px) {
+    .wk-pad { padding-left: 20px !important; padding-right: 20px !important; }
+    .wk-tight { padding-top: 64px !important; padding-bottom: 64px !important; }
+    .wk-gap { gap: 32px !important; }
+    .wk-stack { flex-direction: column !important; align-items: stretch !important; }
+    .wk-stack > a { text-align: center; }
+  }
+
+  @media (max-width: 760px) {
+    .wkk-card { padding: 18px 16px; }
+    .wkk-search { min-width: 0; flex: 1; }
+    .wkk-chart { gap: 8px; }
+    .wkk-bars, .wkk-names { gap: 10px; }
+    .wkk-bars { padding: 0 4px; }
+    .wkk-names { padding: 9px 4px 0; }
+    .wkk-names div { font-size: 11px; }
+    /* Hover-Tooltips gibt es auf dem Touchscreen nicht — sie wuerden die Seite nur verbreitern */
+    .wkk-bar::after { display: none; }
+    .wkk-legend { gap: 12px; justify-content: flex-start; }
+  }
+  @media (min-width: 360px) and (max-width: 760px) {
+    .wkk-cards { grid-template-columns: 1fr 1fr; gap: 10px; }
+  }
 </style>
 </helmet>
 
 <div style="min-height:100vh;background:#FFFFFF">
-  <header style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.94);backdrop-filter:blur(12px);border-bottom:1px solid #E4E7EB">
-    <div style="max-width:1280px;margin:0 auto;padding:0 40px;height:78px;display:flex;align-items:center;justify-content:space-between;gap:32px">
+  <header class="wk-header" style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.94);backdrop-filter:blur(12px);border-bottom:1px solid #E4E7EB">
+    <div class="wk-pad wk-header-inner" style="max-width:1280px;margin:0 auto;padding:0 40px;height:78px;display:flex;align-items:center;justify-content:space-between;gap:32px">
       <a href="./index.html" style="display:flex;align-items:center;gap:11px;color:#1B2028"><img src="assets/werkora-mark.png" alt="Werkora" style="width:28px;height:28px;display:block" /><span style="font-family:'Bitter',serif;font-size:22px;font-weight:600;letter-spacing:-0.01em;color:#1B2028">Werkora</span></a>
-      <nav style="display:flex;align-items:center;gap:28px">
+      <nav class="wk-nav" style="display:flex;align-items:center;gap:28px">
         <a href="./funktionen.html" style="font-size:14px;color:#12161D;border-bottom:2px solid #E9A227;padding-bottom:2px">Funktionen</a>
         <a href="./ki-und-datenschutz.html" style="font-size:14px;color:#5A6270">KI &amp; Datenschutz</a>
         <a href="./kontakt.html" style="font-size:14px;color:#5A6270">Kontakt</a>
         <a href="./kontakt.html" style="font-size:14px;font-weight:500;color:#1B2028;font-weight:600;background:#E9A227;padding:10px 18px;border-radius:999px" style-hover="background:#F4BC55">Kontakt aufnehmen</a>
       </nav>
+      <details class="wk-menu">
+        <summary aria-label="Menü">
+          <svg class="wk-ico-open" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18" /></svg>
+          <svg class="wk-ico-close" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18" /></svg>
+        </summary>
+        <div class="wk-menu-panel">
+          <a href="./index.html">Start</a>
+          <a href="./funktionen.html" class="wk-active">Funktionen</a>
+          <a href="./ki-und-datenschutz.html">KI &amp; Datenschutz</a>
+          <a href="./kontakt.html">Kontakt</a>
+          <a class="wk-menu-cta" href="./kontakt.html">Kontakt aufnehmen</a>
+        </div>
+      </details>
     </div>
   </header>
 
-  <section data-screen-label="Funktionen Intro" style="max-width:1280px;margin:0 auto;padding:96px 40px 64px">
+  <section class="wk-pad wk-tight" data-screen-label="Funktionen Intro" style="max-width:1280px;margin:0 auto;padding:96px 40px 64px">
     <div style="font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#A9711A">Funktionen</div>
     <h1 style="font-family:'Bitter',serif;margin:24px 0 0;font-size:clamp(34px,5vw,60px);line-height:1.08;font-weight:600;letter-spacing:-0.02em;color:#12161D;max-width:18ch;text-wrap:pretty">Der operative Kern — mehr nicht</h1>
     <p style="margin:24px 0 0;font-size:19px;line-height:1.6;color:#5A6270;max-width:58ch">Sechs Bereiche, ein Datenbestand. Was in einem Bereich erfasst wird, steht in allen anderen zur Verfügung — ohne Export, ohne Zweitpflege.</p>
   </section>
 
   <section data-screen-label="Dashboard" style="border-top:1px solid #E4E7EB">
-    <div style="max-width:1280px;margin:0 auto;padding:72px 40px;display:grid;grid-template-columns:minmax(240px,0.8fr) 1.2fr;gap:56px;align-items:start">
+    <div class="wk-pad wk-tight wk-2col" style="max-width:1280px;margin:0 auto;padding:72px 40px;display:grid;grid-template-columns:minmax(240px,0.8fr) 1.2fr;gap:56px;align-items:start">
       <div>
         <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#5A6270">01 · Überblick</div>
         <h2 style="font-family:'Bitter',serif;margin:14px 0 0;font-size:28px;line-height:1.2;font-weight:600;color:#12161D">Dashboard</h2>
@@ -118,7 +181,7 @@
   </section>
 
   <section data-screen-label="Rapport" style="border-top:1px solid #E4E7EB;background:#FFFFFF">
-    <div style="max-width:1280px;margin:0 auto;padding:72px 40px;display:grid;grid-template-columns:minmax(240px,0.8fr) 1.2fr;gap:56px;align-items:start">
+    <div class="wk-pad wk-tight wk-2col" style="max-width:1280px;margin:0 auto;padding:72px 40px;display:grid;grid-template-columns:minmax(240px,0.8fr) 1.2fr;gap:56px;align-items:start">
       <div>
         <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#5A6270">02 · Erfassung</div>
         <h2 style="font-family:'Bitter',serif;margin:14px 0 0;font-size:28px;line-height:1.2;font-weight:600;color:#12161D">Rapport &amp; Zeit</h2>
@@ -135,7 +198,7 @@
   </section>
 
   <section data-screen-label="Planung" style="border-top:1px solid #E4E7EB">
-    <div style="max-width:1280px;margin:0 auto;padding:72px 40px;display:grid;grid-template-columns:minmax(240px,0.8fr) 1.2fr;gap:56px;align-items:start">
+    <div class="wk-pad wk-tight wk-2col" style="max-width:1280px;margin:0 auto;padding:72px 40px;display:grid;grid-template-columns:minmax(240px,0.8fr) 1.2fr;gap:56px;align-items:start">
       <div>
         <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#5A6270">03 · Planung</div>
         <h2 style="font-family:'Bitter',serif;margin:14px 0 0;font-size:28px;line-height:1.2;font-weight:600;color:#12161D">Einsatzplanung</h2>
@@ -152,7 +215,7 @@
   </section>
 
   <section data-screen-label="Einkauf" style="border-top:1px solid #E4E7EB;background:#FFFFFF">
-    <div style="max-width:1280px;margin:0 auto;padding:72px 40px;display:grid;grid-template-columns:minmax(240px,0.8fr) 1.2fr;gap:56px;align-items:start">
+    <div class="wk-pad wk-tight wk-2col" style="max-width:1280px;margin:0 auto;padding:72px 40px;display:grid;grid-template-columns:minmax(240px,0.8fr) 1.2fr;gap:56px;align-items:start">
       <div>
         <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#5A6270">04 · Einkauf &amp; Marge</div>
         <h2 style="font-family:'Bitter',serif;margin:14px 0 0;font-size:28px;line-height:1.2;font-weight:600;color:#12161D">Preisregeln</h2>
@@ -171,7 +234,7 @@
   </section>
 
   <section data-screen-label="Kennzahlen" style="border-top:1px solid #E4E7EB">
-    <div style="max-width:1280px;margin:0 auto;padding:72px 40px;display:grid;grid-template-columns:minmax(240px,0.8fr) 1.2fr;gap:56px;align-items:start">
+    <div class="wk-pad wk-tight wk-2col" style="max-width:1280px;margin:0 auto;padding:72px 40px;display:grid;grid-template-columns:minmax(240px,0.8fr) 1.2fr;gap:56px;align-items:start">
       <div>
         <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#5A6270">05 · Steuerung</div>
         <h2 style="font-family:'Bitter',serif;margin:14px 0 0;font-size:28px;line-height:1.2;font-weight:600;color:#12161D">Kennzahlen</h2>
@@ -187,7 +250,7 @@
       </div>
     </div>
 
-    <div class="wkk" style="max-width:1280px;margin:0 auto;padding:0 40px 72px">
+    <div class="wkk wk-pad" style="max-width:1280px;margin:0 auto;padding:0 40px 72px">
       <input type="radio" name="wkk-preset" id="wkk-all">
       <input type="radio" name="wkk-preset" id="wkk-y" checked>
       <input type="radio" name="wkk-preset" id="wkk-3m">
@@ -332,7 +395,7 @@
   </section>
 
   <section data-screen-label="After Sales" style="border-top:1px solid #E4E7EB;background:#FFFFFF">
-    <div style="max-width:1280px;margin:0 auto;padding:72px 40px;display:grid;grid-template-columns:minmax(240px,0.8fr) 1.2fr;gap:56px;align-items:start">
+    <div class="wk-pad wk-tight wk-2col" style="max-width:1280px;margin:0 auto;padding:72px 40px;display:grid;grid-template-columns:minmax(240px,0.8fr) 1.2fr;gap:56px;align-items:start">
       <div>
         <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#5A6270">06 · Nachbetreuung</div>
         <h2 style="font-family:'Bitter',serif;margin:14px 0 0;font-size:28px;line-height:1.2;font-weight:600;color:#12161D">After Sales</h2>
@@ -350,14 +413,14 @@
   </section>
 
   <section data-screen-label="CTA" style="border-top:1px solid #E4E7EB">
-    <div style="max-width:1280px;margin:0 auto;padding:80px 40px;display:flex;flex-wrap:wrap;gap:32px;align-items:end;justify-content:space-between">
+    <div class="wk-pad wk-tight wk-stack" style="max-width:1280px;margin:0 auto;padding:80px 40px;display:flex;flex-wrap:wrap;gap:32px;align-items:end;justify-content:space-between">
       <h2 style="font-family:'Bitter',serif;margin:0;font-size:clamp(26px,3vw,36px);line-height:1.15;font-weight:600;color:#12161D;max-width:22ch;text-wrap:pretty">Demo an Ihren eigenen Abläufen — Preis auf Anfrage.</h2>
       <a href="./kontakt.html" style="font-size:15px;font-weight:500;color:#1B2028;font-weight:600;background:#E9A227;padding:16px 30px;border-radius:999px" style-hover="background:#F4BC55">Kontakt aufnehmen</a>
     </div>
   </section>
 
   <footer style="border-top:1px solid #E4E7EB">
-    <div style="max-width:1280px;margin:0 auto;padding:56px 40px;display:flex;flex-wrap:wrap;gap:32px;justify-content:space-between;align-items:start">
+    <div class="wk-pad" style="max-width:1280px;margin:0 auto;padding:56px 40px;display:flex;flex-wrap:wrap;gap:32px;justify-content:space-between;align-items:start">
       <div>
         <div style="display:flex;align-items:center;gap:11px"><img src="assets/werkora-mark.png" alt="" style="width:26px;height:26px;display:block" /><div><div style="font-family:'Bitter',serif;font-size:19px;font-weight:600;color:#12161D">Werkora</div><div style="margin-top:4px;font-size:14px;line-height:1.6;color:#8A929E">Weidstrasse 31, 8472 Seuzach · app.werkora.ch</div></div></div>
       </div>
