@@ -21,10 +21,14 @@
   a:hover { color: #E9A227; }
   @keyframes wkUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
   @keyframes wkSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes wkReveal { from { opacity: 0.01; transform: translateY(30px); } to { opacity: 1; transform: none; } }
+  @supports (animation-timeline: view()) {
+    section > div:not([aria-hidden="true"]) { animation: wkReveal 1ms linear both; animation-timeline: view(); animation-range: entry 0% entry 45%; }
+  }
 </style>
 </helmet>
 
-<div style="min-height:100vh;background:#FFFFFF;overflow-x:hidden">
+<div style="min-height:100vh;background:#FFFFFF;overflow-x:clip">
 
   <header style="position:sticky;top:0;z-index:60;background:rgba(255,255,255,0.94);backdrop-filter:blur(12px);border-bottom:1px solid #E4E7EB">
     <div style="max-width:1280px;margin:0 auto;padding:0 40px;height:78px;display:flex;align-items:center;justify-content:space-between;gap:32px">
@@ -58,80 +62,18 @@
     </svg>
     </div>
 
-    <div style="position:relative;max-width:1280px;margin:0 auto;padding:104px 40px 96px;display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:72px;align-items:center">
+    <div style="position:relative;max-width:1280px;margin:0 auto;padding:120px 40px 108px">
       <div style="animation:wkUp 700ms cubic-bezier(0.16,1,0.3,1) both">
         <div style="display:flex;align-items:center;gap:14px">
           <div style="width:30px;height:1px;background:#E9A227"></div>
           <div style="font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:#A9711A">Schlankes ERP mit KI-Fokus</div>
         </div>
-        <h1 style="margin:26px 0 0;font-family:'Bitter',serif;font-size:clamp(42px,5.6vw,76px);line-height:1.02;font-weight:600;letter-spacing:-0.025em;color:#12161D;max-width:13ch;text-wrap:pretty">Schlank im Alltag.<br /><span style="color:#B47614">Stark</span> im Automatisieren.</h1>
-        <p style="margin:30px 0 0;font-size:19px;line-height:1.6;color:#5A6270;max-width:52ch;text-wrap:pretty">Werkora deckt den operativen Kern ab — Zeit, Projekte, Offerten, Rechnungen — und automatisiert per KI, was heute von Hand läuft. Für Schweizer Handwerksbetriebe.</p>
-        <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:38px">
+        <h1 style="margin:28px 0 0;font-family:'Bitter',serif;font-size:clamp(46px,6.6vw,94px);line-height:1.02;font-weight:600;letter-spacing:-0.028em;color:#12161D;max-width:14ch;text-wrap:pretty">Schlank im Alltag.<br /><span style="color:#B47614">Stark</span> im Automatisieren.</h1>
+        <p style="margin:32px 0 0;font-size:20px;line-height:1.6;color:#5A6270;max-width:52ch;text-wrap:pretty">Werkora deckt den operativen Kern ab — Zeit, Projekte, Offerten, Rechnungen — und automatisiert per KI, was heute von Hand läuft. Für Schweizer Handwerksbetriebe.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:42px">
           <a href="./kontakt.html" style="font-size:15px;font-weight:600;color:#1B2028;background:#E9A227;padding:15px 28px;border-radius:999px" style-hover="background:#F4BC55" style-active="transform:scale(0.97)">Kontakt aufnehmen</a>
           <a href="./funktionen.html" style="font-size:15px;font-weight:500;color:#1B2028;border:1px solid #D5D9DF;padding:15px 28px;border-radius:999px" style-hover="border-color:#1B2028">Funktionen ansehen</a>
         </div>
-      </div>
-
-      <div style="position:relative;animation:wkUp 900ms cubic-bezier(0.16,1,0.3,1) both">
-        <div style="max-width:360px;margin-left:auto;background:#FFFFFF;border:1px solid #E4E7EB;border-radius:22px;box-shadow:0 24px 60px rgba(16,20,28,0.14);overflow:hidden">
-          <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 16px;border-bottom:1px solid #EEF1F5">
-            <div style="display:flex;align-items:center;gap:10px">
-              <div style="width:8px;height:8px;border-radius:50%;background:#22c55e"></div>
-              <div>
-                <div style="font-size:14px;font-weight:600;color:#12161D;line-height:1.2">Rapporte</div>
-                <div style="font-size:11px;color:#8A929E">Rapport Bot · KI-Assistent</div>
-              </div>
-            </div>
-            <img src="assets/werkora-mark.png" alt="" style="width:22px;height:22px;display:block" />
-          </div>
-
-          <div style="background:#F4F6FA;padding:14px 12px;display:flex;flex-direction:column;gap:10px">
-            <div style="max-width:88%;align-self:flex-start;background:#FFFFFF;border-radius:14px;border-top-left-radius:5px;padding:10px 13px;box-shadow:0 1px 2px rgba(16,20,28,0.06)">
-              <div style="font-size:13px;line-height:1.55;color:#2A323D">Hallo! Sag z.&nbsp;B. «Neuer Rapport» — oder sprich mir die Nachricht direkt auf.</div>
-              <div style="margin-top:4px;text-align:right;font-family:'DM Mono',monospace;font-size:10px;color:#A5ADB8">17:02</div>
-            </div>
-
-            <div style="max-width:88%;align-self:flex-end;background:#3D5A80;border-radius:14px;border-top-right-radius:5px;padding:10px 13px">
-              <div style="font-size:13px;line-height:1.55;color:#F2F6FB">„Heute Sanierung Altbau Adlikon. Ich 4&nbsp;h, Tobias 3&nbsp;h. 2 Eimer Weissfarbe verbraucht.“</div>
-              <div style="margin-top:6px;display:flex;align-items:center;gap:8px;justify-content:flex-end">
-                <span style="font-family:'DM Mono',monospace;font-size:10px;color:#B9C6D8">Sprachnachricht · 0:12</span>
-                <div style="display:flex;align-items:flex-end;gap:2px;height:12px">
-                  <div style="width:3px;height:5px;background:#E9A227;border-radius:2px"></div>
-                  <div style="width:3px;height:10px;background:#E9A227;border-radius:2px"></div>
-                  <div style="width:3px;height:8px;background:#E9A227;border-radius:2px"></div>
-                  <div style="width:3px;height:12px;background:#E9A227;border-radius:2px"></div>
-                  <div style="width:3px;height:6px;background:#E9A227;border-radius:2px"></div>
-                </div>
-                <span style="font-family:'DM Mono',monospace;font-size:10px;color:#B9C6D8">17:04</span>
-              </div>
-            </div>
-
-            <div style="max-width:88%;align-self:flex-start;background:#FFFFFF;border-radius:14px;border-top-left-radius:5px;padding:11px 13px;box-shadow:0 1px 2px rgba(16,20,28,0.06)">
-              <div style="font-size:13px;font-weight:600;color:#12161D">Zusammenfassung</div>
-              <div style="margin-top:8px;display:flex;flex-direction:column;gap:6px">
-                <div style="display:flex;justify-content:space-between;gap:14px"><span style="font-size:12.5px;color:#8A929E">Projekt</span><span style="font-size:12.5px;color:#12161D;text-align:right">Sanierung Altbau Adlikon</span></div>
-                <div style="display:flex;justify-content:space-between;gap:14px"><span style="font-size:12.5px;color:#8A929E">Stunden</span><span style="font-family:'DM Mono',monospace;font-size:12.5px;color:#12161D">4:00 · 3:00</span></div>
-                <div style="display:flex;justify-content:space-between;gap:14px"><span style="font-size:12.5px;color:#8A929E">Material</span><span style="font-size:12.5px;color:#12161D">2 × Weissfarbe</span></div>
-              </div>
-              <div style="display:flex;gap:8px;margin-top:12px">
-                <div style="flex:1;text-align:center;white-space:nowrap;background:#22c55e;color:#FFFFFF;font-size:12.5px;font-weight:600;padding:9px 6px;border-radius:10px">Ja, speichern</div>
-                <div style="flex:1;text-align:center;white-space:nowrap;border:1px solid #D5D9DF;color:#3A4453;font-size:12.5px;font-weight:500;padding:9px 6px;border-radius:10px">Korrigieren</div>
-              </div>
-              <div style="margin-top:6px;text-align:right;font-family:'DM Mono',monospace;font-size:10px;color:#A5ADB8">17:04</div>
-            </div>
-          </div>
-
-          <div style="display:flex;align-items:center;gap:8px;padding:11px 12px;border-top:1px solid #EEF1F5">
-            <div style="width:34px;height:34px;flex:none;border:1px solid #E4E7EB;border-radius:50%;display:flex;align-items:center;justify-content:center">
-              <svg viewBox="0 0 24 24" style="width:16px;height:16px" fill="none" stroke="#5A6270" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" /><circle cx="12" cy="13" r="4" /></svg>
-            </div>
-            <div style="flex:1;border:1px solid #E4E7EB;border-radius:999px;padding:9px 14px;font-size:13px;color:#9AA2AE">Nachricht schreiben…</div>
-            <div style="width:34px;height:34px;flex:none;border:1px solid #E4E7EB;border-radius:50%;display:flex;align-items:center;justify-content:center">
-              <svg viewBox="0 0 24 24" style="width:16px;height:16px" fill="none" stroke="#5A6270" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" /><path d="M19 10v2a7 7 0 0 1-14 0v-2" /><line x1="12" y1="19" x2="12" y2="22" /></svg>
-            </div>
-          </div>
-        </div>
-        <div style="max-width:360px;margin:12px 0 0 auto;font-size:13px;line-height:1.6;color:#8A929E">Nachbildung des Rapport-Dialogs. Ohne Bestätigung entsteht kein Eintrag.</div>
       </div>
     </div>
 
@@ -201,11 +143,12 @@
   </section>
 
   <section data-screen-label="Ablauf" style="border-bottom:1px solid #E4E7EB">
-    <div style="max-width:1280px;margin:0 auto;padding:104px 40px">
+    <div style="max-width:1280px;margin:0 auto;padding:104px 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:64px;align-items:start">
+      <div>
       <div style="font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:#A9711A">KI im Einsatz</div>
       <h2 style="margin:20px 0 0;font-family:'Bitter',serif;font-size:clamp(30px,4vw,52px);line-height:1.08;font-weight:600;letter-spacing:-0.025em;color:#12161D;max-width:18ch">Der Rapport, den niemand tippt</h2>
 
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;background:#E4E7EB;border:1px solid #E4E7EB;border-radius:20px;overflow:hidden;margin-top:56px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;background:#E4E7EB;border:1px solid #E4E7EB;border-radius:20px;overflow:hidden;margin-top:44px">
         <div style="background:#FFFFFF;padding:32px 28px">
           <div style="font-family:'Bitter',serif;font-size:38px;line-height:1;font-weight:600;color:#DCE0E6">01</div>
           <div style="margin-top:18px;font-size:17px;font-weight:600;color:#12161D">Sprechen statt tippen</div>
@@ -226,6 +169,68 @@
           <div style="margin-top:18px;font-size:17px;font-weight:600;color:#12161D">Bestätigen, dann buchen</div>
           <p style="margin:10px 0 0;font-size:15px;line-height:1.6;color:#5A6270">Erst der Klick des Mitarbeiters erzeugt Rapport, Material- und Lagerbuchung.</p>
         </div>
+      </div>
+      </div>
+      <div style="position:sticky;top:110px">
+        <div style="max-width:380px;margin:0 auto;background:#FFFFFF;border:1px solid #E4E7EB;border-radius:22px;box-shadow:0 24px 60px rgba(16,20,28,0.14);overflow:hidden">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 16px;border-bottom:1px solid #EEF1F5">
+            <div style="display:flex;align-items:center;gap:10px">
+              <div style="width:8px;height:8px;border-radius:50%;background:#22c55e"></div>
+              <div>
+                <div style="font-size:14px;font-weight:600;color:#12161D;line-height:1.2">Rapporte</div>
+                <div style="font-size:11px;color:#8A929E">Rapport Bot · KI-Assistent</div>
+              </div>
+            </div>
+            <img src="assets/werkora-mark.png" alt="" style="width:22px;height:22px;display:block" />
+          </div>
+
+          <div style="background:#F4F6FA;padding:14px 12px;display:flex;flex-direction:column;gap:10px">
+            <div style="max-width:88%;align-self:flex-start;background:#FFFFFF;border-radius:14px;border-top-left-radius:5px;padding:10px 13px;box-shadow:0 1px 2px rgba(16,20,28,0.06)">
+              <div style="font-size:13px;line-height:1.55;color:#2A323D">Hallo! Sag z.&nbsp;B. «Neuer Rapport» — oder sprich mir die Nachricht direkt auf.</div>
+              <div style="margin-top:4px;text-align:right;font-family:'DM Mono',monospace;font-size:10px;color:#A5ADB8">17:02</div>
+            </div>
+
+            <div style="max-width:88%;align-self:flex-end;background:#3D5A80;border-radius:14px;border-top-right-radius:5px;padding:10px 13px">
+              <div style="font-size:13px;line-height:1.55;color:#F2F6FB">„Heute Sanierung Altbau Adlikon. Ich 4&nbsp;h, Tobias 3&nbsp;h. 2 Eimer Weissfarbe verbraucht.“</div>
+              <div style="margin-top:6px;display:flex;align-items:center;gap:8px;justify-content:flex-end">
+                <span style="font-family:'DM Mono',monospace;font-size:10px;color:#B9C6D8">Sprachnachricht · 0:12</span>
+                <div style="display:flex;align-items:flex-end;gap:2px;height:12px">
+                  <div style="width:3px;height:5px;background:#E9A227;border-radius:2px"></div>
+                  <div style="width:3px;height:10px;background:#E9A227;border-radius:2px"></div>
+                  <div style="width:3px;height:8px;background:#E9A227;border-radius:2px"></div>
+                  <div style="width:3px;height:12px;background:#E9A227;border-radius:2px"></div>
+                  <div style="width:3px;height:6px;background:#E9A227;border-radius:2px"></div>
+                </div>
+                <span style="font-family:'DM Mono',monospace;font-size:10px;color:#B9C6D8">17:04</span>
+              </div>
+            </div>
+
+            <div style="max-width:88%;align-self:flex-start;background:#FFFFFF;border-radius:14px;border-top-left-radius:5px;padding:11px 13px;box-shadow:0 1px 2px rgba(16,20,28,0.06)">
+              <div style="font-size:13px;font-weight:600;color:#12161D">Zusammenfassung</div>
+              <div style="margin-top:8px;display:flex;flex-direction:column;gap:6px">
+                <div style="display:flex;justify-content:space-between;gap:14px"><span style="font-size:12.5px;color:#8A929E">Projekt</span><span style="font-size:12.5px;color:#12161D;text-align:right">Sanierung Altbau Adlikon</span></div>
+                <div style="display:flex;justify-content:space-between;gap:14px"><span style="font-size:12.5px;color:#8A929E">Stunden</span><span style="font-family:'DM Mono',monospace;font-size:12.5px;color:#12161D">4:00 · 3:00</span></div>
+                <div style="display:flex;justify-content:space-between;gap:14px"><span style="font-size:12.5px;color:#8A929E">Material</span><span style="font-size:12.5px;color:#12161D">2 × Weissfarbe</span></div>
+              </div>
+              <div style="display:flex;gap:8px;margin-top:12px">
+                <div style="flex:1;text-align:center;white-space:nowrap;background:#22c55e;color:#FFFFFF;font-size:12.5px;font-weight:600;padding:9px 6px;border-radius:10px">Ja, speichern</div>
+                <div style="flex:1;text-align:center;white-space:nowrap;border:1px solid #D5D9DF;color:#3A4453;font-size:12.5px;font-weight:500;padding:9px 6px;border-radius:10px">Korrigieren</div>
+              </div>
+              <div style="margin-top:6px;text-align:right;font-family:'DM Mono',monospace;font-size:10px;color:#A5ADB8">17:04</div>
+            </div>
+          </div>
+
+          <div style="display:flex;align-items:center;gap:8px;padding:11px 12px;border-top:1px solid #EEF1F5">
+            <div style="width:34px;height:34px;flex:none;border:1px solid #E4E7EB;border-radius:50%;display:flex;align-items:center;justify-content:center">
+              <svg viewBox="0 0 24 24" style="width:16px;height:16px" fill="none" stroke="#5A6270" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" /><circle cx="12" cy="13" r="4" /></svg>
+            </div>
+            <div style="flex:1;border:1px solid #E4E7EB;border-radius:999px;padding:9px 14px;font-size:13px;color:#9AA2AE">Nachricht schreiben…</div>
+            <div style="width:34px;height:34px;flex:none;border:1px solid #E4E7EB;border-radius:50%;display:flex;align-items:center;justify-content:center">
+              <svg viewBox="0 0 24 24" style="width:16px;height:16px" fill="none" stroke="#5A6270" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" /><path d="M19 10v2a7 7 0 0 1-14 0v-2" /><line x1="12" y1="19" x2="12" y2="22" /></svg>
+            </div>
+          </div>
+        </div>
+        <div style="max-width:380px;margin:12px auto 0;font-size:13px;line-height:1.6;color:#8A929E">Nachbildung des Rapport-Dialogs. Ohne Bestätigung entsteht kein Eintrag.</div>
       </div>
     </div>
   </section>
