@@ -6,6 +6,7 @@
 <link rel="icon" type="image/png" href="./assets/favicon.png">
 <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
 <script src="./support.js"></script>
+<script src="./cookie-hinweis.js" defer></script>
 </head>
 <body>
 <x-dc>
@@ -84,12 +85,10 @@
     <h1 style="font-family:'Bitter',serif;margin:22px 0 0;font-size:clamp(32px,4.2vw,48px);line-height:1.1;font-weight:600;letter-spacing:-0.02em;color:#12161D">Datenschutzerklärung</h1>
     <p style="margin:20px 0 0;font-size:17px;line-height:1.7;color:#5A6270">Diese Erklärung beschreibt, wie die Bazzi Ventures GmbH Personendaten im Zusammenhang mit der Website werkora.ch und der Anwendung app.werkora.ch bearbeitet. Grundlage ist das Schweizer Datenschutzgesetz (DSG); soweit anwendbar gilt zusätzlich die DSGVO.</p>
 
-    <div style="margin-top:28px;background:#FDF3DF;border:1px solid #E9A227;border-radius:12px;padding:18px 20px;font-size:14px;line-height:1.6;color:#A9711A">Entwurf. Vor dem Livegang durch eine juristische Fachperson prüfen lassen; gelb markierte Angaben ergänzen.</div>
-
     <div style="margin-top:48px;display:flex;flex-direction:column;gap:36px">
       <div style="border-top:1px solid #E4E7EB;padding-top:26px">
         <h2 style="font-family:'Bitter',serif;margin:0;font-size:20px;font-weight:600;color:#12161D">1. Verantwortliche Stelle</h2>
-        <p style="margin:14px 0 0;font-size:16px;line-height:1.75;color:#5A6270">Bazzi Ventures GmbH, Weidstrasse 31, 8472 Seuzach, Schweiz<br />E-Mail: <a href="mailto:datenschutz@werkora.ch">datenschutz@werkora.ch</a> <span style="color:#A9711A">[bestätigen]</span></p>
+        <p style="margin:14px 0 0;font-size:16px;line-height:1.75;color:#5A6270">Bazzi Ventures GmbH, Weidstrasse 31, 8472 Seuzach, Schweiz<br />E-Mail: <a href="mailto:info@werkora.ch">info@werkora.ch</a></p>
       </div>
 
       <div style="border-top:1px solid #E4E7EB;padding-top:26px">
@@ -114,12 +113,16 @@
 
       <div style="border-top:1px solid #E4E7EB;padding-top:26px">
         <h2 style="font-family:'Bitter',serif;margin:0;font-size:20px;font-weight:600;color:#12161D">6. Weitergabe und Hosting</h2>
-        <p style="margin:14px 0 0;font-size:16px;line-height:1.75;color:#5A6270">Personendaten werden nur an Dienstleister weitergegeben, die für den Betrieb erforderlich sind — insbesondere Hosting, E-Mail-Versand und die genannten KI-Dienste. Diese sind vertraglich zur Vertraulichkeit und zur Einhaltung des Datenschutzrechts verpflichtet. Hosting: <span style="color:#A9711A">[Anbieter und Standort ergänzen]</span>. Eine Bekanntgabe an Behörden erfolgt nur, wenn wir gesetzlich dazu verpflichtet sind.</p>
+        <p style="margin:14px 0 0;font-size:16px;line-height:1.75;color:#5A6270">Personendaten werden nur an Dienstleister weitergegeben, die für den Betrieb erforderlich sind. Diese sind zur Vertraulichkeit und zur Einhaltung des Datenschutzrechts verpflichtet. Eine Bekanntgabe an Behörden erfolgt nur, wenn wir gesetzlich dazu verpflichtet sind.</p>
+        <p style="margin:14px 0 0;font-size:16px;line-height:1.75;color:#5A6270"><strong style="font-weight:600;color:#12161D">Website werkora.ch</strong> — die Seite wird als statische Website über GitHub Pages (GitHub, Inc., San Francisco, USA) ausgeliefert. Beim Abruf fallen dort technische Zugriffsdaten an; dabei können Daten wie Ihre IP-Adresse in die USA übermittelt werden.</p>
+        <p style="margin:14px 0 0;font-size:16px;line-height:1.75;color:#5A6270"><strong style="font-weight:600;color:#12161D">Kontaktformular</strong> — Anfragen aus dem Formular werden über den Dienst Web3Forms entgegengenommen und an <a href="mailto:info@werkora.ch">info@werkora.ch</a> weitergeleitet. Übermittelt werden ausschliesslich die von Ihnen ausgefüllten Felder. Sie können uns stattdessen jederzeit direkt per E-Mail schreiben.</p>
+        <p style="margin:14px 0 0;font-size:16px;line-height:1.75;color:#5A6270"><strong style="font-weight:600;color:#12161D">KI-Funktionen</strong> — Verarbeitung über Mistral AI in Frankreich, siehe Ziffer 5.</p>
       </div>
 
       <div style="border-top:1px solid #E4E7EB;padding-top:26px">
         <h2 style="font-family:'Bitter',serif;margin:0;font-size:20px;font-weight:600;color:#12161D">7. Cookies und Reichweitenmessung</h2>
-        <p style="margin:14px 0 0;font-size:16px;line-height:1.75;color:#5A6270">Diese Website verwendet nur technisch notwendige Cookies. Eine Analyse des Nutzungsverhaltens mit Tracking-Diensten Dritter findet nicht statt. <span style="color:#A9711A">[Falls später Analytics eingesetzt wird, ist dieser Abschnitt zu ergänzen und ein Consent-Banner nötig.]</span></p>
+        <p style="margin:14px 0 0;font-size:16px;line-height:1.75;color:#5A6270">Diese Website setzt keine Cookies zu Analyse- oder Werbezwecken. Es kommen keine Tracking-Dienste Dritter zum Einsatz — insbesondere kein Google Analytics. Es findet keine Reichweitenmessung und keine Profilbildung statt.</p>
+        <p style="margin:14px 0 0;font-size:16px;line-height:1.75;color:#5A6270">Beim ersten Besuch erscheint ein Hinweis dazu. Bestätigen Sie ihn, speichern wir diese Bestätigung lokal in Ihrem Browser (localStorage, Schlüssel «wk-cookie-hinweis»), damit der Hinweis nicht bei jedem Aufruf erneut erscheint. Dieser Eintrag verlässt Ihr Gerät nicht und wird nicht an uns übermittelt. Sie können ihn jederzeit über die Einstellungen Ihres Browsers löschen.</p>
       </div>
 
       <div style="border-top:1px solid #E4E7EB;padding-top:26px">
@@ -143,7 +146,7 @@
       </div>
     </div>
 
-    <div style="margin-top:56px;font-family:'DM Mono',monospace;font-size:12px;color:#5A6270">Stand: <span style="color:#A9711A">[Datum eintragen]</span></div>
+    <div style="margin-top:56px;font-family:'DM Mono',monospace;font-size:12px;color:#5A6270">Stand: 02.08.2026</div>
   </section>
 
   <footer style="border-top:1px solid #E4E7EB">
