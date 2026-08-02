@@ -42,8 +42,8 @@
   </header>
 
   <section data-screen-label="Hero" style="position:relative;border-bottom:1px solid #E4E7EB;overflow:hidden">
-    <div aria-hidden="true" style="position:absolute;right:-60px;top:-10px;width:780px;height:780px;opacity:0.05;pointer-events:none">
-      <svg viewBox="0 0 100 100" aria-hidden="true" style="width:780px;height:780px;display:block">
+    <div aria-hidden="true" style="position:absolute;right:-170px;top:-80px;width:960px;height:960px;opacity:0.05;pointer-events:none">
+      <svg viewBox="0 0 100 100" aria-hidden="true" style="width:960px;height:960px;display:block">
       <path d="M 38.5 12.6 A 40 40 0 1 0 61.5 12.6" fill="none" stroke="#1B2028" stroke-width="7.5" stroke-linecap="butt" />
       <rect x="48.4" y="2" width="3.2" height="8.5" fill="#1B2028" />
       <g style="transform-box:view-box;transform-origin:50px 50px;animation:wkSpin 96s linear infinite">
@@ -73,50 +73,65 @@
       </div>
 
       <div style="position:relative;animation:wkUp 900ms cubic-bezier(0.16,1,0.3,1) both">
-        <div style="max-width:400px;margin-left:auto;background:#151A23;border:1px solid #232A36;border-radius:24px;padding:22px;box-shadow:0 24px 60px rgba(16,20,28,0.18)">
-          <div style="display:flex;align-items:center;justify-content:space-between">
+        <div style="max-width:360px;margin-left:auto;background:#FFFFFF;border:1px solid #E4E7EB;border-radius:22px;box-shadow:0 24px 60px rgba(16,20,28,0.14);overflow:hidden">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 16px;border-bottom:1px solid #EEF1F5">
             <div style="display:flex;align-items:center;gap:10px">
               <div style="width:8px;height:8px;border-radius:50%;background:#22c55e"></div>
-              <span style="font-size:14px;font-weight:600;color:#F1F5F9">Rapport erfassen</span>
+              <div>
+                <div style="font-size:14px;font-weight:600;color:#12161D;line-height:1.2">Rapporte</div>
+                <div style="font-size:11px;color:#8A929E">Rapport Bot · KI-Assistent</div>
+              </div>
             </div>
-            <span style="font-family:'DM Mono',monospace;font-size:12px;color:#7A8494">17:04</span>
+            <img src="assets/werkora-mark.png" alt="" style="width:22px;height:22px;display:block" />
           </div>
-          <div style="margin-top:18px;background:#273140;border-radius:16px;border-top-left-radius:6px;padding:16px;font-size:15px;line-height:1.6;color:#DDE3EA">„Heute Sanierung Altbau Adlikon. Ich 4 h, Tobias 3 h. 2 Eimer Weissfarbe verbraucht.“</div>
-          <div style="margin-top:10px;display:flex;align-items:center;gap:8px;justify-content:flex-end">
-            <span style="font-family:'DM Mono',monospace;font-size:11px;color:#7A8494">Sprachnachricht · 0:12</span>
-            <div style="display:flex;align-items:flex-end;gap:2px;height:14px">
-              <div style="width:3px;height:6px;background:#E9A227;border-radius:2px"></div>
-              <div style="width:3px;height:12px;background:#E9A227;border-radius:2px"></div>
-              <div style="width:3px;height:9px;background:#E9A227;border-radius:2px"></div>
-              <div style="width:3px;height:14px;background:#E9A227;border-radius:2px"></div>
-              <div style="width:3px;height:7px;background:#E9A227;border-radius:2px"></div>
+
+          <div style="background:#F4F6FA;padding:14px 12px;display:flex;flex-direction:column;gap:10px">
+            <div style="max-width:88%;align-self:flex-start;background:#FFFFFF;border-radius:14px;border-top-left-radius:5px;padding:10px 13px;box-shadow:0 1px 2px rgba(16,20,28,0.06)">
+              <div style="font-size:13px;line-height:1.55;color:#2A323D">Hallo! Sag z.&nbsp;B. «Neuer Rapport» — oder sprich mir die Nachricht direkt auf.</div>
+              <div style="margin-top:4px;text-align:right;font-family:'DM Mono',monospace;font-size:10px;color:#A5ADB8">17:02</div>
+            </div>
+
+            <div style="max-width:88%;align-self:flex-end;background:#3D5A80;border-radius:14px;border-top-right-radius:5px;padding:10px 13px">
+              <div style="font-size:13px;line-height:1.55;color:#F2F6FB">„Heute Sanierung Altbau Adlikon. Ich 4&nbsp;h, Tobias 3&nbsp;h. 2 Eimer Weissfarbe verbraucht.“</div>
+              <div style="margin-top:6px;display:flex;align-items:center;gap:8px;justify-content:flex-end">
+                <span style="font-family:'DM Mono',monospace;font-size:10px;color:#B9C6D8">Sprachnachricht · 0:12</span>
+                <div style="display:flex;align-items:flex-end;gap:2px;height:12px">
+                  <div style="width:3px;height:5px;background:#E9A227;border-radius:2px"></div>
+                  <div style="width:3px;height:10px;background:#E9A227;border-radius:2px"></div>
+                  <div style="width:3px;height:8px;background:#E9A227;border-radius:2px"></div>
+                  <div style="width:3px;height:12px;background:#E9A227;border-radius:2px"></div>
+                  <div style="width:3px;height:6px;background:#E9A227;border-radius:2px"></div>
+                </div>
+                <span style="font-family:'DM Mono',monospace;font-size:10px;color:#B9C6D8">17:04</span>
+              </div>
+            </div>
+
+            <div style="max-width:88%;align-self:flex-start;background:#FFFFFF;border-radius:14px;border-top-left-radius:5px;padding:11px 13px;box-shadow:0 1px 2px rgba(16,20,28,0.06)">
+              <div style="font-size:13px;font-weight:600;color:#12161D">Zusammenfassung</div>
+              <div style="margin-top:8px;display:flex;flex-direction:column;gap:6px">
+                <div style="display:flex;justify-content:space-between;gap:14px"><span style="font-size:12.5px;color:#8A929E">Projekt</span><span style="font-size:12.5px;color:#12161D;text-align:right">Sanierung Altbau Adlikon</span></div>
+                <div style="display:flex;justify-content:space-between;gap:14px"><span style="font-size:12.5px;color:#8A929E">Stunden</span><span style="font-family:'DM Mono',monospace;font-size:12.5px;color:#12161D">4:00 · 3:00</span></div>
+                <div style="display:flex;justify-content:space-between;gap:14px"><span style="font-size:12.5px;color:#8A929E">Material</span><span style="font-size:12.5px;color:#12161D">2 × Weissfarbe</span></div>
+              </div>
+              <div style="display:flex;gap:8px;margin-top:12px">
+                <div style="flex:1;text-align:center;white-space:nowrap;background:#22c55e;color:#FFFFFF;font-size:12.5px;font-weight:600;padding:9px 6px;border-radius:10px">Ja, speichern</div>
+                <div style="flex:1;text-align:center;white-space:nowrap;border:1px solid #D5D9DF;color:#3A4453;font-size:12.5px;font-weight:500;padding:9px 6px;border-radius:10px">Korrigieren</div>
+              </div>
+              <div style="margin-top:6px;text-align:right;font-family:'DM Mono',monospace;font-size:10px;color:#A5ADB8">17:04</div>
             </div>
           </div>
 
-          <div style="margin-top:22px;display:flex;align-items:center;gap:10px">
-            <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#7A8494">Erkannt</div>
-            <div style="flex:1;height:1px;background:#2C3340"></div>
-          </div>
-          <div style="margin-top:14px;display:flex;flex-direction:column;gap:11px">
-            <div style="display:flex;justify-content:space-between;gap:16px">
-              <span style="font-size:14px;color:#98A0AE">Projekt</span>
-              <span style="font-size:14px;color:#F1F5F9;text-align:right">Sanierung Altbau Adlikon</span>
+          <div style="display:flex;align-items:center;gap:8px;padding:11px 12px;border-top:1px solid #EEF1F5">
+            <div style="width:34px;height:34px;flex:none;border:1px solid #E4E7EB;border-radius:50%;display:flex;align-items:center;justify-content:center">
+              <svg viewBox="0 0 24 24" style="width:16px;height:16px" fill="none" stroke="#5A6270" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" /><circle cx="12" cy="13" r="4" /></svg>
             </div>
-            <div style="display:flex;justify-content:space-between;gap:16px">
-              <span style="font-size:14px;color:#98A0AE">Stunden</span>
-              <span style="font-family:'DM Mono',monospace;font-size:14px;color:#F1F5F9">4:00 · 3:00</span>
+            <div style="flex:1;border:1px solid #E4E7EB;border-radius:999px;padding:9px 14px;font-size:13px;color:#9AA2AE">Nachricht schreiben…</div>
+            <div style="width:34px;height:34px;flex:none;border:1px solid #E4E7EB;border-radius:50%;display:flex;align-items:center;justify-content:center">
+              <svg viewBox="0 0 24 24" style="width:16px;height:16px" fill="none" stroke="#5A6270" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" /><path d="M19 10v2a7 7 0 0 1-14 0v-2" /><line x1="12" y1="19" x2="12" y2="22" /></svg>
             </div>
-            <div style="display:flex;justify-content:space-between;gap:16px">
-              <span style="font-size:14px;color:#98A0AE">Material</span>
-              <span style="font-size:14px;color:#F1F5F9;text-align:right">2 × Weissfarbe</span>
-            </div>
-          </div>
-          <div style="display:flex;gap:10px;margin-top:20px">
-            <div style="flex:1;text-align:center;background:#22c55e;color:#0B1220;font-size:14px;font-weight:600;padding:13px;border-radius:12px">Ja, speichern</div>
-            <div style="flex:1;text-align:center;border:1px solid #2C3340;color:#C6CDD7;font-size:14px;font-weight:500;padding:13px;border-radius:12px">Korrigieren</div>
           </div>
         </div>
-        <div style="max-width:400px;margin:12px 0 0 auto;font-size:13px;line-height:1.6;color:#8A929E">Nachbildung des Rapport-Dialogs. Ohne Bestätigung entsteht kein Eintrag.</div>
+        <div style="max-width:360px;margin:12px 0 0 auto;font-size:13px;line-height:1.6;color:#8A929E">Nachbildung des Rapport-Dialogs. Ohne Bestätigung entsteht kein Eintrag.</div>
       </div>
     </div>
 
