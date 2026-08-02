@@ -49,7 +49,7 @@
         </div>
         <div style="border-top:1px solid #E4E7EB;padding-top:18px">
           <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#5A6270">E-Mail</div>
-          <div style="margin-top:8px;font-size:16px;color:#12161D"><a href="mailto:info@werkora.ch">info@werkora.ch</a> <span style="color:#A9711A;font-size:13px">[Adresse bestätigen]</span></div>
+          <div style="margin-top:8px;font-size:16px;color:#12161D"><a href="mailto:info@werkora.ch">info@werkora.ch</a></div>
         </div>
         <div style="border-top:1px solid #E4E7EB;padding-top:18px">
           <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#5A6270">Anwendung</div>
@@ -62,7 +62,7 @@
       <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
         <div style="padding:24px 0">
           <div style="font-size:20px;font-weight:600;color:#12161D">Danke — Ihre Anfrage ist notiert.</div>
-          <p style="margin:12px 0 0;font-size:15px;line-height:1.6;color:#5A6270">Wir melden uns innerhalb von zwei Arbeitstagen. Dies ist eine Demo-Oberfläche; für den Live-Betrieb muss das Formular an einen Mailversand angebunden werden.</p>
+          <p style="margin:12px 0 0;font-size:15px;line-height:1.6;color:#5A6270">Wir melden uns innerhalb von zwei Arbeitstagen bei Ihnen.</p>
         </div>
       </sc-if>
       <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
@@ -70,25 +70,25 @@
           <div style="font-size:18px;font-weight:600;color:#12161D">Anfrage senden</div>
           <label style="display:flex;flex-direction:column;gap:8px">
             <span style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#5A6270">Name</span>
-            <input type="text" placeholder="Vor- und Nachname" style="background:#FFFFFF;border:1px solid #E4E7EB;border-radius:10px;padding:13px 14px;font-size:15px;color:#12161D" />
+            <input type="text" placeholder="Vor- und Nachname" value="{{ name }}" onInput="{{ setName }}" style="background:#FFFFFF;border:1px solid #E4E7EB;border-radius:10px;padding:13px 14px;font-size:15px;color:#12161D" />
           </label>
           <label style="display:flex;flex-direction:column;gap:8px">
             <span style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#5A6270">Betrieb</span>
-            <input type="text" placeholder="Firmenname, Ort" style="background:#FFFFFF;border:1px solid #E4E7EB;border-radius:10px;padding:13px 14px;font-size:15px;color:#12161D" />
+            <input type="text" placeholder="Firmenname, Ort" value="{{ company }}" onInput="{{ setCompany }}" style="background:#FFFFFF;border:1px solid #E4E7EB;border-radius:10px;padding:13px 14px;font-size:15px;color:#12161D" />
           </label>
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px">
             <label style="display:flex;flex-direction:column;gap:8px">
               <span style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#5A6270">E-Mail</span>
-              <input type="email" placeholder="name@betrieb.ch" style="background:#FFFFFF;border:1px solid #E4E7EB;border-radius:10px;padding:13px 14px;font-size:15px;color:#12161D" />
+              <input type="email" placeholder="name@betrieb.ch" value="{{ email }}" onInput="{{ setEmail }}" style="background:#FFFFFF;border:1px solid #E4E7EB;border-radius:10px;padding:13px 14px;font-size:15px;color:#12161D" />
             </label>
             <label style="display:flex;flex-direction:column;gap:8px">
               <span style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#5A6270">Telefon</span>
-              <input type="tel" placeholder="+41 ..." style="background:#FFFFFF;border:1px solid #E4E7EB;border-radius:10px;padding:13px 14px;font-size:15px;color:#12161D" />
+              <input type="tel" placeholder="+41 ..." value="{{ phone }}" onInput="{{ setPhone }}" style="background:#FFFFFF;border:1px solid #E4E7EB;border-radius:10px;padding:13px 14px;font-size:15px;color:#12161D" />
             </label>
           </div>
           <label style="display:flex;flex-direction:column;gap:8px">
             <span style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#5A6270">Mitarbeitende</span>
-            <select style="background:#FFFFFF;border:1px solid #E4E7EB;border-radius:10px;padding:13px 14px;font-size:15px;color:#12161D">
+            <select value="{{ employees }}" onChange="{{ setEmployees }}" style="background:#FFFFFF;border:1px solid #E4E7EB;border-radius:10px;padding:13px 14px;font-size:15px;color:#12161D">
               <option>1–4</option>
               <option>5–15</option>
               <option>16–50</option>
@@ -97,9 +97,12 @@
           </label>
           <label style="display:flex;flex-direction:column;gap:8px">
             <span style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#5A6270">Worum geht es?</span>
-            <textarea rows="4" placeholder="Was läuft heute von Hand?" style="background:#FFFFFF;border:1px solid #E4E7EB;border-radius:10px;padding:13px 14px;font-size:15px;color:#12161D;resize:vertical"></textarea>
+            <textarea rows="4" placeholder="Was läuft heute von Hand?" value="{{ message }}" onInput="{{ setMessage }}" style="background:#FFFFFF;border:1px solid #E4E7EB;border-radius:10px;padding:13px 14px;font-size:15px;color:#12161D;resize:vertical"></textarea>
           </label>
-          <button type="button" onClick="{{ send }}" style="margin-top:6px;background:#E9A227;color:#1B2028;border:none;border-radius:999px;padding:15px 22px;font-size:15px;font-weight:500;font-family:inherit;cursor:pointer" style-hover="background:#F4BC55" style-active="transform:scale(0.97)">Anfrage senden</button>
+          <button type="button" onClick="{{ send }}" disabled="{{ sending }}" style="margin-top:6px;background:#E9A227;color:#1B2028;border:none;border-radius:999px;padding:15px 22px;font-size:15px;font-weight:500;font-family:inherit;cursor:pointer" style-hover="background:#F4BC55" style-active="transform:scale(0.97)">{{ buttonLabel }}</button>
+          <sc-if value="{{ error }}">
+            <div style="font-size:14px;line-height:1.5;color:#B00020">{{ error }}</div>
+          </sc-if>
           <div style="font-size:13px;line-height:1.6;color:#5A6270">Mit dem Absenden stimmen Sie der Bearbeitung Ihrer Angaben gemäss <a href="./datenschutz.html">Datenschutzerklärung</a> zu.</div>
         </div>
       </sc-if>
@@ -123,14 +126,83 @@
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script>
+// Web3Forms leitet Anfragen an info@werkora.ch weiter.
+// Key anfordern: https://web3forms.com → E-Mail info@werkora.ch eintragen.
+const WEB3FORMS_ACCESS_KEY = 'b0a015e6-1680-43af-8b24-879ae07be4f5';
+
 class Component extends DCLogic {
-  state = { sent: false };
+  state = {
+    sent: false,
+    sending: false,
+    error: '',
+    name: '',
+    company: '',
+    email: '',
+    phone: '',
+    employees: '1–4',
+    message: '',
+  };
   renderVals() {
+    const set = (key) => (e) => this.setState({ [key]: e.target.value });
     return {
       sent: this.state.sent,
       notSent: !this.state.sent,
-      send: () => this.setState({ sent: true }),
+      sending: this.state.sending,
+      error: this.state.error,
+      buttonLabel: this.state.sending ? 'Wird gesendet …' : 'Anfrage senden',
+      name: this.state.name,
+      company: this.state.company,
+      email: this.state.email,
+      phone: this.state.phone,
+      employees: this.state.employees,
+      message: this.state.message,
+      setName: set('name'),
+      setCompany: set('company'),
+      setEmail: set('email'),
+      setPhone: set('phone'),
+      setEmployees: set('employees'),
+      setMessage: set('message'),
+      send: () => this.send(),
     };
+  }
+  async send() {
+    if (this.state.sending) return;
+    if (!this.state.name.trim() || !this.state.email.trim()) {
+      this.setState({ error: 'Bitte mindestens Name und E-Mail ausfüllen.' });
+      return;
+    }
+    this.setState({ sending: true, error: '' });
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: 'Neue Anfrage über werkora.ch',
+          from_name: 'werkora.ch Kontaktformular',
+          Name: this.state.name,
+          Betrieb: this.state.company,
+          email: this.state.email,
+          Telefon: this.state.phone,
+          Mitarbeitende: this.state.employees,
+          Nachricht: this.state.message,
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        this.setState({ sent: true, sending: false });
+      } else {
+        this.setState({
+          sending: false,
+          error: 'Senden fehlgeschlagen. Bitte versuchen Sie es erneut oder schreiben Sie an info@werkora.ch.',
+        });
+      }
+    } catch (e) {
+      this.setState({
+        sending: false,
+        error: 'Senden fehlgeschlagen. Bitte versuchen Sie es erneut oder schreiben Sie an info@werkora.ch.',
+      });
+    }
   }
 }
 </script>
