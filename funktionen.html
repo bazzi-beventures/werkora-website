@@ -18,6 +18,45 @@
   * { box-sizing: border-box; }
   a { color: #E9A227; text-decoration: none; }
   a:hover { color: #F4BC55; }
+
+  /* Kennzahlen-Demo (CSS-only, Beispieldaten) */
+  .wkk { position: relative; }
+  .wkk input { position: absolute; opacity: 0; pointer-events: none; }
+  .wkk-card { background: #151A23; border: 1px solid #232A36; border-radius: 24px; padding: 26px; box-shadow: 0 24px 60px rgba(16,20,28,0.18); }
+  .wkk-head { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: space-between; }
+  .wkk-title { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 600; color: #FFFFFF; }
+  .wkk-title .dot { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; }
+  .wkk-presets { display: flex; flex-wrap: wrap; gap: 8px; }
+  .wkk-presets label { font-size: 13px; font-weight: 500; color: #8A929E; border: 1px solid #2A3240; padding: 7px 14px; border-radius: 999px; cursor: pointer; transition: color 150ms, border-color 150ms, background 150ms; }
+  .wkk-presets label:hover { color: #E6E9EE; border-color: #3B4658; }
+  #wkk-all:checked ~ .wkk-card label[for="wkk-all"],
+  #wkk-y:checked ~ .wkk-card label[for="wkk-y"],
+  #wkk-3m:checked ~ .wkk-card label[for="wkk-3m"],
+  #wkk-m:checked ~ .wkk-card label[for="wkk-m"],
+  .wkk:not(:has(input:checked)) .wkk-card label[for="wkk-y"] { background: #E9A227; border-color: #E9A227; color: #1B2028; }
+  .wkk-panel { display: none; }
+  #wkk-all:checked ~ .wkk-card .wkk-p-all,
+  #wkk-y:checked ~ .wkk-card .wkk-p-y,
+  #wkk-3m:checked ~ .wkk-card .wkk-p-3m,
+  #wkk-m:checked ~ .wkk-card .wkk-p-m,
+  .wkk:not(:has(input:checked)) .wkk-card .wkk-p-y { display: block; }
+  .wkk-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-top: 22px; }
+  .wkk-kpi { background: #1B222E; border: 1px solid #232A36; border-radius: 14px; padding: 14px 16px; animation: wkkFade 500ms ease both; }
+  .wkk-kpi:nth-child(2) { animation-delay: 60ms; } .wkk-kpi:nth-child(3) { animation-delay: 120ms; } .wkk-kpi:nth-child(4) { animation-delay: 180ms; }
+  .wkk-kpi .l { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: #8A929E; }
+  .wkk-kpi .v { margin-top: 8px; font-family: 'Bitter', serif; font-size: 24px; font-weight: 600; color: #FFFFFF; }
+  .wkk-kpi .s { margin-top: 3px; font-size: 12px; color: #8A929E; }
+  .wkk-bars { display: flex; gap: 26px; align-items: flex-end; height: 150px; border-bottom: 1px solid #2A3240; padding: 0 6px; margin-top: 26px; }
+  .wkk-grp { flex: 1; display: flex; gap: 5px; align-items: flex-end; height: 100%; }
+  .wkk-bar { flex: 1; border-radius: 4px 4px 0 0; transform-origin: bottom; animation: wkkBar 700ms cubic-bezier(0.16,1,0.3,1) both; }
+  .wkk-grp .wkk-bar:nth-child(2) { animation-delay: 70ms; } .wkk-grp .wkk-bar:nth-child(3) { animation-delay: 140ms; }
+  .wkk-names { display: flex; gap: 26px; padding: 9px 6px 0; }
+  .wkk-names div { flex: 1; text-align: center; font-size: 12px; color: #8A929E; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .wkk-legend { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 18px; }
+  .wkk-legend span { display: flex; align-items: center; gap: 7px; font-size: 12px; color: #8A929E; }
+  .wkk-dot { width: 8px; height: 8px; border-radius: 2px; }
+  @keyframes wkkBar { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+  @keyframes wkkFade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 </style>
 </helmet>
 
@@ -126,6 +165,95 @@
         </div>
         <div style="margin-top:20px;font-size:14px;color:#5A6270">Zahlen aus dem operativen System, statt aus separater Kalkulation.</div>
       </div>
+    </div>
+
+    <div class="wkk" style="max-width:1280px;margin:0 auto;padding:0 40px 72px">
+      <input type="radio" name="wkk-preset" id="wkk-all">
+      <input type="radio" name="wkk-preset" id="wkk-y" checked>
+      <input type="radio" name="wkk-preset" id="wkk-3m">
+      <input type="radio" name="wkk-preset" id="wkk-m">
+      <div class="wkk-card">
+        <div class="wkk-head">
+          <div class="wkk-title"><span class="dot"></span>Projektpipeline</div>
+          <div class="wkk-presets">
+            <label for="wkk-all">Alles</label>
+            <label for="wkk-y">Dieses Jahr</label>
+            <label for="wkk-3m">Letzte 3 Monate</label>
+            <label for="wkk-m">Letzter Monat</label>
+          </div>
+        </div>
+
+        <div class="wkk-panel wkk-p-all">
+          <div class="wkk-cards">
+            <div class="wkk-kpi"><div class="l">Offerten offen</div><div class="v">16</div><div class="s">CHF 428’000</div></div>
+            <div class="wkk-kpi"><div class="l">Offerten akzeptiert</div><div class="v">57</div><div class="s">CHF 1’240’000</div></div>
+            <div class="wkk-kpi"><div class="l">Rechnungen versendet</div><div class="v">74</div><div class="s">CHF 1’103’000</div></div>
+            <div class="wkk-kpi"><div class="l">Bezahlt</div><div class="v" style="color:#22c55e">69</div><div class="s">CHF 1’021’000</div></div>
+          </div>
+          <div class="wkk-bars">
+            <div class="wkk-grp"><div class="wkk-bar" style="height:70%;background:#E9A227"></div><div class="wkk-bar" style="height:88%;background:#4C8DFF"></div><div class="wkk-bar" style="height:80%;background:#22c55e"></div></div>
+            <div class="wkk-grp"><div class="wkk-bar" style="height:55%;background:#E9A227"></div><div class="wkk-bar" style="height:74%;background:#4C8DFF"></div><div class="wkk-bar" style="height:68%;background:#22c55e"></div></div>
+            <div class="wkk-grp"><div class="wkk-bar" style="height:45%;background:#E9A227"></div><div class="wkk-bar" style="height:52%;background:#4C8DFF"></div><div class="wkk-bar" style="height:47%;background:#22c55e"></div></div>
+            <div class="wkk-grp"><div class="wkk-bar" style="height:32%;background:#E9A227"></div><div class="wkk-bar" style="height:34%;background:#4C8DFF"></div><div class="wkk-bar" style="height:30%;background:#22c55e"></div></div>
+          </div>
+          <div class="wkk-names"><div>L. Steiner</div><div>M. Odermatt</div><div>S. Brunner</div><div>D. Furrer</div></div>
+        </div>
+
+        <div class="wkk-panel wkk-p-y">
+          <div class="wkk-cards">
+            <div class="wkk-kpi"><div class="l">Offerten offen</div><div class="v">14</div><div class="s">CHF 386’000</div></div>
+            <div class="wkk-kpi"><div class="l">Offerten akzeptiert</div><div class="v">23</div><div class="s">CHF 512’000</div></div>
+            <div class="wkk-kpi"><div class="l">Rechnungen versendet</div><div class="v">31</div><div class="s">CHF 448’000</div></div>
+            <div class="wkk-kpi"><div class="l">Bezahlt</div><div class="v" style="color:#22c55e">26</div><div class="s">CHF 391’000</div></div>
+          </div>
+          <div class="wkk-bars">
+            <div class="wkk-grp"><div class="wkk-bar" style="height:78%;background:#E9A227"></div><div class="wkk-bar" style="height:62%;background:#4C8DFF"></div><div class="wkk-bar" style="height:54%;background:#22c55e"></div></div>
+            <div class="wkk-grp"><div class="wkk-bar" style="height:58%;background:#E9A227"></div><div class="wkk-bar" style="height:70%;background:#4C8DFF"></div><div class="wkk-bar" style="height:61%;background:#22c55e"></div></div>
+            <div class="wkk-grp"><div class="wkk-bar" style="height:44%;background:#E9A227"></div><div class="wkk-bar" style="height:38%;background:#4C8DFF"></div><div class="wkk-bar" style="height:33%;background:#22c55e"></div></div>
+            <div class="wkk-grp"><div class="wkk-bar" style="height:30%;background:#E9A227"></div><div class="wkk-bar" style="height:24%;background:#4C8DFF"></div><div class="wkk-bar" style="height:20%;background:#22c55e"></div></div>
+          </div>
+          <div class="wkk-names"><div>L. Steiner</div><div>M. Odermatt</div><div>S. Brunner</div><div>D. Furrer</div></div>
+        </div>
+
+        <div class="wkk-panel wkk-p-3m">
+          <div class="wkk-cards">
+            <div class="wkk-kpi"><div class="l">Offerten offen</div><div class="v">9</div><div class="s">CHF 241’000</div></div>
+            <div class="wkk-kpi"><div class="l">Offerten akzeptiert</div><div class="v">8</div><div class="s">CHF 176’000</div></div>
+            <div class="wkk-kpi"><div class="l">Rechnungen versendet</div><div class="v">11</div><div class="s">CHF 158’000</div></div>
+            <div class="wkk-kpi"><div class="l">Bezahlt</div><div class="v" style="color:#22c55e">8</div><div class="s">CHF 117’000</div></div>
+          </div>
+          <div class="wkk-bars">
+            <div class="wkk-grp"><div class="wkk-bar" style="height:64%;background:#E9A227"></div><div class="wkk-bar" style="height:40%;background:#4C8DFF"></div><div class="wkk-bar" style="height:30%;background:#22c55e"></div></div>
+            <div class="wkk-grp"><div class="wkk-bar" style="height:50%;background:#E9A227"></div><div class="wkk-bar" style="height:52%;background:#4C8DFF"></div><div class="wkk-bar" style="height:43%;background:#22c55e"></div></div>
+            <div class="wkk-grp"><div class="wkk-bar" style="height:38%;background:#E9A227"></div><div class="wkk-bar" style="height:26%;background:#4C8DFF"></div><div class="wkk-bar" style="height:20%;background:#22c55e"></div></div>
+            <div class="wkk-grp"><div class="wkk-bar" style="height:22%;background:#E9A227"></div><div class="wkk-bar" style="height:14%;background:#4C8DFF"></div><div class="wkk-bar" style="height:10%;background:#22c55e"></div></div>
+          </div>
+          <div class="wkk-names"><div>L. Steiner</div><div>M. Odermatt</div><div>S. Brunner</div><div>D. Furrer</div></div>
+        </div>
+
+        <div class="wkk-panel wkk-p-m">
+          <div class="wkk-cards">
+            <div class="wkk-kpi"><div class="l">Offerten offen</div><div class="v">4</div><div class="s">CHF 98’000</div></div>
+            <div class="wkk-kpi"><div class="l">Offerten akzeptiert</div><div class="v">3</div><div class="s">CHF 64’000</div></div>
+            <div class="wkk-kpi"><div class="l">Rechnungen versendet</div><div class="v">4</div><div class="s">CHF 57’000</div></div>
+            <div class="wkk-kpi"><div class="l">Bezahlt</div><div class="v" style="color:#22c55e">3</div><div class="s">CHF 41’000</div></div>
+          </div>
+          <div class="wkk-bars">
+            <div class="wkk-grp"><div class="wkk-bar" style="height:46%;background:#E9A227"></div><div class="wkk-bar" style="height:28%;background:#4C8DFF"></div><div class="wkk-bar" style="height:20%;background:#22c55e"></div></div>
+            <div class="wkk-grp"><div class="wkk-bar" style="height:58%;background:#E9A227"></div><div class="wkk-bar" style="height:36%;background:#4C8DFF"></div><div class="wkk-bar" style="height:26%;background:#22c55e"></div></div>
+            <div class="wkk-grp"><div class="wkk-bar" style="height:24%;background:#E9A227"></div><div class="wkk-bar" style="height:16%;background:#4C8DFF"></div><div class="wkk-bar" style="height:12%;background:#22c55e"></div></div>
+            <div class="wkk-grp"><div class="wkk-bar" style="height:14%;background:#E9A227"></div><div class="wkk-bar" style="height:8%;background:#4C8DFF"></div><div class="wkk-bar" style="height:6%;background:#22c55e"></div></div>
+          </div>
+          <div class="wkk-names"><div>L. Steiner</div><div>M. Odermatt</div><div>S. Brunner</div><div>D. Furrer</div></div>
+        </div>
+
+        <div class="wkk-legend">
+          <span><span class="wkk-dot" style="background:#E9A227"></span>Offerten offen (CHF)</span>
+          <span><span class="wkk-dot" style="background:#4C8DFF"></span>Fakturiert (CHF)</span>
+          <span><span class="wkk-dot" style="background:#22c55e"></span>Bezahlt (CHF)</span>
+        </div>
+      </div>
+      <div style="margin-top:14px;font-size:14px;color:#8A929E">Nachbildung des Kennzahlen-Dashboards mit Beispieldaten. Im Produkt live aus Offerten, Rapporten und Rechnungen — pro Projektleiter, Status und Zeitraum.</div>
     </div>
   </section>
 
