@@ -1,10 +1,10 @@
 /*
  * Cookie-Hinweis für werkora.ch
  *
- * Die Website setzt keine Analyse- oder Werbe-Cookies (kein Google Analytics,
- * keine Tracking-Dienste Dritter). Der Hinweis informiert darüber; die
- * Bestätigung wird nur lokal im Browser gespeichert, damit er nicht bei jedem
- * Aufruf erscheint. Es wird nichts an einen Server übermittelt.
+ * Der Hinweis informiert über den Einsatz von Cookies (technisch notwendige
+ * Speicherung sowie Reichweitenmessung, siehe Datenschutzerklärung). Die
+ * Bestätigung wird lokal im Browser gespeichert, damit der Hinweis nicht bei
+ * jedem Aufruf erscheint.
  *
  * Läuft bewusst unabhängig vom React-Runtime in support.js, damit der Hinweis
  * auch dann erscheint, wenn das Rendering der Seite scheitert.
@@ -67,8 +67,8 @@
 
     var text = document.createElement('p');
     text.className = 'wk-cc-text';
-    text.innerHTML = 'Diese Website verwendet nur technisch notwendige Speicherung — ' +
-      'kein Tracking, keine Analyse-Dienste, kein Google Analytics. Mehr dazu in der ' +
+    text.innerHTML = 'Diese Website verwendet Cookies für den Betrieb der Seite und ' +
+      'zur Reichweitenmessung. Mehr dazu in der ' +
       '<a href="./datenschutz.html">Datenschutzerklärung</a>.';
 
     var btn = document.createElement('button');
