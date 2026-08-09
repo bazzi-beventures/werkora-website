@@ -7,6 +7,7 @@
 <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
 <script src="./support.js"></script>
 <script src="./cookie-hinweis.js" defer></script>
+<script src="./chat-demos.js" defer></script>
 </head>
 <body>
 <x-dc>
@@ -237,7 +238,7 @@
             <img src="assets/werkora-mark.png" alt="" style="width:22px;height:22px;display:block" />
           </div>
 
-          <div style="background:#F4F6FA;padding:14px 12px;display:flex;flex-direction:column;gap:10px">
+          <div id="wk-rapport-thread" style="background:#F4F6FA;padding:14px 12px;display:flex;flex-direction:column;gap:10px">
             <div style="max-width:88%;align-self:flex-start;background:#FFFFFF;border-radius:14px;border-top-left-radius:5px;padding:10px 13px;box-shadow:0 1px 2px rgba(16,20,28,0.06)">
               <div style="font-size:13px;line-height:1.55;color:#2A323D">Hallo! Sag z.&nbsp;B. «Neuer Rapport» — oder sprich mir die Nachricht direkt auf.</div>
               <div style="margin-top:4px;text-align:right;font-family:'DM Mono',monospace;font-size:10px;color:#A5ADB8">17:02</div>
@@ -323,6 +324,46 @@
 
       <div style="margin-top:40px;border-left:3px solid #E9A227;padding:6px 0 6px 22px">
         <div style="font-size:17px;line-height:1.6;color:#FFFFFF;max-width:60ch">Selbständig heisst nicht unkontrolliert: <span style="color:#A8B0BC">Werkora bucht und verschickt nichts ohne Ihre Freigabe.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Eingebaute Hilfe" style="border-bottom:1px solid #E4E7EB">
+    <div class="wk-pad wk-tight wk-gap" style="max-width:1280px;margin:0 auto;padding:104px 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr));gap:64px;align-items:start">
+      <div>
+        <div style="font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:#A9711A">Eingebaute Hilfe</div>
+        <h2 style="margin:20px 0 0;font-family:'Bitter',serif;font-size:clamp(30px,4vw,52px);line-height:1.08;font-weight:600;letter-spacing:-0.025em;color:#12161D;max-width:16ch;text-wrap:pretty">Das Handbuch, das antwortet</h2>
+        <p style="margin:26px 0 0;font-size:18px;line-height:1.65;color:#5A6270;max-width:46ch">Die Hilfe ist in Werkora eingebaut: Mitarbeitende stellen ihre Frage in eigenen Worten und erhalten die Antwort aus dem Handbuch — direkt in der App, im Moment der Frage.</p>
+        <div style="display:flex;flex-direction:column;margin-top:40px">
+          <div style="border-top:1px solid #E4E7EB;padding:18px 0"><span style="font-size:16px;font-weight:500;color:#12161D">Antworten aus dem Handbuch</span><span style="font-size:16px;color:#5A6270"> — der Assistent stützt sich ausschliesslich auf die dokumentierte Bedienung. Was nicht im Handbuch steht, behauptet er nicht.</span></div>
+          <div style="border-top:1px solid #E4E7EB;padding:18px 0"><span style="font-size:16px;font-weight:500;color:#12161D">Für jede Rolle</span><span style="font-size:16px;color:#5A6270"> — vom Stempeln bis zur Offerten-Freigabe: Jede Frage zur Bedienung ist erlaubt, in normalen Worten statt Fachbegriffen.</span></div>
+          <div style="border-top:1px solid #E4E7EB;border-bottom:1px solid #E4E7EB;padding:18px 0"><span style="font-size:16px;font-weight:500;color:#12161D">Weniger Schulungsaufwand</span><span style="font-size:16px;color:#5A6270"> — neue Mitarbeitende finden sich schneller zurecht, Rückfragen im Büro nehmen ab.</span></div>
+        </div>
+      </div>
+      <div class="wk-sticky" style="position:sticky;top:110px">
+        <div id="wk-hilfe" style="max-width:380px;margin:0 auto;background:#FFFFFF;border:1px solid #E4E7EB;border-radius:22px;box-shadow:0 24px 60px rgba(16,20,28,0.14);overflow:hidden">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid #EEF1F5">
+            <div style="font-size:16px;font-weight:600;color:#12161D">Hilfe</div>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A929E" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+          </div>
+          <div id="wk-hilfe-thread" style="height:400px;padding:16px 14px;display:flex;flex-direction:column;gap:10px;overflow:hidden">
+            <div id="wk-hilfe-intro" style="text-align:center;margin:30px 12px 0">
+              <div style="font-size:16.5px;line-height:1.5;color:#3A4453">Stell mir eine Frage zur Bedienung der App.</div>
+              <div style="margin-top:7px;font-size:13.5px;color:#8A929E">Ich antworte auf Basis des Handbuchs.</div>
+            </div>
+            <div id="wk-hilfe-chips" style="margin-top:auto;display:flex;flex-direction:column;align-items:flex-start;gap:8px">
+              <div class="wk-hilfe-chip" style="background:#F1F3F6;border:1px solid #E4E7EB;border-radius:999px;padding:10px 16px;font-size:13.5px;color:#3A4453">Wie erstelle ich eine neue Offerte?</div>
+              <div class="wk-hilfe-chip" style="background:#F1F3F6;border:1px solid #E4E7EB;border-radius:999px;padding:10px 16px;font-size:13.5px;color:#3A4453">Wo sehe ich meine Ferientage?</div>
+              <div class="wk-hilfe-chip" style="background:#F1F3F6;border:1px solid #E4E7EB;border-radius:999px;padding:10px 16px;font-size:13.5px;color:#3A4453">Wie funktioniert die Zeitkorrektur?</div>
+              <div class="wk-hilfe-chip" style="background:#F1F3F6;border:1px solid #E4E7EB;border-radius:999px;padding:10px 16px;font-size:13.5px;color:#3A4453">Wie melde ich eine Abwesenheit?</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;padding:11px 12px;border-top:1px solid #EEF1F5">
+            <div style="flex:1;border:1px solid #E4E7EB;border-radius:12px;padding:10px 14px;font-size:13px;color:#9AA2AE">Frage zur App stellen…</div>
+            <div style="flex:none;background:#9DB2C6;color:#FFFFFF;border-radius:12px;padding:10px 18px;font-size:13px;font-weight:600">Senden</div>
+          </div>
+        </div>
+        <div style="max-width:380px;margin:12px auto 0;font-size:13px;line-height:1.6;color:#8A929E">Nachbildung des Hilfe-Assistenten in der App. Die Antworten stützen sich auf das Werkora-Handbuch.</div>
       </div>
     </div>
   </section>
