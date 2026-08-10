@@ -68,6 +68,32 @@
     gtag('config', GA_ID, { anonymize_ip: true });
   }
 
+  /* ---------- Ereignisse ---------- */
+
+  // Meldet ein Ereignis an Google Analytics — stilles No-op, solange keine
+  // Einwilligung vorliegt. Auch von den Seiten-Skripten nutzbar (z. B. Kontaktformular).
+  window.wkEreignis = function (name, params) {
+    if (geladen && typeof window.gtag === 'function') {
+      window.gtag('event', name, params || {});
+    }
+  };
+
+  // Klicks auf Kontakt-Links und E-Mail-Adressen zählen — delegiert, damit es
+  // auf allen Seiten und auch nach erneutem Rendern funktioniert.
+  document.addEventListener('click', function (ev) {
+    var a = ev.target && ev.target.closest ? ev.target.closest('a[href]') : null;
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+    if (href.indexOf('mailto:') === 0) {
+      window.wkEreignis('email_klick', { seite: window.location.pathname });
+    } else if (href.indexOf('kontakt.html') > -1 && window.location.pathname.indexOf('kontakt.html') === -1) {
+      window.wkEreignis('kontakt_klick', {
+        seite: window.location.pathname,
+        beschriftung: (a.textContent || '').trim().slice(0, 60)
+      });
+    }
+  });
+
   // Nach einem Widerruf die bereits gesetzten Analytics-Cookies entfernen.
   function analyticsCookiesLoeschen() {
     var namen = document.cookie.split(';').map(function (c) {
