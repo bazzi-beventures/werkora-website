@@ -15,7 +15,7 @@
 
   // Mess-ID von Google Analytics eintragen, z. B. 'G-XXXXXXXXXX'.
   // Solange sie leer ist, wird auch nach einer Zustimmung nichts geladen.
-  var GA_ID = '';
+  var GA_ID = 'G-8WH06P8C6E';
 
   var KEY = 'wk-cookie-consent';
   var JA = 'analytics';
