@@ -113,6 +113,24 @@
     .wk-stack > a { text-align: center; }
   }
 
+  /* ---------- Prozess-Visuals ---------- */
+  .wk-flow { display: flex; align-items: stretch; margin-top: 30px; }
+  .wk-flow-step { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 13px; background: #FFFFFF; border: 1px solid #E4E7EB; border-radius: 14px; padding: 17px 15px; }
+  .wk-flow-step .ic { flex: none; width: 36px; height: 36px; border-radius: 50%; background: #F1F3F6; color: #5A6270; display: flex; align-items: center; justify-content: center; }
+  .wk-flow-step .ic svg { display: block; }
+  .wk-flow-step .t { font-size: 15px; font-weight: 600; color: #12161D; }
+  .wk-flow-step .s { margin-top: 5px; font-size: 13px; line-height: 1.55; color: #5A6270; }
+  .wk-flow-final { border-color: #EAD3A6; background: #FEFAF2; }
+  .wk-flow-final .ic { background: #FDF3DF; color: #A9711A; }
+  .wk-flow-arrow { flex: none; align-self: center; display: flex; padding: 0 5px; color: #C9CED6; }
+  .wk-flow-arrow svg { display: block; }
+  @media (max-width: 640px) {
+    .wk-flow { flex-direction: column; }
+    .wk-flow-step { flex-direction: row; align-items: flex-start; gap: 14px; padding: 15px 16px; }
+    .wk-flow-arrow { align-self: flex-start; padding: 5px 0 5px 26px; }
+    .wk-flow-arrow svg { transform: rotate(90deg); }
+  }
+
   @media (max-width: 760px) {
     .wkk-card { padding: 18px 16px; }
     .wkk-search { min-width: 0; flex: 1; }
@@ -181,7 +199,7 @@
     </div>
   </section>
 
-  <section data-screen-label="Rapport" style="border-top:1px solid #E4E7EB;background:#FFFFFF">
+  <section id="rapport" data-screen-label="Rapport" style="border-top:1px solid #E4E7EB;background:#FFFFFF">
     <div class="wk-pad wk-tight wk-2col" style="max-width:1280px;margin:0 auto;padding:72px 40px;display:grid;grid-template-columns:minmax(240px,0.8fr) 1.2fr;gap:56px;align-items:start">
       <div>
         <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#5A6270">02 · Erfassung</div>
@@ -189,6 +207,27 @@
       </div>
       <div>
         <p style="margin:0;font-size:18px;line-height:1.6;color:#5A6270">Der Monteur beschreibt seinen Tag in normalen Worten — per Sprache oder Chat, auch ohne Verbindung. Aus dem Text werden Projekt, Stunden und Material.</p>
+        <div class="wk-flow">
+          <div class="wk-flow-step">
+            <div class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" /><path d="M19 10v2a7 7 0 0 1-14 0v-2" /><path d="M12 19v3" /></svg></div>
+            <div class="tx"><div class="t">Sprechen</div><div class="s">Sprachnachricht oder Chat, direkt von der Baustelle.</div></div>
+          </div>
+          <div class="wk-flow-arrow"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="m13 6 6 6-6 6" /></svg></div>
+          <div class="wk-flow-step">
+            <div class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2" /><rect x="9" y="9" width="6" height="6" /><path d="M15 2v2M15 20v2M2 15h2M2 9h2M20 15h2M20 9h2M9 2v2M9 20v2" /></svg></div>
+            <div class="tx"><div class="t">Verstehen</div><div class="s">Die KI macht daraus Projekt, Stunden und Material.</div></div>
+          </div>
+          <div class="wk-flow-arrow"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="m13 6 6 6-6 6" /></svg></div>
+          <div class="wk-flow-step">
+            <div class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1 1 0 0 1 1.52 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1z" /><path d="m9 12 2 2 4-4" /></svg></div>
+            <div class="tx"><div class="t">Prüfen</div><div class="s">Abgleich mit den Stammdaten — Unklares wird nachgefragt.</div></div>
+          </div>
+          <div class="wk-flow-arrow"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="m13 6 6 6-6 6" /></svg></div>
+          <div class="wk-flow-step wk-flow-final">
+            <div class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m9 12 2 2 4-4" /></svg></div>
+            <div class="tx"><div class="t">Freigeben</div><div class="s">Erst der Klick des Mitarbeiters bucht Rapport und Lager.</div></div>
+          </div>
+        </div>
         <div style="display:flex;flex-direction:column;gap:16px;margin-top:28px">
           <div style="border-top:1px solid #E4E7EB;padding-top:16px"><span style="font-size:16px;font-weight:500;color:#12161D">Offlinefähig</span><span style="font-size:16px;color:#5A6270"> — Erfassung auf der Baustelle, Übertragung sobald wieder Netz da ist.</span></div>
           <div style="border-top:1px solid #E4E7EB;padding-top:16px"><span style="font-size:16px;font-weight:500;color:#12161D">Abgleich mit den Stammdaten</span><span style="font-size:16px;color:#5A6270"> — unklare Angaben führen zu Rückfragen, nicht zu einem falschen Eintrag.</span></div>
@@ -233,7 +272,7 @@
     </div>
   </section>
 
-  <section data-screen-label="Einkauf" style="border-top:1px solid #E4E7EB;background:#FFFFFF">
+  <section id="preisregeln" data-screen-label="Einkauf" style="border-top:1px solid #E4E7EB;background:#FFFFFF">
     <div class="wk-pad wk-tight wk-2col" style="max-width:1280px;margin:0 auto;padding:72px 40px;display:grid;grid-template-columns:minmax(240px,0.8fr) 1.2fr;gap:56px;align-items:start">
       <div>
         <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#5A6270">05 · Einkauf &amp; Marge</div>
@@ -241,7 +280,28 @@
       </div>
       <div>
         <p style="margin:0;font-size:18px;line-height:1.6;color:#5A6270">Verkaufspreise entstehen aus dem Einkaufspreis und einem hinterlegten Aufschlag — pro Lieferant und Kategorie, statt in gepflegten Preislisten.</p>
-        <div style="margin-top:24px;display:inline-block;background:#FFFFFF;border:1px solid #E4E7EB;border-radius:10px;padding:14px 20px;font-family:'DM Mono',monospace;font-size:16px;color:#A9711A">VK = EK × (1 + Aufschlag)</div>
+        <div class="wk-flow">
+          <div class="wk-flow-step">
+            <div class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z" /><path d="M14 2v6h6" /><path d="M8 13h8" /><path d="M8 17h5" /></svg></div>
+            <div class="tx"><div class="t">Lieferanten-PDF</div><div class="s">Preisliste oder Konfigurator-PDF trifft ein.</div></div>
+          </div>
+          <div class="wk-flow-arrow"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="m13 6 6 6-6 6" /></svg></div>
+          <div class="wk-flow-step">
+            <div class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7V5a2 2 0 0 1 2-2h2" /><path d="M17 3h2a2 2 0 0 1 2 2v2" /><path d="M21 17v2a2 2 0 0 1-2 2h-2" /><path d="M7 21H5a2 2 0 0 1-2-2v-2" /><path d="M7 8h8" /><path d="M7 12h10" /><path d="M7 16h6" /></svg></div>
+            <div class="tx"><div class="t">Auslesen</div><div class="s">Die KI liest die Einkaufspreise per OCR aus.</div></div>
+          </div>
+          <div class="wk-flow-arrow"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="m13 6 6 6-6 6" /></svg></div>
+          <div class="wk-flow-step">
+            <div class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="5" x2="5" y2="19" /><circle cx="6.5" cy="6.5" r="2.5" /><circle cx="17.5" cy="17.5" r="2.5" /></svg></div>
+            <div class="tx"><div class="t">Regel rechnet</div><div class="s">Der hinterlegte Aufschlag macht daraus den Verkaufspreis.</div></div>
+          </div>
+          <div class="wk-flow-arrow"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="m13 6 6 6-6 6" /></svg></div>
+          <div class="wk-flow-step wk-flow-final">
+            <div class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2H2v10l9.3 9.3a1 1 0 0 0 1.4 0l8.6-8.6a1 1 0 0 0 0-1.4Z" /><circle cx="7" cy="7" r="1.5" /></svg></div>
+            <div class="tx"><div class="t">VK aktuell</div><div class="s">Verkaufspreise sofort nachgeführt — ohne Handarbeit.</div></div>
+          </div>
+        </div>
+        <div style="margin-top:18px;display:inline-block;background:#FFFFFF;border:1px solid #E4E7EB;border-radius:10px;padding:14px 20px;font-family:'DM Mono',monospace;font-size:16px;color:#A9711A">VK = EK × (1 + Aufschlag)</div>
         <div style="display:flex;flex-direction:column;gap:16px;margin-top:28px">
           <div style="border-top:1px solid #E4E7EB;padding-top:16px"><span style="font-size:16px;font-weight:500;color:#12161D">Aufschlag statt Handarbeit</span><span style="font-size:16px;color:#5A6270"> — neue Einkaufspreise wirken sofort auf den Verkaufspreis.</span></div>
           <div style="border-top:1px solid #E4E7EB;padding-top:16px"><span style="font-size:16px;font-weight:500;color:#12161D">Pro Lieferant und Kategorie</span><span style="font-size:16px;color:#5A6270"> — unterschiedliche Margen je Sortiment, nachvollziehbar hinterlegt.</span></div>
@@ -252,7 +312,7 @@
     </div>
   </section>
 
-  <section data-screen-label="Offerte und Rechnung" style="border-top:1px solid #E4E7EB;background:#FFFFFF">
+  <section id="offerte" data-screen-label="Offerte und Rechnung" style="border-top:1px solid #E4E7EB;background:#FFFFFF">
     <div class="wk-pad wk-tight wk-2col" style="max-width:1280px;margin:0 auto;padding:72px 40px;display:grid;grid-template-columns:minmax(240px,0.8fr) 1.2fr;gap:56px;align-items:start">
       <div>
         <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#5A6270">06 · Verkauf</div>
@@ -260,6 +320,27 @@
       </div>
       <div>
         <p style="margin:0;font-size:18px;line-height:1.6;color:#5A6270">Der kaufmännische Kern: vom Rapport bis zur bezahlten Rechnung ohne Medienbruch. Offerte, Auftrag und QR-Rechnung entstehen aus demselben Datenbestand — nichts wird doppelt erfasst.</p>
+        <div class="wk-flow">
+          <div class="wk-flow-step">
+            <div class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z" /><path d="M14 2v6h6" /><path d="M8 13h8" /><path d="M8 17h5" /></svg></div>
+            <div class="tx"><div class="t">Offerte</div><div class="s">Varianten und optionale Positionen — der Kunde wählt.</div></div>
+          </div>
+          <div class="wk-flow-arrow"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="m13 6 6 6-6 6" /></svg></div>
+          <div class="wk-flow-step">
+            <div class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9" /><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z" /></svg></div>
+            <div class="tx"><div class="t">Auftrag</div><div class="s">Akzeptierte Preise sind gebunden und gelten weiter.</div></div>
+          </div>
+          <div class="wk-flow-arrow"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="m13 6 6 6-6 6" /></svg></div>
+          <div class="wk-flow-step">
+            <div class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" /></svg></div>
+            <div class="tx"><div class="t">Rapport</div><div class="s">Stunden und Material fliessen von der Baustelle ein.</div></div>
+          </div>
+          <div class="wk-flow-arrow"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="m13 6 6 6-6 6" /></svg></div>
+          <div class="wk-flow-step wk-flow-final">
+            <div class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="5" height="5" x="3" y="3" rx="1" /><rect width="5" height="5" x="16" y="3" rx="1" /><rect width="5" height="5" x="3" y="16" rx="1" /><path d="M21 16h-3a2 2 0 0 0-2 2v3" /><path d="M21 21v.01" /><path d="M12 7v3a2 2 0 0 1-2 2H7" /><path d="M3 12h.01" /><path d="M12 3h.01" /><path d="M12 16v.01" /><path d="M16 12h1" /><path d="M21 12v.01" /><path d="M12 21v-1" /></svg></div>
+            <div class="tx"><div class="t">QR-Rechnung</div><div class="s">Schweizer Zahlteil mit Skonto, direkt aus dem Projekt.</div></div>
+          </div>
+        </div>
         <div style="display:flex;flex-direction:column;gap:16px;margin-top:28px">
           <div style="border-top:1px solid #E4E7EB;padding-top:16px"><span style="font-size:16px;font-weight:500;color:#12161D">Varianten und optionale Positionen</span><span style="font-size:16px;color:#5A6270"> — der Kunde vergleicht und wählt, die Offerte rechnet mit.</span></div>
           <div style="border-top:1px solid #E4E7EB;padding-top:16px"><span style="font-size:16px;font-weight:500;color:#12161D">Preisbindung bis zur Rechnung</span><span style="font-size:16px;color:#5A6270"> — was in der akzeptierten Offerte steht, gilt. Die Rechnung übernimmt die Preise, statt sie neu zu erfassen.</span></div>
