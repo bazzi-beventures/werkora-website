@@ -28,17 +28,6 @@
     section > div:not([aria-hidden="true"]) { animation: wkReveal 1ms linear both; animation-timeline: view(); animation-range: entry 0% entry 45%; }
   }
 
-  /* ---------- Gewinn-Marker (Zeit / Fehler) ---------- */
-  .wk-gain { display: inline-flex; align-items: center; gap: 9px; font-size: 13.5px; line-height: 1.4; font-weight: 500; padding: 8px 15px 8px 12px; border-radius: 999px; }
-  .wk-gain svg { flex: none; display: block; }
-  .wk-gain-k { font-family: 'DM Mono', monospace; font-size: 10.5px; letter-spacing: 0.13em; text-transform: uppercase; opacity: 0.72; margin-right: 8px; }
-  .wk-gain-time { background: #FDF3DF; color: #8A5B12; }
-  .wk-gain-err { background: #E4F6EA; color: #166534; }
-  .wk-gain-time-d { background: rgba(233,162,39,0.14); color: #F0B44E; }
-  .wk-gain-err-d { background: rgba(34,197,94,0.14); color: #6FD79B; }
-  .wk-gain-sm { font-size: 12px; gap: 6px; padding: 5px 12px 5px 9px; }
-  .wk-gains { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
-
   /* ---------- Heute / Mit Werkora ---------- */
   .wk-cmp { border: 1px solid #E4E7EB; border-radius: 20px; overflow: hidden; background: #FFFFFF; }
   .wk-cmp-head, .wk-cmp-row { display: grid; grid-template-columns: 0.85fr 1.1fr 1.25fr; gap: 26px; padding: 22px 26px; align-items: start; }
@@ -48,7 +37,6 @@
   .wk-cmp-t { font-size: 16px; font-weight: 600; color: #12161D; }
   .wk-cmp-a { font-size: 15px; line-height: 1.55; color: #8A929E; }
   .wk-cmp-b { font-size: 15px; line-height: 1.55; color: #12161D; }
-  .wk-cmp-b .wk-gains { margin-top: 12px; }
   @media (max-width: 860px) {
     .wk-cmp-head { display: none; }
     .wk-cmp-row { grid-template-columns: 1fr; gap: 8px; padding: 22px 20px; }
@@ -230,32 +218,32 @@
         <div class="wk-cmp-row">
           <div class="wk-cmp-t">Rapport vom Tag</div>
           <div class="wk-cmp-a">Notiz auf dem Zettel, am Abend oder am Freitag im Büro abgetippt.</div>
-          <div class="wk-cmp-b">Auf der Baustelle gesprochen, gegen die Stammdaten geprüft, mit einem Klick gebucht.<div class="wk-gains"><span class="wk-gain wk-gain-sm wk-gain-time"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M12 7.5V12l3 2" /></svg>Zeit</span><span class="wk-gain wk-gain-sm wk-gain-err"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.6 4.5 5.4v5.9c0 4.4 3.1 7.6 7.5 9.1 4.4-1.5 7.5-4.7 7.5-9.1V5.4Z" /><path d="m9.2 12 2 2 3.6-3.8" /></svg>Fehler</span></div></div>
+          <div class="wk-cmp-b">Auf der Baustelle gesprochen, gegen die Stammdaten geprüft, mit einem Klick gebucht.</div>
         </div>
         <div class="wk-cmp-row">
           <div class="wk-cmp-t">Arbeitszeit</div>
           <div class="wk-cmp-a">Stundenzettel, am Monatsende aus dem Gedächtnis ergänzt.</div>
-          <div class="wk-cmp-b">Gestempelt per App — wer es vergisst, wird am Morgen erinnert.<div class="wk-gains"><span class="wk-gain wk-gain-sm wk-gain-time"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M12 7.5V12l3 2" /></svg>Zeit</span><span class="wk-gain wk-gain-sm wk-gain-err"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.6 4.5 5.4v5.9c0 4.4 3.1 7.6 7.5 9.1 4.4-1.5 7.5-4.7 7.5-9.1V5.4Z" /><path d="m9.2 12 2 2 3.6-3.8" /></svg>Fehler</span></div></div>
+          <div class="wk-cmp-b">Gestempelt per App — wer es vergisst, wird am Morgen erinnert.</div>
         </div>
         <div class="wk-cmp-row">
           <div class="wk-cmp-t">Einkaufspreise</div>
           <div class="wk-cmp-a">Neue Lieferantenliste, Position für Position von Hand nachgeführt.</div>
-          <div class="wk-cmp-b">Die KI liest das PDF, die hinterlegte Aufschlagsregel führt die Verkaufspreise nach.<div class="wk-gains"><span class="wk-gain wk-gain-sm wk-gain-time"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M12 7.5V12l3 2" /></svg>Zeit</span><span class="wk-gain wk-gain-sm wk-gain-err"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.6 4.5 5.4v5.9c0 4.4 3.1 7.6 7.5 9.1 4.4-1.5 7.5-4.7 7.5-9.1V5.4Z" /><path d="m9.2 12 2 2 3.6-3.8" /></svg>Fehler</span></div></div>
+          <div class="wk-cmp-b">Die KI liest das PDF, die hinterlegte Aufschlagsregel führt die Verkaufspreise nach.</div>
         </div>
         <div class="wk-cmp-row">
           <div class="wk-cmp-t">Offerte → Rechnung</div>
           <div class="wk-cmp-a">Positionen, Stunden und Material ein zweites Mal erfassen, Excel dazwischen.</div>
-          <div class="wk-cmp-b">Die Rechnung entsteht aus Projekt und Rapporten; akzeptierte Preise bleiben gebunden.<div class="wk-gains"><span class="wk-gain wk-gain-sm wk-gain-time"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M12 7.5V12l3 2" /></svg>Zeit</span><span class="wk-gain wk-gain-sm wk-gain-err"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.6 4.5 5.4v5.9c0 4.4 3.1 7.6 7.5 9.1 4.4-1.5 7.5-4.7 7.5-9.1V5.4Z" /><path d="m9.2 12 2 2 3.6-3.8" /></svg>Fehler</span></div></div>
+          <div class="wk-cmp-b">Die Rechnung entsteht aus Projekt und Rapporten; akzeptierte Preise bleiben gebunden.</div>
         </div>
         <div class="wk-cmp-row">
           <div class="wk-cmp-t">Nachfassen</div>
           <div class="wk-cmp-a">Wenn jemand daran denkt — und die Liste findet.</div>
-          <div class="wk-cmp-b">Täglich vorbereitet und formuliert, Ihre Freigabe genügt.<div class="wk-gains"><span class="wk-gain wk-gain-sm wk-gain-time"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M12 7.5V12l3 2" /></svg>Zeit</span><span class="wk-gain wk-gain-sm wk-gain-err"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.6 4.5 5.4v5.9c0 4.4 3.1 7.6 7.5 9.1 4.4-1.5 7.5-4.7 7.5-9.1V5.4Z" /><path d="m9.2 12 2 2 3.6-3.8" /></svg>Fehler</span></div></div>
+          <div class="wk-cmp-b">Täglich vorbereitet und formuliert, Ihre Freigabe genügt.</div>
         </div>
         <div class="wk-cmp-row">
           <div class="wk-cmp-t">Auswertung</div>
           <div class="wk-cmp-a">Zahlen zusammensuchen, sobald einmal Zeit dafür ist.</div>
-          <div class="wk-cmp-b">Montags um 08:00 liegt die ausgewertete Woche im Postfach.<div class="wk-gains"><span class="wk-gain wk-gain-sm wk-gain-time"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M12 7.5V12l3 2" /></svg>Zeit</span></div></div>
+          <div class="wk-cmp-b">Montags um 08:00 liegt die ausgewertete Woche im Postfach.</div>
         </div>
       </div>
 
@@ -281,7 +269,6 @@
           </div>
           <div style="margin-top:20px;font-size:18px;font-weight:600;color:#12161D">Auf Ihren Betrieb gebaut</div>
           <p style="margin:10px 0 0;font-size:15px;line-height:1.6;color:#5A6270">Nur die Module, die täglich bedient werden — mit Abläufen und einer Oberfläche, die wir für Sie einrichten.</p>
-          <div class="wk-gains" style="margin-top:18px"><span class="wk-gain wk-gain-time"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M12 7.5V12l3 2" /></svg><span><span class="wk-gain-k">Zeit</span>Kürzere Wege, weniger Klicks</span></span></div>
         </div>
         <div style="background:#FFFFFF;border:1px solid #E4E7EB;border-radius:20px;padding:28px" style-hover="border-color:#C9CED6">
           <div style="display:flex;align-items:center;justify-content:space-between">
@@ -290,7 +277,6 @@
           </div>
           <div style="margin-top:20px;font-size:18px;font-weight:600;color:#12161D">Die KI liest die Lieferantendokumente</div>
           <p style="margin:10px 0 0;font-size:15px;line-height:1.6;color:#5A6270">Preislisten und Konfigurator-PDFs werden automatisch ausgewertet.</p>
-          <div class="wk-gains" style="margin-top:18px"><span class="wk-gain wk-gain-err"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.6 4.5 5.4v5.9c0 4.4 3.1 7.6 7.5 9.1 4.4-1.5 7.5-4.7 7.5-9.1V5.4Z" /><path d="m9.2 12 2 2 3.6-3.8" /></svg><span><span class="wk-gain-k">Fehler</span>Preise können nicht veralten</span></span></div>
         </div>
         <div style="background:#FFFFFF;border:1px solid #E4E7EB;border-radius:20px;padding:28px" style-hover="border-color:#C9CED6">
           <div style="display:flex;align-items:center;justify-content:space-between">
@@ -299,7 +285,6 @@
           </div>
           <div style="margin-top:20px;font-size:18px;font-weight:600;color:#12161D">Erfassen im Dialog, direkt auf der Baustelle</div>
           <p style="margin:10px 0 0;font-size:15px;line-height:1.6;color:#5A6270">Zeit, Rapport und Material per Chat oder Sprache — offlinefähig.</p>
-          <div class="wk-gains" style="margin-top:18px"><span class="wk-gain wk-gain-time"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M12 7.5V12l3 2" /></svg><span><span class="wk-gain-k">Zeit</span>Kein Abtippen am Abend</span></span></div>
         </div>
         <div style="background:#FFFFFF;border:1px solid #E4E7EB;border-radius:20px;padding:28px" style-hover="border-color:#C9CED6">
           <div style="display:flex;align-items:center;justify-content:space-between">
@@ -308,7 +293,6 @@
           </div>
           <div style="margin-top:20px;font-size:18px;font-weight:600;color:#12161D">Vom Rapport zur QR-Rechnung</div>
           <p style="margin:10px 0 0;font-size:15px;line-height:1.6;color:#5A6270">Ein Datenbestand, keine Doppelerfassung, kein Excel dazwischen.</p>
-          <div class="wk-gains" style="margin-top:18px"><span class="wk-gain wk-gain-err"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.6 4.5 5.4v5.9c0 4.4 3.1 7.6 7.5 9.1 4.4-1.5 7.5-4.7 7.5-9.1V5.4Z" /><path d="m9.2 12 2 2 3.6-3.8" /></svg><span><span class="wk-gain-k">Fehler</span>Keine abweichenden Zahlen</span></span></div>
         </div>
       </div>
     </div>
@@ -342,7 +326,6 @@
           <p style="margin:10px 0 0;font-size:15px;line-height:1.6;color:#5A6270">Erst der Klick des Mitarbeiters erzeugt Rapport, Material- und Lagerbuchung.</p>
         </div>
       </div>
-      <div class="wk-gains"><span class="wk-gain wk-gain-time"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M12 7.5V12l3 2" /></svg><span><span class="wk-gain-k">Zeit</span>Fertig, bevor der Monteur zu Hause ist</span></span><span class="wk-gain wk-gain-err"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.6 4.5 5.4v5.9c0 4.4 3.1 7.6 7.5 9.1 4.4-1.5 7.5-4.7 7.5-9.1V5.4Z" /><path d="m9.2 12 2 2 3.6-3.8" /></svg><span><span class="wk-gain-k">Fehler</span>Nichts wird am Freitag aus dem Gedächtnis rekonstruiert</span></span></div>
       </div>
       <div class="wk-sticky" style="position:sticky;top:110px">
         <div style="max-width:380px;margin:0 auto;background:#FFFFFF;border:1px solid #E4E7EB;border-radius:22px;box-shadow:0 24px 60px rgba(16,20,28,0.14);overflow:hidden">
@@ -440,8 +423,6 @@
           <p style="margin:10px 0 0;font-size:15px;line-height:1.6;color:#A8B0BC">Überfällige Offerten, Rechnungen und Projekte werden gemeldet, bevor sie zum Problem werden.</p>
         </div>
       </div>
-
-      <div class="wk-gains"><span class="wk-gain wk-gain-time-d"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M12 7.5V12l3 2" /></svg><span><span class="wk-gain-k">Zeit</span>Kein Nachhaken, kein Nachtragen</span></span><span class="wk-gain wk-gain-err-d"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.6 4.5 5.4v5.9c0 4.4 3.1 7.6 7.5 9.1 4.4-1.5 7.5-4.7 7.5-9.1V5.4Z" /><path d="m9.2 12 2 2 3.6-3.8" /></svg><span><span class="wk-gain-k">Fehler</span>Nichts fällt hinten runter</span></span></div>
 
       <div style="margin-top:40px;border-left:3px solid #E9A227;padding:6px 0 6px 22px">
         <div style="font-size:17px;line-height:1.6;color:#FFFFFF;max-width:60ch">Selbständig heisst nicht unkontrolliert: <span style="color:#A8B0BC">Werkora bucht und verschickt nichts ohne Ihre Freigabe.</span></div>

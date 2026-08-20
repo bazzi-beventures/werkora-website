@@ -80,14 +80,6 @@
   @keyframes wkkBar { from { transform: scaleY(0); } to { transform: scaleY(1); } }
   @keyframes wkkFade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 
-  /* ---------- Gewinn-Marker (Zeit / Fehler) ---------- */
-  .wk-gain { display: inline-flex; align-items: center; gap: 9px; font-size: 13.5px; line-height: 1.4; font-weight: 500; padding: 8px 15px 8px 12px; border-radius: 999px; }
-  .wk-gain svg { flex: none; display: block; }
-  .wk-gain-k { font-family: 'DM Mono', monospace; font-size: 10.5px; letter-spacing: 0.13em; text-transform: uppercase; opacity: 0.72; margin-right: 8px; }
-  .wk-gain-time { background: #FDF3DF; color: #8A5B12; }
-  .wk-gain-err { background: #E4F6EA; color: #166534; }
-  .wk-gains { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
-
   /* ---------- Mobile-Navigation ---------- */
   .wk-header-inner { position: relative; }
   .wk-menu { display: none; }
@@ -203,7 +195,6 @@
           <div style="border-top:1px solid #E4E7EB;padding-top:16px"><span style="font-size:16px;font-weight:500;color:#12161D">Vertrieb &amp; Projekte</span><span style="font-size:16px;color:#5A6270"> — Offerten in Bearbeitung, Erinnerungen und überfällige Projekte mit Zähler.</span></div>
         </div>
         <div style="margin-top:20px;font-size:14px;color:#5A6270">Statistik und Handlungsbedarf (rote Zähler) auf einen Blick.</div>
-        <div class="wk-gains"><span class="wk-gain wk-gain-time"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M12 7.5V12l3 2" /></svg><span><span class="wk-gain-k">Zeit</span>Kein Suchen in fünf Programmen</span></span><span class="wk-gain wk-gain-err"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.6 4.5 5.4v5.9c0 4.4 3.1 7.6 7.5 9.1 4.4-1.5 7.5-4.7 7.5-9.1V5.4Z" /><path d="m9.2 12 2 2 3.6-3.8" /></svg><span><span class="wk-gain-k">Fehler</span>Nichts Fälliges geht unter</span></span></div>
       </div>
     </div>
   </section>
@@ -242,7 +233,6 @@
           <div style="border-top:1px solid #E4E7EB;padding-top:16px"><span style="font-size:16px;font-weight:500;color:#12161D">Abgleich mit den Stammdaten</span><span style="font-size:16px;color:#5A6270"> — unklare Angaben führen zu Rückfragen, nicht zu einem falschen Eintrag.</span></div>
           <div style="border-top:1px solid #E4E7EB;padding-top:16px"><span style="font-size:16px;font-weight:500;color:#12161D">Bestätigen, dann buchen</span><span style="font-size:16px;color:#5A6270"> — erst der Klick des Mitarbeiters erzeugt Rapport, Material- und Lagerbuchung.</span></div>
         </div>
-        <div class="wk-gains"><span class="wk-gain wk-gain-time"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M12 7.5V12l3 2" /></svg><span><span class="wk-gain-k">Zeit</span>Kein Abtippen im Büro</span></span><span class="wk-gain wk-gain-err"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.6 4.5 5.4v5.9c0 4.4 3.1 7.6 7.5 9.1 4.4-1.5 7.5-4.7 7.5-9.1V5.4Z" /><path d="m9.2 12 2 2 3.6-3.8" /></svg><span><span class="wk-gain-k">Fehler</span>Abgleich mit den Stammdaten statt Schätzung</span></span></div>
       </div>
     </div>
   </section>
@@ -261,7 +251,6 @@
           <div style="border-top:1px solid #E4E7EB;padding-top:16px"><span style="font-size:16px;font-weight:500;color:#12161D">Absenzen und Korrekturen mit Freigabe</span><span style="font-size:16px;color:#5A6270"> — Ferien, Krankheit und Zeitkorrekturen laufen als Antrag; die Leitung gibt frei.</span></div>
         </div>
         <div style="margin-top:20px;font-size:14px;color:#5A6270">Ein Pflichtthema, das nebenbei erledigt wird — statt in einer Zusatzsoftware.</div>
-        <div class="wk-gains"><span class="wk-gain wk-gain-time"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M12 7.5V12l3 2" /></svg><span><span class="wk-gain-k">Zeit</span>Keine Stundenzettel nachtragen</span></span><span class="wk-gain wk-gain-err"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.6 4.5 5.4v5.9c0 4.4 3.1 7.6 7.5 9.1 4.4-1.5 7.5-4.7 7.5-9.1V5.4Z" /><path d="m9.2 12 2 2 3.6-3.8" /></svg><span><span class="wk-gain-k">Fehler</span>Keine fehlenden Stunden am Monatsende</span></span></div>
       </div>
     </div>
   </section>
@@ -279,7 +268,6 @@
           <div style="border-top:1px solid #E4E7EB;padding-top:16px"><span style="font-size:16px;font-weight:500;color:#12161D">Filter nach Projektleiter</span><span style="font-size:16px;color:#5A6270"> — jeder sieht seinen Ausschnitt, die Leitung den ganzen Betrieb.</span></div>
           <div style="border-top:1px solid #E4E7EB;padding-top:16px"><span style="font-size:16px;font-weight:500;color:#12161D">Wochenplan als PDF</span><span style="font-size:16px;color:#5A6270"> — ein Klick, und der Plan geht als Aushang oder Mail an die Monteure.</span></div>
         </div>
-        <div class="wk-gains"><span class="wk-gain wk-gain-time"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M12 7.5V12l3 2" /></svg><span><span class="wk-gain-k">Zeit</span>Ein Plan statt drei Excel-Dateien</span></span><span class="wk-gain wk-gain-err"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.6 4.5 5.4v5.9c0 4.4 3.1 7.6 7.5 9.1 4.4-1.5 7.5-4.7 7.5-9.1V5.4Z" /><path d="m9.2 12 2 2 3.6-3.8" /></svg><span><span class="wk-gain-k">Fehler</span>Keine widersprüchlichen Stände</span></span></div>
       </div>
     </div>
   </section>
@@ -320,7 +308,6 @@
           <div style="border-top:1px solid #E4E7EB;padding-top:16px"><span style="font-size:16px;font-weight:500;color:#12161D">Die KI liefert den Einkaufspreis</span><span style="font-size:16px;color:#5A6270"> — Lieferanten-PDFs werden per OCR ausgelesen, die Regel macht daraus den VK.</span></div>
         </div>
         <div style="margin-top:20px;font-size:14px;color:#5A6270">Preispflege wird zur Ausnahme statt zur Daueraufgabe.</div>
-        <div class="wk-gains"><span class="wk-gain wk-gain-time"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M12 7.5V12l3 2" /></svg><span><span class="wk-gain-k">Zeit</span>Keine Preispflege von Hand</span></span><span class="wk-gain wk-gain-err"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.6 4.5 5.4v5.9c0 4.4 3.1 7.6 7.5 9.1 4.4-1.5 7.5-4.7 7.5-9.1V5.4Z" /><path d="m9.2 12 2 2 3.6-3.8" /></svg><span><span class="wk-gain-k">Fehler</span>Keine veralteten Einkaufspreise in der Offerte</span></span></div>
       </div>
     </div>
   </section>
@@ -360,7 +347,6 @@
           <div style="border-top:1px solid #E4E7EB;padding-top:16px"><span style="font-size:16px;font-weight:500;color:#12161D">QR-Rechnung mit Schweizer Zahlteil</span><span style="font-size:16px;color:#5A6270"> — inklusive Skonto, direkt aus dem Projekt erzeugt.</span></div>
         </div>
         <div style="margin-top:20px;font-size:14px;color:#5A6270">Rapportierte Stunden und Material fliessen direkt in die Abrechnung — kein Excel dazwischen.</div>
-        <div class="wk-gains"><span class="wk-gain wk-gain-time"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M12 7.5V12l3 2" /></svg><span><span class="wk-gain-k">Zeit</span>Rechnung ohne Neuerfassung</span></span><span class="wk-gain wk-gain-err"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.6 4.5 5.4v5.9c0 4.4 3.1 7.6 7.5 9.1 4.4-1.5 7.5-4.7 7.5-9.1V5.4Z" /><path d="m9.2 12 2 2 3.6-3.8" /></svg><span><span class="wk-gain-k">Fehler</span>Offerte und Rechnung können nicht auseinanderlaufen</span></span></div>
       </div>
     </div>
   </section>
@@ -379,7 +365,6 @@
           <div style="border-top:1px solid #E4E7EB;padding-top:16px"><span style="font-size:16px;font-weight:500;color:#12161D">Wöchentliche KI-Analyse</span><span style="font-size:16px;color:#5A6270"> — montags um 08:00 geht eine ausgewertete Zusammenfassung an die Geschäftsführung.</span></div>
         </div>
         <div style="margin-top:20px;font-size:14px;color:#5A6270">Zahlen aus dem operativen System, statt aus separater Kalkulation.</div>
-        <div class="wk-gains"><span class="wk-gain wk-gain-time"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M12 7.5V12l3 2" /></svg><span><span class="wk-gain-k">Zeit</span>Keine Auswertung von Hand</span></span><span class="wk-gain wk-gain-err"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.6 4.5 5.4v5.9c0 4.4 3.1 7.6 7.5 9.1 4.4-1.5 7.5-4.7 7.5-9.1V5.4Z" /><path d="m9.2 12 2 2 3.6-3.8" /></svg><span><span class="wk-gain-k">Fehler</span>Zahlen aus dem System statt aus dem Bauch</span></span></div>
       </div>
     </div>
 
@@ -541,7 +526,6 @@
           <div style="border-top:1px solid #E4E7EB;padding-top:16px"><span style="font-size:16px;font-weight:500;color:#12161D">Freigabe vor Versand</span><span style="font-size:16px;color:#5A6270"> — nichts geht ohne Kontrolle raus. Der Projektleiter gibt frei.</span></div>
         </div>
         <div style="margin-top:20px;font-size:14px;color:#5A6270">Kundenfeedback und Wartungsangebot werden zum systematischen statt zufälligen Umsatzkanal.</div>
-        <div class="wk-gains"><span class="wk-gain wk-gain-time"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M12 7.5V12l3 2" /></svg><span><span class="wk-gain-k">Zeit</span>Nachfassen ohne eigene Wiedervorlage</span></span><span class="wk-gain wk-gain-err"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.6 4.5 5.4v5.9c0 4.4 3.1 7.6 7.5 9.1 4.4-1.5 7.5-4.7 7.5-9.1V5.4Z" /><path d="m9.2 12 2 2 3.6-3.8" /></svg><span><span class="wk-gain-k">Fehler</span>Kein vergessener Kunde</span></span></div>
       </div>
     </div>
   </section>
