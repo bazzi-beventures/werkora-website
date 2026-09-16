@@ -32,7 +32,7 @@
     --warm: rgba(233, 162, 39, 0.055);
     --ink: #353743;
     --gold: #E6A026;
-    --grain-op: 0.5;
+    --grain-op: 0.32;
     --vignette: rgba(27, 32, 40, 0.05);
   }
   html[data-theme="dunkel"] {
@@ -42,7 +42,7 @@
     --warm: rgba(233, 162, 39, 0.07);
     --ink: #EEF1F5;
     --gold: #E6A026;
-    --grain-op: 0.35;
+    --grain-op: 0.26;
     --vignette: rgba(0, 0, 0, 0.30);
   }
 
@@ -57,6 +57,9 @@
     background:
       radial-gradient(90% 75% at 78% 12%, var(--warm) 0%, rgba(0,0,0,0) 62%),
       radial-gradient(75% 70% at 50% 42%, var(--bg-center) 0%, var(--bg-mid) 46%, var(--bg-edge) 100%);
+  }
+  /* Das Atmen kostet spuerbar Rechenzeit und ist kaum sichtbar - nur auf Wunsch. */
+  html[data-atmen="an"] .wk-bg {
     animation: wkBreathe 54s ease-in-out infinite alternate;
     will-change: transform, opacity;
   }
@@ -68,10 +71,9 @@
   /* Feines Korn gegen Streifenbildung auf grossen Displays */
   .wk-grain {
     position: fixed; inset: 0; pointer-events: none;
-    opacity: var(--grain-op); mix-blend-mode: multiply;
+    opacity: var(--grain-op);
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
   }
-  html[data-theme="dunkel"] .wk-grain { mix-blend-mode: screen; }
 
   .wk-vignette {
     position: fixed; inset: 0; pointer-events: none;
@@ -94,7 +96,7 @@
   }
   .wk-ink  { fill: var(--ink); }
   .wk-gold { fill: var(--gold); }
-  .wk-ring { stroke: var(--ink); }
+  .wk-loch { fill: var(--bg-center); }
 
   .wk-hand {
     transform-box: view-box;
@@ -107,9 +109,10 @@
   /* Lauf wie im Hero der Website */
   .wk-hand-h { animation-duration: 96s; animation-delay: -81.6s; }  /* Startstellung der Marke */
   .wk-hand-m { animation-duration: 8s;  animation-delay: -1.018s; }
-  /* Echte Uhrzeit (?zeit): Startversatz setzt das Skript */
-  html[data-uhr="zeit"] .wk-hand-h { animation-duration: 43200s; }
-  html[data-uhr="zeit"] .wk-hand-m { animation-duration: 3600s; }
+  /* Echte Uhrzeit (?zeit): keine Dauer-Animation. Die Zeiger bewegen sich
+     dort unmerklich langsam; sie sekuendlich zu stellen kostet fast nichts,
+     waehrend eine laufende Animation 60 Bilder pro Sekunde zeichnen wuerde. */
+  html[data-uhr="zeit"] .wk-hand { animation: none; }
 
   @keyframes wkSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
@@ -136,21 +139,11 @@
 
   <div class="wk-stage" aria-hidden="true">
     <svg class="wk-clock" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <!-- Die Luecke oben ist im Original kein gerader Bogenschnitt, sondern ein
-             Keil, dessen Spitze 23.77 ueber dem Kreismittelpunkt sitzt. -->
-        <mask id="wkLuecke" maskUnits="userSpaceOnUse" x="-6" y="-6" width="112" height="112">
-          <rect x="-6" y="-6" width="112" height="112" fill="#FFFFFF" />
-          <polygon points="50,26.23 36.38,-6 63.62,-6" fill="#000000" />
-        </mask>
-        <mask id="wkNabenloch" maskUnits="userSpaceOnUse" x="-6" y="-6" width="112" height="112">
-          <rect x="-6" y="-6" width="112" height="112" fill="#FFFFFF" />
-          <circle cx="50" cy="52.42" r="2.6" fill="#000000" />
-        </mask>
-      </defs>
-      <g mask="url(#wkNabenloch)">
-        <circle class="wk-ring" cx="50" cy="50" r="46.27" fill="none" stroke-width="7.47"
-                mask="url(#wkLuecke)" />
+      <g>
+        <!-- Ring als gefuellte Kontur: aeusserer Bogen, Schnittkante, innerer Bogen.
+             Ohne Maske, damit das Drehen der Zeiger keine Maske neu rastern muss. -->
+        <path class="wk-ink" d="M 39.391 1.129 A 50.005 50.005 0 1 0 60.609 1.129
+                                L 57.639 8.155 A 42.535 42.535 0 1 1 42.361 8.155 Z" />
         <rect class="wk-ink" x="48.405" y="0.06" width="3.19" height="7.22" />
         <!-- Laschen an den Bogenenden, Kanten parallel zum Lueckenschnitt -->
         <polygon class="wk-ink" points="39.11,8.34 42.15,7.68 44.17,12.67 41.37,13.71" />
@@ -162,6 +155,7 @@
           <polygon class="wk-ink" points="50.58,13.42 53.66,52.42 52.62,58.32 53.18,65.82 46.75,65.82 47.22,58.32 46.78,52.42 49.21,13.42" />
         </g>
         <circle class="wk-ink" cx="50" cy="52.42" r="6.1" />
+        <circle class="wk-loch" cx="50" cy="52.42" r="2.6" />
       </g>
     </svg>
     <div class="wk-mark">Werkora</div>
@@ -180,6 +174,7 @@
 
   if (p.has('dunkel')) root.setAttribute('data-theme', 'dunkel');
   if (p.has('ohne-logo')) root.setAttribute('data-mark', 'aus');
+  if (p.has('atmen')) root.setAttribute('data-atmen', 'an');
 
   // ?groesse=48 skaliert das Lockup (Ringdurchmesser in vmin, 10 bis 90).
   var g = parseFloat(p.get('groesse'));
@@ -234,21 +229,17 @@
   root.setAttribute('data-uhr', 'zeit');
 
   var h = document.getElementById('wkHandH');
-  var m2 = document.getElementById('wkHandM');
+  var m = document.getElementById('wkHandM');
 
-  // Die Zeiger laufen als reine CSS-Animation; die aktuelle Uhrzeit wird
-  // ueber einen negativen Startversatz gesetzt. Kein Timer im Hintergrund.
-  function sync() {
+  function stelle() {
     var d = new Date();
     var s = d.getHours() * 3600 + d.getMinutes() * 60 + d.getSeconds() + d.getMilliseconds() / 1000;
-    h.style.animationDelay = '-' + (s % 43200) + 's';
-    m2.style.animationDelay = '-' + (s % 3600) + 's';
+    h.style.transform = 'rotate(' + (s % 43200) / 43200 * 360 + 'deg)';
+    m.style.transform = 'rotate(' + (s % 3600) / 3600 * 360 + 'deg)';
   }
 
-  sync();
-  document.addEventListener('visibilitychange', function () { if (!document.hidden) sync(); });
-  window.addEventListener('focus', sync);
-  setInterval(sync, 600000);
+  stelle();
+  setInterval(stelle, 1000);
 })();
 </script>
 </body>
