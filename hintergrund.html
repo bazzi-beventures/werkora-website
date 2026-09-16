@@ -101,18 +101,20 @@
   .wk-hand {
     transform-box: view-box;
     transform-origin: 50px 52.42px;   /* Nabe, nicht Kreismittelpunkt */
+  }
+  /* Normalfall ist die echte Uhrzeit: keine laufende Animation, das Skript
+     stellt die Zeiger sekuendlich. Eine Dauer-Animation wuerde 60 Bilder pro
+     Sekunde zeichnen fuer eine Bewegung, die man ohnehin nicht sieht. */
+
+  /* ?drift: dekorativer Lauf wie im Hero der Website, kostet entsprechend mehr */
+  html[data-uhr="drift"] .wk-hand {
     animation-name: wkSpin;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     will-change: transform;
   }
-  /* Lauf wie im Hero der Website */
-  .wk-hand-h { animation-duration: 96s; animation-delay: -81.6s; }  /* Startstellung der Marke */
-  .wk-hand-m { animation-duration: 8s;  animation-delay: -1.018s; }
-  /* Echte Uhrzeit (?zeit): keine Dauer-Animation. Die Zeiger bewegen sich
-     dort unmerklich langsam; sie sekuendlich zu stellen kostet fast nichts,
-     waehrend eine laufende Animation 60 Bilder pro Sekunde zeichnen wuerde. */
-  html[data-uhr="zeit"] .wk-hand { animation: none; }
+  html[data-uhr="drift"] .wk-hand-h { animation-duration: 96s; animation-delay: -81.6s; }
+  html[data-uhr="drift"] .wk-hand-m { animation-duration: 8s;  animation-delay: -1.018s; }
 
   @keyframes wkSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
@@ -225,11 +227,13 @@
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(passeWortmarkeAn);
   window.addEventListener('resize', passeWortmarkeAn);
 
-  if (!p.has('zeit')) return;
-  root.setAttribute('data-uhr', 'zeit');
-
   var h = document.getElementById('wkHandH');
   var m = document.getElementById('wkHandM');
+
+  if (p.has('drift')) {
+    root.setAttribute('data-uhr', 'drift');
+    return;
+  }
 
   function stelle() {
     var d = new Date();
