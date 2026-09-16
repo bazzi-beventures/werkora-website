@@ -8,7 +8,7 @@
 <link rel="icon" type="image/png" href="./assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@500;600&family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg-center: #FFFFFF;
@@ -17,9 +17,7 @@
     --warm: rgba(233, 162, 39, 0.055);
     --ink: #1B2028;
     --gold: #E9A227;
-    --clock-op: 0.085;
-    --gold-op: 1;
-    --mark-op: 0.26;
+    --mark: #2E3345;
     --grain-op: 0.5;
     --vignette: rgba(27, 32, 40, 0.05);
   }
@@ -28,11 +26,9 @@
     --bg-mid: #151A22;
     --bg-edge: #0D1116;
     --warm: rgba(233, 162, 39, 0.07);
-    --ink: #E6EAF0;
+    --ink: #F0F3F7;
     --gold: #E9A227;
-    --clock-op: 0.10;
-    --gold-op: 0.95;
-    --mark-op: 0.30;
+    --mark: #F0F3F7;
     --grain-op: 0.35;
     --vignette: rgba(0, 0, 0, 0.30);
   }
@@ -88,18 +84,20 @@
     align-items: center;
     justify-content: center;
   }
+  /* Grundmass des Lockups; Schriftgrad und Abstand hängen daran. */
+  .wk-stage { --wk-size: min(34vmin, 560px); }
+
   .wk-clock {
-    width: min(64vmin, 1100px);
+    width: var(--wk-size);
     height: auto;
     display: block;
-    opacity: var(--clock-op);
     animation: wkFadeIn 2400ms cubic-bezier(0.16, 1, 0.3, 1) both;
   }
   @keyframes wkFadeIn {
     from { opacity: 0; transform: scale(0.985); }
-    to   { opacity: var(--clock-op); transform: none; }
+    to   { opacity: 1; transform: none; }
   }
-  .wk-gold { fill: var(--gold); opacity: var(--gold-op); }
+  .wk-gold { fill: var(--gold); }
   .wk-ink  { fill: var(--ink); }
   .wk-ring { stroke: var(--ink); }
   .wk-hole { fill: var(--bg-center); }
@@ -123,18 +121,18 @@
 
   /* Namenszug, direkt unter der Uhr */
   .wk-mark {
-    margin-top: clamp(18px, 3.4vmin, 54px);
+    margin-top: calc(var(--wk-size) * 0.10);
     font-family: 'Bitter', Georgia, serif;
-    font-size: clamp(20px, 4.6vmin, 72px);
-    font-weight: 600;
-    letter-spacing: -0.012em;
-    color: var(--ink);
-    opacity: var(--mark-op);
+    font-size: calc(var(--wk-size) * 0.355);
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    line-height: 1;
+    color: var(--mark);
     animation: wkMarkIn 3200ms cubic-bezier(0.16, 1, 0.3, 1) both;
   }
   @keyframes wkMarkIn {
     from { opacity: 0; transform: translateY(10px); }
-    to   { opacity: var(--mark-op); transform: none; }
+    to   { opacity: 1; transform: none; }
   }
   html[data-mark="aus"] .wk-mark { display: none; }
 </style>
@@ -169,6 +167,13 @@
 
   if (p.has('dunkel')) root.setAttribute('data-theme', 'dunkel');
   if (p.has('ohne-logo')) root.setAttribute('data-mark', 'aus');
+
+  // ?groesse=40 skaliert das ganze Lockup (Wert in vmin, 10 bis 80).
+  var g = parseFloat(p.get('groesse'));
+  if (!isNaN(g)) {
+    g = Math.min(80, Math.max(10, g));
+    document.querySelector('.wk-stage').style.setProperty('--wk-size', 'min(' + g + 'vmin, 900px)');
+  }
 
   var echteZeit = p.has('zeit');
   if (!echteZeit) return;
