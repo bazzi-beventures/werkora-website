@@ -8,7 +8,7 @@
 <link rel="icon" type="image/png" href="./assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@500;600&family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg-center: #FFFFFF;
@@ -19,7 +19,7 @@
     --gold: #E9A227;
     --clock-op: 0.085;
     --gold-op: 1;
-    --mark-col: rgba(27, 32, 40, 0.16);
+    --mark-op: 0.26;
     --grain-op: 0.5;
     --vignette: rgba(27, 32, 40, 0.05);
   }
@@ -32,7 +32,7 @@
     --gold: #E9A227;
     --clock-op: 0.10;
     --gold-op: 0.95;
-    --mark-col: rgba(230, 234, 240, 0.18);
+    --mark-op: 0.30;
     --grain-op: 0.35;
     --vignette: rgba(0, 0, 0, 0.30);
   }
@@ -84,6 +84,7 @@
     position: fixed;
     inset: 0;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
   }
@@ -120,23 +121,21 @@
 
   @keyframes wkSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-  /* Schriftzug, sehr zurückhaltend */
+  /* Namenszug, direkt unter der Uhr */
   .wk-mark {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: clamp(28px, 5vh, 64px);
-    text-align: center;
-    font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
-    font-size: clamp(9px, 1.05vmin, 14px);
-    font-weight: 500;
-    letter-spacing: 0.42em;
-    text-indent: 0.42em;
-    text-transform: uppercase;
-    color: var(--mark-col);
+    margin-top: clamp(18px, 3.4vmin, 54px);
+    font-family: 'Bitter', Georgia, serif;
+    font-size: clamp(20px, 4.6vmin, 72px);
+    font-weight: 600;
+    letter-spacing: -0.012em;
+    color: var(--ink);
+    opacity: var(--mark-op);
     animation: wkMarkIn 3200ms cubic-bezier(0.16, 1, 0.3, 1) both;
   }
-  @keyframes wkMarkIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes wkMarkIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: var(--mark-op); transform: none; }
+  }
   html[data-mark="aus"] .wk-mark { display: none; }
 </style>
 </head>
@@ -157,11 +156,11 @@
       <circle class="wk-ink" cx="50" cy="50" r="4.6" />
       <circle class="wk-hole" cx="50" cy="50" r="2" />
     </svg>
+    <div class="wk-mark">Werkora</div>
   </div>
 
   <div class="wk-grain" aria-hidden="true"></div>
   <div class="wk-vignette" aria-hidden="true"></div>
-  <div class="wk-mark">Werkora</div>
 
 <script>
 (function () {
