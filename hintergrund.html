@@ -8,16 +8,25 @@
 <link rel="icon" type="image/png" href="./assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@600;700&display=swap" rel="stylesheet">
 <style>
+  /*
+    Geometrie und Farben sind aus assets/werkora-mark.png und
+    assets/werkora-lockup.png ausgemessen. Bezugsmass ist der
+    Aussendurchmesser des Rings (--wk-size), im SVG 100 Einheiten:
+      Ring        Mittelradius 46.27, Staerke 7.47
+      Luecke      Keil mit Spitze 23.77 ueber dem Mittelpunkt
+      Strich      3.19 breit, 7.22 hoch, buendig mit der Ringkante
+      Nabe        2.42 unter dem Kreismittelpunkt, Radius 6.10, Loch 2.60
+      Wortmarke   1.4005 x Ringbreite, Abstand 0.0806 x Ringbreite
+  */
   :root {
     --bg-center: #FFFFFF;
     --bg-mid: #FCFCFB;
     --bg-edge: #F1F3F6;
     --warm: rgba(233, 162, 39, 0.055);
-    --ink: #1B2028;
-    --gold: #E9A227;
-    --mark: #2E3345;
+    --ink: #353743;
+    --gold: #E6A026;
     --grain-op: 0.5;
     --vignette: rgba(27, 32, 40, 0.05);
   }
@@ -26,21 +35,15 @@
     --bg-mid: #151A22;
     --bg-edge: #0D1116;
     --warm: rgba(233, 162, 39, 0.07);
-    --ink: #F0F3F7;
-    --gold: #E9A227;
-    --mark: #F0F3F7;
+    --ink: #EEF1F5;
+    --gold: #E6A026;
     --grain-op: 0.35;
     --vignette: rgba(0, 0, 0, 0.30);
   }
 
   * { box-sizing: border-box; }
   html, body { height: 100%; }
-  body {
-    margin: 0;
-    overflow: hidden;
-    background: var(--bg-edge);
-    cursor: none;
-  }
+  body { margin: 0; overflow: hidden; background: var(--bg-edge); cursor: none; }
 
   /* Sanfter Grundton: Licht aus der Mitte, warmer Hauch oben rechts */
   .wk-bg {
@@ -53,81 +56,67 @@
     will-change: transform, opacity;
   }
   @keyframes wkBreathe {
-    from { transform: scale(1);      opacity: 1;    }
-    to   { transform: scale(1.045);  opacity: 0.93; }
+    from { transform: scale(1);     opacity: 1;    }
+    to   { transform: scale(1.045); opacity: 0.93; }
   }
 
   /* Feines Korn gegen Streifenbildung auf grossen Displays */
   .wk-grain {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    opacity: var(--grain-op);
-    mix-blend-mode: multiply;
+    position: fixed; inset: 0; pointer-events: none;
+    opacity: var(--grain-op); mix-blend-mode: multiply;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
   }
   html[data-theme="dunkel"] .wk-grain { mix-blend-mode: screen; }
 
   .wk-vignette {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
+    position: fixed; inset: 0; pointer-events: none;
     background: radial-gradient(70% 70% at 50% 50%, rgba(0,0,0,0) 55%, var(--vignette) 100%);
   }
 
-  /* Uhr */
+  /* Lockup */
   .wk-stage {
-    position: fixed;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    position: fixed; inset: 0;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    --wk-size: min(48vmin, 820px);
   }
-  /* Grundmass des Lockups; Schriftgrad und Abstand hängen daran. */
-  .wk-stage { --wk-size: min(34vmin, 560px); }
-
   .wk-clock {
-    width: var(--wk-size);
-    height: auto;
-    display: block;
+    width: var(--wk-size); height: auto; display: block;
     animation: wkFadeIn 2400ms cubic-bezier(0.16, 1, 0.3, 1) both;
   }
   @keyframes wkFadeIn {
     from { opacity: 0; transform: scale(0.985); }
     to   { opacity: 1; transform: none; }
   }
-  .wk-gold { fill: var(--gold); }
   .wk-ink  { fill: var(--ink); }
+  .wk-gold { fill: var(--gold); }
   .wk-ring { stroke: var(--ink); }
-  .wk-hole { fill: var(--bg-center); }
 
   .wk-hand {
     transform-box: view-box;
-    transform-origin: 50px 50px;
+    transform-origin: 50px 52.42px;   /* Nabe, nicht Kreismittelpunkt */
     animation-name: wkSpin;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     will-change: transform;
   }
-  /* Ruhiger Lauf: der lange Zeiger einmal pro Minute, der goldene einmal pro Stunde */
-  .wk-hand-h { animation-duration: 3600s; }
-  .wk-hand-m { animation-duration: 60s; }
-  /* Echte Uhrzeit (?zeit) */
+  /* Lauf wie im Hero der Website */
+  .wk-hand-h { animation-duration: 96s; animation-delay: -81.6s; }  /* Startstellung der Marke */
+  .wk-hand-m { animation-duration: 8s;  animation-delay: -1.018s; }
+  /* Echte Uhrzeit (?zeit): Startversatz setzt das Skript */
   html[data-uhr="zeit"] .wk-hand-h { animation-duration: 43200s; }
   html[data-uhr="zeit"] .wk-hand-m { animation-duration: 3600s; }
 
   @keyframes wkSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-  /* Namenszug, direkt unter der Uhr */
+  /* Wortmarke: Ausgangswerte, das Skript stellt sie exakt auf das Lockup ein */
   .wk-mark {
-    margin-top: calc(var(--wk-size) * 0.10);
+    margin-top: calc(var(--wk-size) * 0.053);
     font-family: 'Bitter', Georgia, serif;
-    font-size: calc(var(--wk-size) * 0.355);
+    font-size: calc(var(--wk-size) * 0.354);
     font-weight: 700;
-    letter-spacing: -0.015em;
     line-height: 1;
-    color: var(--mark);
+    color: var(--ink);
+    white-space: nowrap;
     animation: wkMarkIn 3200ms cubic-bezier(0.16, 1, 0.3, 1) both;
   }
   @keyframes wkMarkIn {
@@ -142,17 +131,30 @@
 
   <div class="wk-stage" aria-hidden="true">
     <svg class="wk-clock" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-      <path class="wk-ring" d="M 38.5 12.6 A 40 40 0 1 0 61.5 12.6" fill="none" stroke-width="7.5" stroke-linecap="butt" />
-      <rect class="wk-ink" x="48.4" y="2" width="3.2" height="8.5" />
-      <g class="wk-hand wk-hand-h" id="wkHandH">
-        <polygon class="wk-gold" points="46.4,52.5 53.6,52.5 50.4,30 49.6,30" />
+      <defs>
+        <!-- Die Luecke oben ist im Original kein gerader Bogenschnitt, sondern ein
+             Keil, dessen Spitze 23.77 ueber dem Kreismittelpunkt sitzt. -->
+        <mask id="wkLuecke" maskUnits="userSpaceOnUse" x="-6" y="-6" width="112" height="112">
+          <rect x="-6" y="-6" width="112" height="112" fill="#FFFFFF" />
+          <polygon points="50,26.23 36.38,-6 63.62,-6" fill="#000000" />
+        </mask>
+        <mask id="wkNabenloch" maskUnits="userSpaceOnUse" x="-6" y="-6" width="112" height="112">
+          <rect x="-6" y="-6" width="112" height="112" fill="#FFFFFF" />
+          <circle cx="50" cy="52.42" r="2.6" fill="#000000" />
+        </mask>
+      </defs>
+      <g mask="url(#wkNabenloch)">
+        <circle class="wk-ring" cx="50" cy="50" r="46.27" fill="none" stroke-width="7.47"
+                mask="url(#wkLuecke)" />
+        <rect class="wk-ink" x="48.405" y="0.06" width="3.19" height="7.22" />
+        <g class="wk-hand wk-hand-h" id="wkHandH">
+          <polygon class="wk-gold" points="49.12,21.48 50.34,21.50 53.76,54.42 46.18,54.42" />
+        </g>
+        <g class="wk-hand wk-hand-m" id="wkHandM">
+          <polygon class="wk-ink" points="49.31,13.45 50.52,13.61 56.09,51.61 56.11,53.17 53.18,65.85 46.95,65.77 44.00,53.17 44.06,51.53" />
+        </g>
+        <circle class="wk-ink" cx="50" cy="52.42" r="6.1" />
       </g>
-      <g class="wk-hand wk-hand-m" id="wkHandM">
-        <polygon class="wk-ink" points="47,53 53,53 50.4,17.5 49.6,17.5" />
-        <polygon class="wk-ink" points="47.6,49 52.4,49 51.6,64 48.4,64" />
-      </g>
-      <circle class="wk-ink" cx="50" cy="50" r="4.6" />
-      <circle class="wk-hole" cx="50" cy="50" r="2" />
     </svg>
     <div class="wk-mark">Werkora</div>
   </div>
@@ -164,39 +166,79 @@
 (function () {
   var p = new URLSearchParams(location.search);
   var root = document.documentElement;
+  var stage = document.querySelector('.wk-stage');
+  var clock = document.querySelector('.wk-clock');
+  var mark = document.querySelector('.wk-mark');
 
   if (p.has('dunkel')) root.setAttribute('data-theme', 'dunkel');
   if (p.has('ohne-logo')) root.setAttribute('data-mark', 'aus');
 
-  // ?groesse=40 skaliert das ganze Lockup (Wert in vmin, 10 bis 80).
+  // ?groesse=48 skaliert das Lockup (Ringdurchmesser in vmin, 10 bis 90).
   var g = parseFloat(p.get('groesse'));
   if (!isNaN(g)) {
-    g = Math.min(80, Math.max(10, g));
-    document.querySelector('.wk-stage').style.setProperty('--wk-size', 'min(' + g + 'vmin, 900px)');
+    g = Math.min(90, Math.max(10, g));
+    stage.style.setProperty('--wk-size', 'min(' + g + 'vmin, 1400px)');
   }
 
-  var echteZeit = p.has('zeit');
-  if (!echteZeit) return;
+  // Wortmarke exakt auf die Lockup-Proportion bringen: 1.4005 x Ringbreite,
+  // Oberkante der Glyphen 0.0806 x Ringbreite unter der Ringunterkante.
+  var messer = document.createElement('canvas').getContext('2d');
+  var SCHRIFT = "'Bitter', Georgia, serif";
+  function passeWortmarkeAn() {
+    // Nicht getBoundingClientRect: waehrend des Einblendens liegt eine
+    // Skalierung auf der Uhr, die das Mass verfaelschen wuerde.
+    var s = parseFloat(getComputedStyle(clock).width);
+    if (!s) return;
+    var ziel = s * 1.4005;
 
+    // Schriftgrad ueber die Tintenbreite bestimmen; die Textbox enthaelt
+    // zusaetzlich die Seitenabstaende der Glyphen.
+    var fs = 0;
+    messer.font = '700 100px ' + SCHRIFT;
+    var probe = messer.measureText('Werkora');
+    if (probe.actualBoundingBoxRight) {
+      var tinte = probe.actualBoundingBoxRight + (probe.actualBoundingBoxLeft || 0);
+      fs = 100 * ziel / tinte;
+    } else {
+      mark.style.fontSize = '100px';
+      var kasten = mark.getBoundingClientRect().width;
+      if (!kasten) return;
+      fs = 100 * ziel / kasten;
+    }
+    mark.style.fontSize = fs + 'px';
+
+    // Oberkante der Glyphen 0.0806 x Ringbreite unter die Ringunterkante setzen.
+    messer.font = '700 ' + fs + 'px ' + SCHRIFT;
+    var m = messer.measureText('Werkora');
+    var oben = fs * 0.08;
+    if (m.fontBoundingBoxAscent && m.actualBoundingBoxAscent) {
+      var durchschuss = (fs - (m.fontBoundingBoxAscent + m.fontBoundingBoxDescent)) / 2;
+      oben = durchschuss + (m.fontBoundingBoxAscent - m.actualBoundingBoxAscent);
+    }
+    mark.style.marginTop = (s * 0.0806 - oben) + 'px';
+  }
+
+  passeWortmarkeAn();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(passeWortmarkeAn);
+  window.addEventListener('resize', passeWortmarkeAn);
+
+  if (!p.has('zeit')) return;
   root.setAttribute('data-uhr', 'zeit');
 
   var h = document.getElementById('wkHandH');
-  var m = document.getElementById('wkHandM');
+  var m2 = document.getElementById('wkHandM');
 
   // Die Zeiger laufen als reine CSS-Animation; die aktuelle Uhrzeit wird
-  // einmalig über einen negativen Startversatz gesetzt. Kein Timer im Hintergrund.
+  // ueber einen negativen Startversatz gesetzt. Kein Timer im Hintergrund.
   function sync() {
     var d = new Date();
     var s = d.getHours() * 3600 + d.getMinutes() * 60 + d.getSeconds() + d.getMilliseconds() / 1000;
     h.style.animationDelay = '-' + (s % 43200) + 's';
-    m.style.animationDelay = '-' + (s % 3600) + 's';
+    m2.style.animationDelay = '-' + (s % 3600) + 's';
   }
 
   sync();
-  // Nach Ruhezustand oder Displaywechsel neu stellen.
-  document.addEventListener('visibilitychange', function () {
-    if (!document.hidden) sync();
-  });
+  document.addEventListener('visibilitychange', function () { if (!document.hidden) sync(); });
   window.addEventListener('focus', sync);
   setInterval(sync, 600000);
 })();
