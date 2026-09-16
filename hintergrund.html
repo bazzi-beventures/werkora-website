@@ -15,9 +15,14 @@
     assets/werkora-lockup.png ausgemessen. Bezugsmass ist der
     Aussendurchmesser des Rings (--wk-size), im SVG 100 Einheiten:
       Ring        Mittelradius 46.27, Staerke 7.47
-      Luecke      Keil mit Spitze 23.77 ueber dem Mittelpunkt
+      Luecke      Keil mit Spitze 23.77 ueber dem Mittelpunkt; an beiden
+                  Bogenenden sitzt innen eine Lasche, 3.11 x 4.6
       Strich      3.19 breit, 7.22 hoch, buendig mit der Ringkante
       Nabe        2.42 unter dem Kreismittelpunkt, Radius 6.10, Loch 2.60
+      Zeiger      aus dem Breitenverlauf der Marke: an der Nabenkante
+                  6.4 breit (dunkel) bzw. 6.25 (gold), zur Spitze auslaufend.
+                  Die Basis laeuft unter der Nabe weiter, damit in keiner
+                  Stellung eine Kerbe entsteht.
       Wortmarke   1.4005 x Ringbreite, Abstand 0.0806 x Ringbreite
   */
   :root {
@@ -147,11 +152,14 @@
         <circle class="wk-ring" cx="50" cy="50" r="46.27" fill="none" stroke-width="7.47"
                 mask="url(#wkLuecke)" />
         <rect class="wk-ink" x="48.405" y="0.06" width="3.19" height="7.22" />
+        <!-- Laschen an den Bogenenden, Kanten parallel zum Lueckenschnitt -->
+        <polygon class="wk-ink" points="39.11,8.34 42.15,7.68 44.17,12.67 41.37,13.71" />
+        <polygon class="wk-ink" points="60.89,8.34 57.85,7.68 55.83,12.67 58.63,13.71" />
         <g class="wk-hand wk-hand-h" id="wkHandH">
-          <polygon class="wk-gold" points="49.12,21.48 50.34,21.50 53.76,54.42 46.18,54.42" />
+          <polygon class="wk-gold" points="50.50,21.42 53.55,52.42 46.32,52.42 48.94,21.42" />
         </g>
         <g class="wk-hand wk-hand-m" id="wkHandM">
-          <polygon class="wk-ink" points="49.31,13.45 50.52,13.61 56.09,51.61 56.11,53.17 53.18,65.85 46.95,65.77 44.00,53.17 44.06,51.53" />
+          <polygon class="wk-ink" points="50.58,13.42 53.66,52.42 52.62,58.32 53.18,65.82 46.75,65.82 47.22,58.32 46.78,52.42 49.21,13.42" />
         </g>
         <circle class="wk-ink" cx="50" cy="52.42" r="6.1" />
       </g>
