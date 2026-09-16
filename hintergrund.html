@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Werkora — Bildschirmhintergrund</title>
+<link rel="icon" type="image/png" href="./assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-center: #FFFFFF;
+    --bg-mid: #FCFCFB;
+    --bg-edge: #F1F3F6;
+    --warm: rgba(233, 162, 39, 0.055);
+    --ink: #1B2028;
+    --gold: #E9A227;
+    --clock-op: 0.085;
+    --gold-op: 1;
+    --mark-col: rgba(27, 32, 40, 0.16);
+    --grain-op: 0.5;
+    --vignette: rgba(27, 32, 40, 0.05);
+  }
+  html[data-theme="dunkel"] {
+    --bg-center: #1A2029;
+    --bg-mid: #151A22;
+    --bg-edge: #0D1116;
+    --warm: rgba(233, 162, 39, 0.07);
+    --ink: #E6EAF0;
+    --gold: #E9A227;
+    --clock-op: 0.10;
+    --gold-op: 0.95;
+    --mark-col: rgba(230, 234, 240, 0.18);
+    --grain-op: 0.35;
+    --vignette: rgba(0, 0, 0, 0.30);
+  }
+
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    overflow: hidden;
+    background: var(--bg-edge);
+    cursor: none;
+  }
+
+  /* Sanfter Grundton: Licht aus der Mitte, warmer Hauch oben rechts */
+  .wk-bg {
+    position: fixed;
+    inset: -2%;
+    background:
+      radial-gradient(90% 75% at 78% 12%, var(--warm) 0%, rgba(0,0,0,0) 62%),
+      radial-gradient(75% 70% at 50% 42%, var(--bg-center) 0%, var(--bg-mid) 46%, var(--bg-edge) 100%);
+    animation: wkBreathe 54s ease-in-out infinite alternate;
+    will-change: transform, opacity;
+  }
+  @keyframes wkBreathe {
+    from { transform: scale(1);      opacity: 1;    }
+    to   { transform: scale(1.045);  opacity: 0.93; }
+  }
+
+  /* Feines Korn gegen Streifenbildung auf grossen Displays */
+  .wk-grain {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: var(--grain-op);
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+  }
+  html[data-theme="dunkel"] .wk-grain { mix-blend-mode: screen; }
+
+  .wk-vignette {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(70% 70% at 50% 50%, rgba(0,0,0,0) 55%, var(--vignette) 100%);
+  }
+
+  /* Uhr */
+  .wk-stage {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .wk-clock {
+    width: min(64vmin, 1100px);
+    height: auto;
+    display: block;
+    opacity: var(--clock-op);
+    animation: wkFadeIn 2400ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  @keyframes wkFadeIn {
+    from { opacity: 0; transform: scale(0.985); }
+    to   { opacity: var(--clock-op); transform: none; }
+  }
+  .wk-gold { fill: var(--gold); opacity: var(--gold-op); }
+  .wk-ink  { fill: var(--ink); }
+  .wk-ring { stroke: var(--ink); }
+  .wk-hole { fill: var(--bg-center); }
+
+  .wk-hand {
+    transform-box: view-box;
+    transform-origin: 50px 50px;
+    animation-name: wkSpin;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    will-change: transform;
+  }
+  /* Ruhiger Lauf: der lange Zeiger einmal pro Minute, der goldene einmal pro Stunde */
+  .wk-hand-h { animation-duration: 3600s; }
+  .wk-hand-m { animation-duration: 60s; }
+  /* Echte Uhrzeit (?zeit) */
+  html[data-uhr="zeit"] .wk-hand-h { animation-duration: 43200s; }
+  html[data-uhr="zeit"] .wk-hand-m { animation-duration: 3600s; }
+
+  @keyframes wkSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+  /* Schriftzug, sehr zurückhaltend */
+  .wk-mark {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: clamp(28px, 5vh, 64px);
+    text-align: center;
+    font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+    font-size: clamp(9px, 1.05vmin, 14px);
+    font-weight: 500;
+    letter-spacing: 0.42em;
+    text-indent: 0.42em;
+    text-transform: uppercase;
+    color: var(--mark-col);
+    animation: wkMarkIn 3200ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  @keyframes wkMarkIn { from { opacity: 0; } to { opacity: 1; } }
+  html[data-mark="aus"] .wk-mark { display: none; }
+</style>
+</head>
+<body>
+  <div class="wk-bg" aria-hidden="true"></div>
+
+  <div class="wk-stage" aria-hidden="true">
+    <svg class="wk-clock" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <path class="wk-ring" d="M 38.5 12.6 A 40 40 0 1 0 61.5 12.6" fill="none" stroke-width="7.5" stroke-linecap="butt" />
+      <rect class="wk-ink" x="48.4" y="2" width="3.2" height="8.5" />
+      <g class="wk-hand wk-hand-h" id="wkHandH">
+        <polygon class="wk-gold" points="46.4,52.5 53.6,52.5 50.4,30 49.6,30" />
+      </g>
+      <g class="wk-hand wk-hand-m" id="wkHandM">
+        <polygon class="wk-ink" points="47,53 53,53 50.4,17.5 49.6,17.5" />
+        <polygon class="wk-ink" points="47.6,49 52.4,49 51.6,64 48.4,64" />
+      </g>
+      <circle class="wk-ink" cx="50" cy="50" r="4.6" />
+      <circle class="wk-hole" cx="50" cy="50" r="2" />
+    </svg>
+  </div>
+
+  <div class="wk-grain" aria-hidden="true"></div>
+  <div class="wk-vignette" aria-hidden="true"></div>
+  <div class="wk-mark">Werkora</div>
+
+<script>
+(function () {
+  var p = new URLSearchParams(location.search);
+  var root = document.documentElement;
+
+  if (p.has('dunkel')) root.setAttribute('data-theme', 'dunkel');
+  if (p.has('ohne-logo')) root.setAttribute('data-mark', 'aus');
+
+  var echteZeit = p.has('zeit');
+  if (!echteZeit) return;
+
+  root.setAttribute('data-uhr', 'zeit');
+
+  var h = document.getElementById('wkHandH');
+  var m = document.getElementById('wkHandM');
+
+  // Die Zeiger laufen als reine CSS-Animation; die aktuelle Uhrzeit wird
+  // einmalig über einen negativen Startversatz gesetzt. Kein Timer im Hintergrund.
+  function sync() {
+    var d = new Date();
+    var s = d.getHours() * 3600 + d.getMinutes() * 60 + d.getSeconds() + d.getMilliseconds() / 1000;
+    h.style.animationDelay = '-' + (s % 43200) + 's';
+    m.style.animationDelay = '-' + (s % 3600) + 's';
+  }
+
+  sync();
+  // Nach Ruhezustand oder Displaywechsel neu stellen.
+  document.addEventListener('visibilitychange', function () {
+    if (!document.hidden) sync();
+  });
+  window.addEventListener('focus', sync);
+  setInterval(sync, 600000);
+})();
+</script>
+</body>
+</html>
