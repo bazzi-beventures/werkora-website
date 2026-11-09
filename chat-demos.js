@@ -28,7 +28,12 @@
     '.wk-cd-dots span:nth-child(3){animation-delay:.3s}',
     '.wk-hilfe-chip{transition:background 250ms,color 250ms,transform 250ms,border-color 250ms}',
     '.wk-hilfe-chip.wk-cd-aktiv{background:#3D5A80 !important;border-color:#3D5A80 !important;color:#FFFFFF !important;transform:scale(1.03)}',
-    '.wk-cd-caret::after{content:"";display:inline-block;width:2px;height:1em;margin-left:2px;vertical-align:-2px;background:#3D5A80;animation:wkCdBlink 800ms infinite}'
+    '.wk-cd-caret::after{content:"";display:inline-block;width:2px;height:1em;margin-left:2px;vertical-align:-2px;background:#3D5A80;animation:wkCdBlink 800ms infinite}',
+    '@keyframes wkCdGrow{from{transform:scaleY(0)}to{transform:scaleY(1)}}',
+    '.wk-cd-grow{transform-box:fill-box;transform-origin:bottom;animation:wkCdGrow 700ms cubic-bezier(0.16,1,0.3,1) both}',
+    '.wk-kpi-chip{transition:background 250ms,color 250ms,transform 250ms,border-color 250ms}',
+    '.wk-kpi-chip.wk-cd-aktiv{background:#3D5A80 !important;border-color:#3D5A80 !important;color:#FFFFFF !important;transform:scale(1.03)}',
+    '#wk-kpi-push.wk-cd-zeigen{opacity:1 !important;transform:none !important}'
   ].join('');
 
   var styleEingefuegt = false;
@@ -232,6 +237,164 @@
     return true;
   }
 
+  /* ---------- Kennzahlen-Assistent (Sektion "Kennzahlen-Assistent") ----------
+   *
+   * Ablauf: Montags-Push → Wochenanalyse → Vorschlagsfrage wird angetippt →
+   * Antwort läuft ein, das Diagramm wächst, die Reiter-Knöpfe erscheinen →
+   * zweite Frage mit Liste der überfälligen Rechnungen. Die statische
+   * Nachbildung im HTML (Analyse, Vorschläge, Frage 1, Antwort 1) dient als
+   * Vorlage; Frage und Antwort 2 entstehen hier. Alles Beispieldaten.
+   */
+
+  var KPI_RECHNUNGEN = [
+    ['Muster Immobilien AG', 'RE-2026-212', 'CHF 12’400', '48 Tage'],
+    ['Familie Keller, Seuzach', 'RE-2026-219', 'CHF 8’950', '41 Tage'],
+    ['Wohnbau Seen AG', 'RE-2026-231', 'CHF 6’720', '33 Tage']
+  ];
+
+  function kpiKnopf(text) {
+    var k = document.createElement('span');
+    k.style.cssText = 'font-size:11.5px;font-weight:600;color:#A9711A;background:#FDF3DF;border-radius:8px;padding:3px 8px';
+    k.textContent = text;
+    return k;
+  }
+
+  function kpiRechnungsliste() {
+    var box = document.createElement('div');
+    box.style.cssText = 'margin-top:6px';
+    KPI_RECHNUNGEN.forEach(function (r, i) {
+      var zeile = document.createElement('div');
+      zeile.style.cssText = 'display:flex;justify-content:space-between;gap:10px;padding:6px 0;font-size:12.5px' +
+        (i ? ';border-top:1px dashed #DCE0E6' : '');
+      function spalte(stil, oben, obenStil, unten, untenStil) {
+        var s = document.createElement('div');
+        s.style.cssText = stil;
+        var a = document.createElement('div');
+        a.style.cssText = obenStil;
+        a.textContent = oben;
+        var b = document.createElement('div');
+        b.style.cssText = untenStil;
+        b.textContent = unten;
+        s.appendChild(a);
+        s.appendChild(b);
+        return s;
+      }
+      zeile.appendChild(spalte('min-width:0', r[0], '', r[1], 'font-family:\'DM Mono\',monospace;font-size:11px;color:#8A929E'));
+      zeile.appendChild(spalte('text-align:right;flex:none', r[2], 'font-weight:600;color:#12161D', r[3], 'font-size:11px;color:#B42318'));
+      zeile.classList.add('wk-cd-in');
+      box.appendChild(zeile);
+    });
+    return box;
+  }
+
+  async function einstreamen(ziel, text) {
+    ziel.textContent = '';
+    ziel.classList.add('wk-cd-caret');
+    var woerter = text.split(' ');
+    for (var w = 0; w < woerter.length; w++) {
+      ziel.textContent += (w ? ' ' : '') + woerter[w];
+      await warten(34);
+    }
+    ziel.classList.remove('wk-cd-caret');
+  }
+
+  function kpiStart() {
+    var karte = document.getElementById('wk-kpi');
+    var thread = document.getElementById('wk-kpi-thread');
+    var push = document.getElementById('wk-kpi-push');
+    if (!karte || !thread || !push || thread.children.length < 4) return false;
+    stilSicherstellen();
+
+    var vorlagen = [].slice.call(thread.children).map(function (n) { return n.cloneNode(true); });
+    var analyse = vorlagen[0], vorschlaege = vorlagen[1], frage1 = vorlagen[2], antwort1 = vorlagen[3];
+    var antwortText = (antwort1.querySelector('.wk-kpi-text') || {}).textContent || '';
+    var wennSichtbar = sichtbarkeit(karte);
+
+    (async function schleife() {
+      for (;;) {
+        if (!thread.isConnected) { anlauf(kpiStart); return; }
+        await wennSichtbar();
+        await warten(900);
+        thread.classList.add('wk-cd-fade');
+        await warten(400);
+        thread.innerHTML = '';
+        thread.classList.remove('wk-cd-fade');
+
+        // Montag 08:00: die Push kommt rein
+        push.classList.add('wk-cd-zeigen');
+        await warten(2600);
+        push.classList.remove('wk-cd-zeigen');
+        await warten(500);
+
+        var tipp = einblenden(thread, tippBubble());
+        await wennSichtbar(); await warten(1000);
+        tipp.remove();
+        einblenden(thread, analyse.cloneNode(true));
+        await warten(1800);
+
+        var chips = einblenden(thread, vorschlaege.cloneNode(true));
+        await warten(1500);
+        var chip = chips.querySelector('.wk-kpi-chip');
+        if (chip) chip.classList.add('wk-cd-aktiv');
+        await warten(650);
+        chips.classList.add('wk-cd-fade');
+        await warten(380);
+        chips.remove();
+
+        einblenden(thread, frage1.cloneNode(true));
+        await warten(600);
+        tipp = einblenden(thread, tippBubble());
+        await wennSichtbar(); await warten(1400);
+        tipp.remove();
+
+        // Antwort 1: Text einstreamen, dann Diagramm wachsen lassen
+        var a1 = antwort1.cloneNode(true);
+        var text = a1.querySelector('.wk-kpi-text');
+        var diagramm = a1.querySelector('.wk-kpi-chart');
+        var knoepfe = a1.querySelector('.wk-kpi-knoepfe');
+        if (diagramm) diagramm.style.display = 'none';
+        if (knoepfe) knoepfe.style.display = 'none';
+        einblenden(thread, a1);
+        if (text) await einstreamen(text, antwortText);
+        await warten(250);
+        if (diagramm) {
+          [].slice.call(diagramm.querySelectorAll('.wk-kpi-bar')).forEach(function (bar, i) {
+            bar.style.animationDelay = (Math.floor(i / 2) * 90) + 'ms';
+            bar.classList.add('wk-cd-grow');
+          });
+          diagramm.style.display = '';
+          diagramm.classList.add('wk-cd-in');
+        }
+        await warten(1000);
+        if (knoepfe) { knoepfe.style.display = ''; knoepfe.classList.add('wk-cd-in'); }
+        await warten(3600);
+
+        // Frage 2: überfällige Rechnungen
+        await wennSichtbar();
+        einblenden(thread, frageBubble('Welche Rechnungen sind überfällig?'));
+        await warten(600);
+        tipp = einblenden(thread, tippBubble());
+        await warten(1200);
+        tipp.remove();
+        var a2 = einblenden(thread, antwortBubble());
+        a2.style.alignSelf = 'stretch';
+        a2.style.maxWidth = 'none';
+        var t2 = document.createElement('div');
+        a2.appendChild(t2);
+        await einstreamen(t2, '5 Rechnungen sind überfällig, zusammen CHF 41’860. Die drei ältesten:');
+        a2.appendChild(kpiRechnungsliste());
+        await warten(700);
+        var reihe = document.createElement('div');
+        reihe.style.cssText = 'display:flex;gap:6px;margin-top:8px';
+        reihe.appendChild(kpiKnopf('Rechnungen →'));
+        reihe.classList.add('wk-cd-in');
+        a2.appendChild(reihe);
+        await warten(6000);
+      }
+    })();
+    return true;
+  }
+
   /* ---------- Start, sobald das Runtime fertig gerendert hat ---------- */
 
   function anlauf(startFn) {
@@ -249,6 +412,7 @@
     setTimeout(function () {
       anlauf(rapportStart);
       anlauf(hilfeStart);
+      anlauf(kpiStart);
     }, 500);
   }
 
