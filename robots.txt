@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /uploads/
+
+Sitemap: https://werkora.ch/sitemap.xml
