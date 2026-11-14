@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Werkora · ERP für Schweizer Handwerksbetriebe</title>
-<meta name="description" content="Werkora übernimmt die Büroarbeit zwischen Baustelle und Rechnung: Rapport per Sprache, Arbeitszeit nach ArG, Offerte bis QR-Rechnung, Kennzahlen-Assistent. KI-Verarbeitung ausschliesslich in der EU.">
+<meta name="description" content="Werkora übernimmt die Büroarbeit zwischen Baustelle und Rechnung: Rapport per Sprache, Arbeitszeit nach ArG, Offerte bis QR-Rechnung, Kennzahlen-Assistent und Mail AI Agent. KI-Verarbeitung ausschliesslich in der EU.">
 <link rel="canonical" href="https://werkora.ch/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="de_CH">
@@ -147,6 +147,10 @@
 
     <div class="wk-pad wk-tight" style="position:relative;max-width:1280px;margin:0 auto;padding:120px 40px 108px">
       <div style="animation:wkUp 700ms cubic-bezier(0.16,1,0.3,1) both">
+        <a href="#mail-agent" style="display:inline-flex;align-items:center;gap:10px;max-width:100%;margin:0 0 30px;padding:5px 16px 5px 5px;border:1px solid #EFDCB8;border-radius:999px;background:#FEFAF2;font-size:13.5px;line-height:1.35;color:#3A4453" style-hover="border-color:#E9A227">
+          <span style="flex:none;font-family:'DM Mono',monospace;font-size:10.5px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#1B2028;background:#E9A227;border-radius:999px;padding:4px 10px">Neu</span>
+          <span>Mail AI Agent: Posteingang zugeordnet, Antwort entworfen <span style="color:#A9711A">→</span></span>
+        </a>
         <div style="display:flex;align-items:center;gap:14px">
           <div style="width:30px;height:1px;background:#E9A227"></div>
           <div style="font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:#A9711A">Schlankes ERP mit KI-Fokus</div>
@@ -247,6 +251,11 @@
           <div class="wk-cmp-t">Offerte → Rechnung</div>
           <div class="wk-cmp-a">Positionen, Stunden und Material ein zweites Mal erfassen, Excel dazwischen.</div>
           <div class="wk-cmp-b">Die Rechnung entsteht aus Projekt und Rapporten; akzeptierte Preise bleiben gebunden.</div>
+        </div>
+        <div class="wk-cmp-row">
+          <div class="wk-cmp-t">Posteingang</div>
+          <div class="wk-cmp-a">Mails lesen, weiterleiten, Auftragsbestätigungen von Hand mit der Bestellung vergleichen.</div>
+          <div class="wk-cmp-b">Der Mail AI Agent ordnet zu, liest die Anhänge und entwirft die Antwort — Sie geben frei.</div>
         </div>
         <div class="wk-cmp-row">
           <div class="wk-cmp-t">Nachfassen</div>
@@ -411,7 +420,7 @@
           <div style="font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:#E9A227">Von selbst</div>
           <h2 style="margin:20px 0 0;font-family:'Bitter',serif;font-size:clamp(30px,4vw,52px);line-height:1.08;font-weight:600;letter-spacing:-0.025em;color:#FFFFFF;max-width:16ch;text-wrap:pretty">Werkora wartet nicht, bis Sie fragen</h2>
         </div>
-        <p style="margin:0;font-size:18px;line-height:1.65;color:#A8B0BC;max-width:46ch">Es erinnert Ihre Monteure ans Einstempeln, analysiert jede Woche Ihre Zahlen und bereitet Nachfass-Mails vor — Sie geben nur noch frei.</p>
+        <p style="margin:0;font-size:18px;line-height:1.65;color:#A8B0BC;max-width:46ch">Es erinnert Ihre Monteure ans Einstempeln, ordnet den Posteingang, analysiert jede Woche Ihre Zahlen und bereitet Nachfass-Mails vor — Sie geben nur noch frei.</p>
       </div>
 
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));gap:20px;margin-top:60px">
@@ -479,6 +488,103 @@
           </div>
         </div>
         <div style="max-width:380px;margin:12px auto 0;font-size:13px;line-height:1.6;color:#8A929E">Nachbildung des Hilfe-Assistenten in der App. Die Antworten stützen sich auf das Werkora-Handbuch.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="mail-agent" data-screen-label="Mail AI Agent" style="background:#12161D">
+    <div class="wk-pad wk-tight wk-gap" style="max-width:1280px;margin:0 auto;padding:104px 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr));gap:64px;align-items:start">
+      <div>
+        <div style="display:flex;align-items:center;gap:12px">
+          <div style="font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:#E9A227">Mail AI Agent</div>
+          <span style="font-family:'DM Mono',monospace;font-size:10.5px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#12161D;background:#E9A227;border-radius:999px;padding:4px 10px">Neu</span>
+        </div>
+        <h2 style="margin:20px 0 0;font-family:'Bitter',serif;font-size:clamp(30px,4vw,52px);line-height:1.08;font-weight:600;letter-spacing:-0.025em;color:#FFFFFF;max-width:16ch;text-wrap:pretty">Die Mails sind zugeordnet. Die Antwort wartet auf Ihre Freigabe.</h2>
+        <p style="margin:26px 0 0;font-size:18px;line-height:1.65;color:#A8B0BC;max-width:46ch">Was im Postfach des Betriebs ankommt, liest der Mail AI Agent mit: Er erkennt das Anliegen, ordnet die Mail dem richtigen Kunden und Projekt zu und bereitet den nächsten Schritt vor. Sie entscheiden, was davon rausgeht.</p>
+        <div style="display:flex;flex-direction:column;margin-top:40px">
+          <div style="border-top:1px solid #2A323D;padding:18px 0"><span style="font-size:16px;font-weight:500;color:#FFFFFF">Zugeordnet statt gesucht</span><span style="font-size:16px;color:#A8B0BC"> — jede eingehende Mail landet bei Kunde, Projekt oder Offerte. Niemand muss weiterleiten oder im Postfach suchen.</span></div>
+          <div style="border-top:1px solid #2A323D;padding:18px 0"><span style="font-size:16px;font-weight:500;color:#FFFFFF">Anliegen erkannt</span><span style="font-size:16px;color:#A8B0BC"> — Offertanfrage, Terminwunsch oder Reklamation: Der Agent erkennt, worum es geht, und legt den passenden Entwurf an — Offerte, Aufgabe oder Termin.</span></div>
+          <div style="border-top:1px solid #2A323D;padding:18px 0"><span style="font-size:16px;font-weight:500;color:#FFFFFF">Anhänge ausgelesen</span><span style="font-size:16px;color:#A8B0BC"> — Auftragsbestätigungen, Rechnungen und Lieferscheine der Lieferanten werden gelesen und mit der Bestellung abgeglichen.</span></div>
+          <div style="border-top:1px solid #2A323D;border-bottom:1px solid #2A323D;padding:18px 0"><span style="font-size:16px;font-weight:500;color:#FFFFFF">Versand nur nach Freigabe</span><span style="font-size:16px;color:#A8B0BC"> — die Antwort ist im Ton Ihres Betriebs formuliert, raus geht sie erst nach Ihrem Klick. Verarbeitet wird über Mistral in Frankreich.</span></div>
+        </div>
+      </div>
+      <div class="wk-sticky" style="position:sticky;top:110px">
+        <div id="wk-mail" style="position:relative;max-width:400px;margin:0 auto;background:#FFFFFF;border-radius:22px;box-shadow:0 30px 70px rgba(0,0,0,0.45);overflow:hidden">
+          <div id="wk-mail-push" aria-hidden="true" style="position:absolute;left:10px;right:10px;top:10px;z-index:3;display:flex;gap:10px;align-items:flex-start;padding:11px 12px;border-radius:16px;background:#FFFFFF;border:1px solid #E4E7EB;box-shadow:0 12px 30px rgba(16,20,28,0.18);opacity:0;transform:translateY(-130%);transition:transform 520ms cubic-bezier(0.16,1,0.3,1),opacity 320ms ease">
+            <div style="flex:none;width:34px;height:34px;border-radius:9px;background:#12161D;display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E9A227" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2" /><path d="m22 7-10 6L2 7" /></svg></div>
+            <div style="min-width:0;flex:1">
+              <div style="display:flex;justify-content:space-between;gap:8px;font-size:12.5px;font-weight:600;color:#12161D">Werkora<span style="font-weight:400;color:#8A929E;font-family:'DM Mono',monospace;font-size:11px">07:49</span></div>
+              <div style="font-size:12.5px;line-height:1.4;color:#3A4453">Reklamation von Muster Immobilien AG zugeordnet. Antwortentwurf wartet auf Freigabe.</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 18px;border-bottom:1px solid #EEF1F5">
+            <div style="font-size:16px;font-weight:600;color:#12161D">Posteingang<span style="margin-left:8px;font-family:'DM Mono',monospace;font-size:12px;font-weight:400;color:#3A4453;border:1px solid #E4E7EB;border-radius:8px;padding:3px 8px">3 neu</span></div>
+            <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#8A929E;white-space:nowrap">KI · Mistral</div>
+          </div>
+          <div id="wk-mail-thread" style="height:500px;padding:14px 12px;display:flex;flex-direction:column;justify-content:flex-end;gap:8px;overflow:hidden">
+            <div class="wk-mail-item" style="flex:none;background:#FFFFFF;border:1px solid #E4E7EB;border-radius:12px;padding:10px 12px">
+              <div style="display:flex;align-items:center;gap:10px">
+                <div style="flex:none;width:30px;height:30px;border-radius:50%;background:#FDF3DF;color:#A9711A;font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center">FB</div>
+                <div style="min-width:0;flex:1">
+                  <div style="display:flex;justify-content:space-between;gap:8px"><span style="font-size:13px;font-weight:600;color:#12161D;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Familie Brunner</span><span style="flex:none;font-family:'DM Mono',monospace;font-size:10.5px;color:#A5ADB8">07:12</span></div>
+                  <div style="font-size:12.5px;color:#3A4453;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Anfrage Lamellenstoren für den Wintergarten</div>
+                </div>
+              </div>
+              <div class="wk-mail-ki" data-lesen="liest Mail…" style="display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;margin-top:9px;padding-top:8px;border-top:1px dashed #E4E7EB">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="#E9A227" aria-hidden="true" style="flex:none"><path d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z" /></svg>
+                <span style="font-size:11.5px;font-weight:600;color:#8A5B12;background:#FDF3DF;border-radius:8px;padding:2px 8px">Offertanfrage</span>
+                <span style="font-size:11.5px;color:#5A6270">Neukunde · Offert-Entwurf angelegt</span>
+              </div>
+            </div>
+            <div class="wk-mail-item" style="flex:none;background:#FFFFFF;border:1px solid #E4E7EB;border-radius:12px;padding:10px 12px">
+              <div style="display:flex;align-items:center;gap:10px">
+                <div style="flex:none;width:30px;height:30px;border-radius:50%;background:#E7F0F6;color:#2C6E9B;font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center">MS</div>
+                <div style="min-width:0;flex:1">
+                  <div style="display:flex;justify-content:space-between;gap:8px"><span style="font-size:13px;font-weight:600;color:#12161D;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Muster Sonnenschutz AG</span><span style="flex:none;font-family:'DM Mono',monospace;font-size:10.5px;color:#A5ADB8">07:31</span></div>
+                  <div style="display:flex;align-items:center;gap:8px;min-width:0"><span style="min-width:0;font-size:12.5px;color:#3A4453;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Auftragsbestätigung AB-88412</span><span style="flex:none;display:inline-flex;align-items:center;gap:4px;font-family:'DM Mono',monospace;font-size:10.5px;color:#5A6270;background:#F1F3F6;border-radius:6px;padding:2px 7px"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.4 11.1-9.2 9.2a6 6 0 0 1-8.5-8.5l9.2-9.2a4 4 0 0 1 5.7 5.7l-9.2 9.2a2 2 0 0 1-2.8-2.8l8.5-8.5" /></svg>PDF</span></div>
+                </div>
+              </div>
+              <div class="wk-mail-ki" data-lesen="liest Anhang AB-88412.pdf…" style="display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;margin-top:9px;padding-top:8px;border-top:1px dashed #E4E7EB">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="#E9A227" aria-hidden="true" style="flex:none"><path d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z" /></svg>
+                <span style="font-size:11.5px;font-weight:600;color:#2C6E9B;background:#E7F0F6;border-radius:8px;padding:2px 8px">Auftragsbestätigung</span>
+                <span style="font-size:11.5px;color:#5A6270">Bestellung abgeglichen <span style="color:#15803D;font-weight:600">✓</span></span>
+              </div>
+            </div>
+            <div class="wk-mail-item" style="flex:none;background:#FFFFFF;border:1px solid #E4E7EB;border-radius:12px;padding:10px 12px">
+              <div style="display:flex;align-items:center;gap:10px">
+                <div style="flex:none;width:30px;height:30px;border-radius:50%;background:#F0EAFB;color:#6D3FD1;font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center">MI</div>
+                <div style="min-width:0;flex:1">
+                  <div style="display:flex;justify-content:space-between;gap:8px"><span style="font-size:13px;font-weight:600;color:#12161D;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Muster Immobilien AG</span><span style="flex:none;font-family:'DM Mono',monospace;font-size:10.5px;color:#A5ADB8">07:48</span></div>
+                  <div style="font-size:12.5px;color:#3A4453;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Storen in Whg. 3.2 fährt nicht mehr hoch</div>
+                </div>
+              </div>
+              <div class="wk-mail-ki" data-lesen="liest Mail…" style="display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;margin-top:9px;padding-top:8px;border-top:1px dashed #E4E7EB">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="#E9A227" aria-hidden="true" style="flex:none"><path d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z" /></svg>
+                <span style="font-size:11.5px;font-weight:600;color:#B42318;background:#FDECEC;border-radius:8px;padding:2px 8px">Reklamation</span>
+                <span style="font-size:11.5px;color:#5A6270">Projekt Adlikon · Aufgabe angelegt</span>
+              </div>
+            </div>
+            <div class="wk-mail-entwurf" style="flex:none;background:#F1F3F6;border-radius:14px;padding:12px 13px">
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
+                <div style="display:flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:#12161D"><svg width="12" height="12" viewBox="0 0 24 24" fill="#E9A227" aria-hidden="true" style="flex:none"><path d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z" /></svg>Antwortentwurf</div>
+                <span style="min-width:0;font-size:11px;color:#8A929E;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">an Muster Immobilien AG</span>
+              </div>
+              <div class="wk-mail-text" style="margin-top:7px;font-size:13px;line-height:1.55;color:#2A323D">
+                <div>Guten Tag Frau Meier</div>
+                <div style="margin-top:4px">Danke für Ihre Meldung. Wir haben die Störung am Storen in Wohnung 3.2 aufgenommen und melden uns bis morgen Mittag mit einem Termin für die Reparatur.</div>
+              </div>
+              <div class="wk-mail-knoepfe" style="display:flex;gap:8px;margin-top:11px">
+                <div class="wk-mail-senden" style="flex:1;text-align:center;white-space:nowrap;background:#22c55e;color:#FFFFFF;font-size:12.5px;font-weight:600;padding:9px 6px;border-radius:10px">Freigeben &amp; senden</div>
+                <div style="flex:1;text-align:center;white-space:nowrap;background:#FFFFFF;border:1px solid #D5D9DF;color:#3A4453;font-size:12.5px;font-weight:500;padding:9px 6px;border-radius:10px">Bearbeiten</div>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:4px 10px;padding:13px 16px;border-top:1px solid #EEF1F5;font-size:12px;color:#8A929E">
+            <span style="display:flex;align-items:center;gap:7px;white-space:nowrap"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#22c55e"></span>Microsoft 365</span>
+            <span style="white-space:nowrap">Versand nur nach Freigabe</span>
+          </div>
+        </div>
+        <div style="max-width:400px;margin:12px auto 0;font-size:13px;line-height:1.6;color:#8A929E">Nachbildung des Mail AI Agents mit Beispieldaten. Im Produkt arbeitet er im Microsoft-365-Postfach Ihres Betriebs.</div>
       </div>
     </div>
   </section>
@@ -668,7 +774,7 @@
         </div>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:32px;border-top:1px solid #E4E7EB;padding:28px 0">
           <div style="font-family:'Bitter',serif;font-size:22px;font-weight:600;color:#12161D">Kein Schreibzugriff ohne Bestätigung</div>
-          <p style="margin:0;font-size:16px;line-height:1.65;color:#5A6270">Die KI erkennt und schlägt vor — buchen tut sie nie. Rapporte, Material und Nachfassmails entstehen erst nach Freigabe durch einen Menschen.</p>
+          <p style="margin:0;font-size:16px;line-height:1.65;color:#5A6270">Die KI erkennt und schlägt vor — buchen tut sie nie. Rapporte, Material, Nachfassmails und Antworten auf Kundenmails entstehen erst nach Freigabe durch einen Menschen.</p>
         </div>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:32px;border-top:1px solid #E4E7EB;padding:28px 0">
           <div style="font-family:'Bitter',serif;font-size:22px;font-weight:600;color:#12161D">Passendes Modell je Aufgabe</div>

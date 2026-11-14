@@ -1,8 +1,9 @@
 /*
  * Animierte Chat-Demos für werkora.ch (Startseite)
  *
- * Spielt die Nachbildungen des Rapport-Chats und des Hilfe-Assistenten als
- * Schleife ab — Nachrichten erscheinen nacheinander, Antworten werden Wort
+ * Spielt die Nachbildungen des Rapport-Chats, des Hilfe-Assistenten, des
+ * Kennzahlen-Assistenten und des Mail AI Agents als Schleife ab —
+ * Nachrichten erscheinen nacheinander, Antworten werden Wort
  * für Wort "gestreamt". Es wird nichts an einen Server geschickt; alle
  * Inhalte sind Beispieldaten aus dem HTML bzw. diesem Script.
  *
@@ -33,7 +34,12 @@
     '.wk-cd-grow{transform-box:fill-box;transform-origin:bottom;animation:wkCdGrow 700ms cubic-bezier(0.16,1,0.3,1) both}',
     '.wk-kpi-chip{transition:background 250ms,color 250ms,transform 250ms,border-color 250ms}',
     '.wk-kpi-chip.wk-cd-aktiv{background:#3D5A80 !important;border-color:#3D5A80 !important;color:#FFFFFF !important;transform:scale(1.03)}',
-    '#wk-kpi-push.wk-cd-zeigen{opacity:1 !important;transform:none !important}'
+    '#wk-kpi-push.wk-cd-zeigen{opacity:1 !important;transform:none !important}',
+    '#wk-mail-push.wk-cd-zeigen{opacity:1 !important;transform:none !important}',
+    '.wk-mail-item{transition:border-color 300ms,background 300ms}',
+    '.wk-mail-item.wk-cd-offen{border-color:#9DB2C6 !important;background:#F6F8FB !important}',
+    '.wk-mail-senden{transition:background 250ms,transform 250ms}',
+    '.wk-mail-senden.wk-cd-aktiv{background:#15803D !important;transform:scale(0.96)}'
   ].join('');
 
   var styleEingefuegt = false;
@@ -395,6 +401,125 @@
     return true;
   }
 
+  /* ---------- Mail AI Agent (Sektion "Mail AI Agent") ----------
+   *
+   * Ablauf: Drei Mails treffen nacheinander ein, der Agent liest jede (bei der
+   * Lieferanten-Mail den Anhang) und blendet Anliegen und Zuordnung ein →
+   * Push "Antwortentwurf wartet" → die Reklamation wird geöffnet, der Entwurf
+   * läuft ein → "Freigeben & senden" wird angetippt. Die statische Nachbildung
+   * im HTML (drei Mails mit Ergebnis, Entwurf) dient als Vorlage.
+   * Alles Beispieldaten.
+   */
+
+  function mailLeseZeile(text) {
+    var z = document.createElement('div');
+    z.style.cssText = 'display:flex;align-items:center;gap:8px;margin-top:9px;padding-top:8px;border-top:1px dashed #E4E7EB;font-size:11.5px;font-style:italic;color:#8A929E';
+    var t = document.createElement('span');
+    t.textContent = text;
+    var punkte = document.createElement('span');
+    punkte.className = 'wk-cd-dots';
+    punkte.innerHTML = '<span></span><span></span><span></span>';
+    z.appendChild(t);
+    z.appendChild(punkte);
+    return z;
+  }
+
+  function mailStart() {
+    var karte = document.getElementById('wk-mail');
+    var thread = document.getElementById('wk-mail-thread');
+    var push = document.getElementById('wk-mail-push');
+    if (!karte || !thread || !push) return false;
+    var items = thread.querySelectorAll('.wk-mail-item');
+    var entwurf = thread.querySelector('.wk-mail-entwurf');
+    if (items.length < 3 || !entwurf) return false;
+    stilSicherstellen();
+
+    var mailVorlagen = [].slice.call(items).map(function (n) { return n.cloneNode(true); });
+    var entwurfVorlage = entwurf.cloneNode(true);
+    var absaetze = [].slice.call(entwurf.querySelectorAll('.wk-mail-text > div')).map(function (d) {
+      return d.textContent.replace(/\s+/g, ' ').trim();
+    });
+    var wennSichtbar = sichtbarkeit(karte);
+
+    (async function schleife() {
+      for (;;) {
+        if (!thread.isConnected) { anlauf(mailStart); return; }
+        await wennSichtbar();
+        await warten(900);
+        thread.classList.add('wk-cd-fade');
+        await warten(400);
+        thread.innerHTML = '';
+        thread.classList.remove('wk-cd-fade');
+        await warten(500);
+
+        // Die Mails treffen ein, der Agent liest und ordnet zu
+        var letzte = null;
+        for (var m = 0; m < mailVorlagen.length; m++) {
+          await wennSichtbar();
+          var mail = mailVorlagen[m].cloneNode(true);
+          var ki = mail.querySelector('.wk-mail-ki');
+          var lesen = null;
+          if (ki) {
+            ki.style.display = 'none';
+            lesen = mailLeseZeile(ki.getAttribute('data-lesen') || 'liest Mail…');
+            mail.appendChild(lesen);
+          }
+          einblenden(thread, mail);
+          await warten(m === 1 ? 1700 : 1200); // der Anhang braucht etwas länger
+          if (ki) {
+            lesen.remove();
+            ki.style.display = 'flex';
+            ki.classList.add('wk-cd-in');
+          }
+          letzte = mail;
+          await warten(1100);
+        }
+
+        // Push: Entwurf wartet auf Freigabe
+        push.classList.add('wk-cd-zeigen');
+        await warten(2600);
+        push.classList.remove('wk-cd-zeigen');
+        await warten(400);
+
+        // Reklamation öffnen, Entwurf einstreamen
+        if (letzte) letzte.classList.add('wk-cd-offen');
+        await warten(500);
+        var e = entwurfVorlage.cloneNode(true);
+        var textBox = e.querySelector('.wk-mail-text');
+        var knoepfe = e.querySelector('.wk-mail-knoepfe');
+        var teile = textBox ? [].slice.call(textBox.children) : [];
+        teile.forEach(function (t) { t.textContent = ''; });
+        if (knoepfe) knoepfe.style.display = 'none';
+        einblenden(thread, e);
+        await wennSichtbar();
+        for (var a = 0; a < teile.length; a++) {
+          await einstreamen(teile[a], absaetze[a] || '');
+        }
+        await warten(300);
+        if (knoepfe) { knoepfe.style.display = 'flex'; knoepfe.classList.add('wk-cd-in'); }
+        await warten(2200);
+
+        // Freigabe: "Freigeben & senden" wird angetippt
+        await wennSichtbar();
+        var senden = e.querySelector('.wk-mail-senden');
+        if (senden) senden.classList.add('wk-cd-aktiv');
+        await warten(700);
+        if (knoepfe) {
+          var bestaetigt = document.createElement('div');
+          bestaetigt.style.cssText = 'display:flex;align-items:center;gap:7px;margin-top:11px;padding:9px 0 1px;font-size:12.5px;font-weight:600;color:#15803D';
+          bestaetigt.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>';
+          var bt = document.createElement('span');
+          bt.textContent = 'Nach Freigabe gesendet · 07:51';
+          bestaetigt.appendChild(bt);
+          bestaetigt.classList.add('wk-cd-in');
+          knoepfe.replaceWith(bestaetigt);
+        }
+        await warten(5200);
+      }
+    })();
+    return true;
+  }
+
   /* ---------- Start, sobald das Runtime fertig gerendert hat ---------- */
 
   function anlauf(startFn) {
@@ -413,6 +538,7 @@
       anlauf(rapportStart);
       anlauf(hilfeStart);
       anlauf(kpiStart);
+      anlauf(mailStart);
     }, 500);
   }
 
