@@ -1,0 +1,19 @@
+{
+  "_hinweis": "Neueste Fassung zuerst. Veröffentlichte PDFs nie überschreiben, sondern als neue Datei mit neuer Version ergänzen. Ablauf: rechtliches/README.md",
+  "agb": [
+    {
+      "version": "09/2026",
+      "veroeffentlicht": "2026-11-23",
+      "datei": "rechtliches/agb/werkora-agb-2026-09.pdf",
+      "sha256": "c45ee87be4370f67446d3381b06c5d3652dc36cdde052695faf6a4a5e875ba33"
+    }
+  ],
+  "avv": [
+    {
+      "version": "09/2026",
+      "veroeffentlicht": "2026-11-23",
+      "datei": "rechtliches/avv/werkora-avv-2026-09.pdf",
+      "sha256": "55ea72d137c94418b83d71f8e3fef14f51a1cd92465c39902dd04e669c20c468"
+    }
+  ]
+}
