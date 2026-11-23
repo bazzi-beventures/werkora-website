@@ -19,10 +19,13 @@ Die AGB und die Auftragsverarbeitungsvereinbarung (AVV) von Werkora.ch werden ve
 - Massgebend ist das PDF. Die Webseite wird aus dem PDF erzeugt und nicht von Hand bearbeitet.
 - Die Git-Historie dieses Repositorys dokumentiert zusätzlich, wann welche Fassung online ging.
 
-## Fassung 09/2026
+## Erste veröffentlichte Fassungen (online seit 23. November 2026)
 
-Erste veröffentlichte Fassung (online seit 23. November 2026). Die AVV-Vorlage trägt selbst keine
-Versionsangabe. Sie wurde als 09/2026 eingeordnet, weil sie zusammen mit den AGB 09/2026 verwendet wird.
+- **AGB 09/2026:** unverändert gegenüber der Vorlage.
+- **AVV 11/2026:** Vorlage, die zusammen mit den AGB 09/2026 verwendet wurde, ohne Google Cloud EMEA
+  Limited (Google Workspace) in Anhang 3. Google Workspace wird nur für Tests genutzt und ist kein
+  Unterauftragsverarbeiter. Die Zeile wurde aus dem PDF entfernt, alle übrigen Seiten sind unverändert.
+  Die AVV-Vorlage trägt selbst keine Versionsangabe.
 
 ## Neue Fassung veröffentlichen
 
