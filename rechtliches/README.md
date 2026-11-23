@@ -27,6 +27,13 @@ Die AGB und die Auftragsverarbeitungsvereinbarung (AVV) von Werkora.ch werden ve
   Unterauftragsverarbeiter. Die Zeile wurde aus dem PDF entfernt, alle übrigen Seiten sind unverändert.
   Die AVV-Vorlage trägt selbst keine Versionsangabe.
 
+## AVV 12/2026
+
+Anhang 3 ergänzt um GitHub, Inc. (Auslieferung der App-Dateien) und Google Maps Platform
+(Distanzberechnung zur Objektadresse). Erzeugt aus der Word-Vorlage der AVV (Stand 18.09.2026) mit
+LibreOffice. Der Text ist bis auf die zwei neuen Tabellenzeilen identisch mit 11/2026. Microsoft 365
+ist nicht aufgeführt: Der Mailzugriff läuft über das Konto des Kunden.
+
 ## Neue Fassung veröffentlichen
 
 1. Das neue PDF ablegen, z. B. `rechtliches/agb/werkora-agb-2027-03.pdf`. Es darf nur die AGB bzw.
